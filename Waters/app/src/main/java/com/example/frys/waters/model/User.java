@@ -10,7 +10,6 @@ import java.util.List;
 public class User {
 
     private String name;
-    private int id;
     private String username;
     private String password;
     private String emailAddress;
@@ -20,10 +19,13 @@ public class User {
 
     public static List<UserType> typeList = Arrays.asList(UserType.values());
 
-    public User(String name, String username, String password) {
+    public User(String username, String name, String email, String password, String address, UserType userType) {
         this.name = name;
         this.username = username;
         this.password = password;
+        this.emailAddress = email;
+        this.homeAddress = address;
+        this.usertype = userType;
     }
 
     public String getUsername() {
@@ -40,6 +42,38 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String email) {
+        this.emailAddress = email;
+    }
+
+    public String getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(String address) {
+        this.homeAddress = address;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public UserType getUsertype() {
+        return usertype;
+    }
+
+    public void setUsertype(UserType type) {
+        this.usertype = type;
     }
 
 

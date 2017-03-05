@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="11dp"
-        android:id="@+id/textView2" />
+        android:id="@+id/nameTextView" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -27,17 +27,17 @@
         android:inputType="textPersonName"
         android:text="Name"
         android:ems="10"
-        android:layout_below="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:id="@+id/editText" />
+        android:layout_below="@+id/nameTextView"
+        android:layout_alignStart="@+id/nameTextView"
+        android:id="@+id/nameEditText" />
 
     <TextView
         android:text="Username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:id="@+id/textView4" />
+        android:layout_below="@+id/nameEditText"
+        android:layout_alignStart="@+id/nameEditText"
+        android:id="@+id/UsernameTextView" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -45,112 +45,113 @@
         android:inputType="textPersonName"
         android:text="Username"
         android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/textView4"
-        android:layout_alignStart="@+id/textView4" />
+        android:id="@+id/usernameEditText"
+        android:layout_below="@+id/UsernameTextView"
+        android:layout_alignStart="@+id/UsernameTextView" />
 
     <TextView
         android:text="Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
-        android:layout_alignStart="@+id/editText2"
-        android:id="@+id/textView5" />
+        android:layout_below="@+id/usernameEditText"
+        android:layout_alignStart="@+id/usernameEditText"
+        android:id="@+id/passwordTextView" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText3"
-        android:layout_below="@+id/textView5"
-        android:layout_alignStart="@+id/textView5"
+        android:id="@+id/passwordEditText"
+        android:layout_below="@+id/passwordTextView"
+        android:layout_alignStart="@+id/passwordTextView"
         android:text="password" />
 
     <TextView
         android:text="Confirm Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText3"
-        android:layout_alignStart="@+id/editText3"
-        android:id="@+id/textView3" />
+        android:layout_below="@+id/passwordEditText"
+        android:layout_alignStart="@+id/passwordEditText"
+        android:id="@+id/confirmTextView" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText4"
+        android:id="@+id/confirmEditText"
         android:text="password"
-        android:layout_below="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
+        android:layout_below="@+id/confirmTextView"
+        android:layout_alignStart="@+id/confirmTextView" />
 
     <TextView
         android:text="Home Address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView7"
-        android:layout_below="@+id/editText4"
-        android:layout_alignStart="@+id/editText4" />
+        android:id="@+id/addressTextView"
+        android:layout_below="@+id/confirmEditText"
+        android:layout_alignStart="@+id/confirmEditText" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPostalAddress"
         android:ems="10"
-        android:id="@+id/editText6"
+        android:id="@+id/addressEditText"
         android:text="Postal Address"
-        android:layout_below="@+id/textView7"
-        android:layout_alignStart="@+id/textView7" />
+        android:layout_below="@+id/addressTextView"
+        android:layout_alignStart="@+id/addressTextView" />
 
     <TextView
         android:text="Email Address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView8"
-        android:layout_below="@+id/editText6"
-        android:layout_alignStart="@+id/editText6" />
+        android:id="@+id/emailTextView"
+        android:layout_below="@+id/addressEditText"
+        android:layout_alignStart="@+id/addressEditText" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/editText7"
+        android:id="@+id/emailEditText"
         android:text="Email"
-        android:layout_below="@+id/textView8"
-        android:layout_alignStart="@+id/textView8" />
+        android:layout_below="@+id/emailTextView"
+        android:layout_alignStart="@+id/emailTextView" />
 
     <TextView
         android:text="UserType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView6"
-        android:layout_below="@+id/editText7"
-        android:layout_alignStart="@+id/editText7" />
+        android:id="@+id/typeTextView"
+        android:layout_below="@+id/emailEditText"
+        android:layout_alignStart="@+id/emailEditText" />
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
-        android:layout_below="@+id/textView6"
+        android:layout_below="@+id/typeTextView"
         android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="Register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner"
-        android:layout_alignEnd="@+id/textView3"
-        android:id="@+id/button6" />
 
     <Button
         android:text="Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:id="@+id/RegisterCancel"
         android:layout_below="@+id/spinner"
-        android:layout_toEndOf="@+id/button6"
-        android:layout_marginStart="43dp"
-        android:id="@+id/button7" />
+        android:layout_toEndOf="@+id/registerButton" />
+
+    <Button
+        android:text="Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/registerButton"
+        android:layout_below="@+id/spinner"
+        android:layout_toEndOf="@+id/nameTextView"
+        android:layout_marginStart="11dp" />
 
 </RelativeLayout>

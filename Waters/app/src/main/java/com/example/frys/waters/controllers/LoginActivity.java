@@ -3,6 +3,7 @@ package com.example.frys.waters.controllers;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -29,11 +30,15 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.frys.waters.R;
+import com.example.frys.waters.model.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -46,6 +51,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
+    public static Map<String, User> registeredUser = new HashMap();
 
     /**
      * A dummy authentication store containing known user names and passwords.
@@ -192,7 +198,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
+            Context context = getApplicationContext();
+            CharSequence text = "Bad login attempt.";
+            int duration = Toast.LENGTH_SHORT;
 
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
             focusView.requestFocus();
         } else {
             // Show a progress spinner, and kick off a background task to
