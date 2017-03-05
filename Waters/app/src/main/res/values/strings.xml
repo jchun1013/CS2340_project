@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Waters</string>
+    <string name="app_name">"Clean Water Crowdsourcing"</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
@@ -14,5 +14,23 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_registration">Registration</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="welcome_to_kgt">Welcome to kGT!</string>
+    <string name="login">Login</string>
+    <string name="registration">registration</string>
+    <string name="cancel">Cancel</string>
+    <string name="kgt_login_page">kGT Login page</string>
+    <string name="kgt">kGT</string>
+    <string name="ok">Ok</string>
+    <string name="password">password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="submit">submit</string>
+    <string name="kgt_splash">kGT</string>
+    <string name="title_activity_login_fire_base">LoginFireBase</string>
+    <string name="auth_failed" />
+    <string name="title_activity_home__worker_">Home_Worker_Activity</string>
 </resources>
