@@ -49,7 +49,16 @@ public class Registration extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                EditText nameEdit = (EditText)findVieById(R.id.)
+                EditText nameEdit = (EditText)findViewById(R.id.nameEditText);
+                System.out.println(nameEdit);
+            }
+        });
+
+        Button cancelButton = (Button) findViewById(R.id.RegisterCancel);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Registration.this, WelcomeScreen.class));
             }
         });
     }
