@@ -68,8 +68,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void launchSubmitReport() {
-//        Intent intent = new Intent(getApplicationContext(), WaterReportActivity.class);
-//        startActivity(intent);
-//        finish();
+        Intent intent = new Intent(getApplicationContext(), WaterReportActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
