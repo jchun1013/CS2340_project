@@ -25,7 +25,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
         android:ems="10"
         android:layout_below="@+id/nameTextView"
         android:layout_alignStart="@+id/nameTextView"
@@ -43,7 +42,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Username"
         android:ems="10"
         android:id="@+id/usernameEditText"
         android:layout_below="@+id/UsernameTextView"
@@ -64,8 +62,7 @@
         android:ems="10"
         android:id="@+id/passwordEditText"
         android:layout_below="@+id/passwordTextView"
-        android:layout_alignStart="@+id/passwordTextView"
-        android:text="password" />
+        android:layout_alignStart="@+id/passwordTextView" />
 
     <TextView
         android:text="Confirm Password"
@@ -81,7 +78,6 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/confirmEditText"
-        android:text="password"
         android:layout_below="@+id/confirmTextView"
         android:layout_alignStart="@+id/confirmTextView" />
 
@@ -99,7 +95,6 @@
         android:inputType="textPostalAddress"
         android:ems="10"
         android:id="@+id/addressEditText"
-        android:text="Postal Address"
         android:layout_below="@+id/addressTextView"
         android:layout_alignStart="@+id/addressTextView" />
 
@@ -117,7 +112,6 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/emailEditText"
-        android:text="Email"
         android:layout_below="@+id/emailTextView"
         android:layout_alignStart="@+id/emailTextView" />
 

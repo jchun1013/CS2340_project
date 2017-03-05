@@ -19,13 +19,12 @@ public class User {
 
     public static List<UserType> typeList = Arrays.asList(UserType.values());
 
-    public User(String username, String name, String email, String password, String address, UserType userType) {
+    public User(String username, String name, String email, String password, String address) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.emailAddress = email;
         this.homeAddress = address;
-        this.usertype = userType;
     }
 
     public String getUsername() {
