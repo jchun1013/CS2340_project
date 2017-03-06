@@ -9,12 +9,14 @@ import android.widget.TextView;
 
 import com.example.frys.waters.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegUserActivity extends AppCompatActivity {
     TextView _signOut;
     TextView _edit;
     Button _submitReport;
-    static com.example.frys.waters.model.WaterPurityReport[] purityReports = new com.example.frys.waters.model.WaterPurityReport[10];
-
+    static List<com.example.frys.waters.model.WaterSourceReport> sourceReports = new ArrayList();
 
     /**
      * OnCreate method required to load activity and loads everything that
