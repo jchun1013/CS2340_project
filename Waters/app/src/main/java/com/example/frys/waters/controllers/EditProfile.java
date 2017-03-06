@@ -1,5 +1,6 @@
 package com.example.frys.waters.controllers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.User;
@@ -18,7 +20,7 @@ public class EditProfile extends AppCompatActivity {
     private Button _edit_change;
     private Button _edit_cancel;
     private TextView _username;
-    private EditText _name, _email, _password, _address;
+    private EditText _name, _email, _password, _confPassword, _address;
     private User user;
 
     /**
@@ -37,6 +39,7 @@ public class EditProfile extends AppCompatActivity {
         _name = (EditText) findViewById(R.id._name);
         _email = (EditText) findViewById(R.id._email);
         _password = (EditText) findViewById(R.id._password);
+        _confPassword = (EditText) findViewById(R.id._confPassword);
         _address = (EditText) findViewById(R.id._address);
 
         _name.setText(currentUser.getName());
@@ -54,18 +57,24 @@ public class EditProfile extends AppCompatActivity {
         _edit_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!_name.getText().toString().equals(currentUser.getName())) {
-                    currentUser.setName(_name.getText().toString());
+                if (_confPassword.getText().toString().equals(_password.getText().toString())) {
+                    if (!_name.getText().toString().equals(currentUser.getName())) {
+                        currentUser.setName(_name.getText().toString());
+                    }
+                    if (!_email.getText().toString().equals(currentUser.getEmailAddress())) {
+                        currentUser.setEmailAddress(_email.getText().toString());
+                    }
+                    if (!_address.getText().toString().equals(currentUser.getHomeAddress())) {
+                        currentUser.setHomeAddress(_address.getText().toString());
+                    }
+                } else {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Your password and confirmation does not match.";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
                 }
-                if (!_email.getText().toString().equals(currentUser.getEmailAddress())) {
-                    currentUser.setEmailAddress(_email.getText().toString());
-                }
-                if (!_address.getText().toString().equals(currentUser.getHomeAddress())) {
-                    currentUser.setHomeAddress(_address.getText().toString());
-                }
-//                _name.setText(currentUser.getName());
-//                _email.setText(currentUser.getEmailAddress());
-//                _address.setText(currentUser.getHomeAddress());
                 finish();
             }
         });
