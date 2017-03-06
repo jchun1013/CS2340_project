@@ -31,38 +31,6 @@
         android:layout_alignStart="@+id/textView12" />
 
     <TextView
-        android:text="Select Water Condition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView12"
-        android:textColor="@android:color/holo_orange_light"
-        android:textSize="15sp"
-        android:layout_marginTop="68dp"
-        android:layout_below="@+id/textView11"
-        android:layout_alignStart="@+id/textView13" />
-
-    <TextView
-        android:text="Location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView13"
-        android:textColor="@android:color/holo_orange_light"
-        android:textSize="15sp"
-        android:layout_below="@+id/spinner2"
-        android:layout_toStartOf="@+id/textView11"
-        android:layout_marginTop="44dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Input Location"
-        android:ems="10"
-        android:id="@+id/editText4"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/textView13" />
-
-    <TextView
         android:text="Report Number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,5 +59,57 @@
         android:layout_below="@+id/numberOfReportTextView"
         android:layout_alignStart="@+id/numberOfReportTextView"
         android:layout_marginTop="36dp" />
+
+    <TextView
+        android:text="Select Water Condition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="15sp"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/textView11"
+        android:layout_alignStart="@+id/textView13" />
+
+    <TextView
+        android:text="Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView13"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="15sp"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/spinner2"
+        android:layout_toStartOf="@+id/textView11" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Input Location"
+        android:ems="10"
+        android:id="@+id/editText4"
+        android:layout_below="@+id/textView13"
+        android:layout_alignStart="@+id/textView13"
+        android:layout_marginTop="14dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:id="@+id/typeOfWaterSpinner" />
+
+    <TextView
+        android:text="Type Of Water"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="63dp"
+        android:id="@+id/textView2"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="15sp"
+        android:layout_below="@+id/textView15"
+        android:layout_alignStart="@+id/textView15" />
 
 </RelativeLayout>

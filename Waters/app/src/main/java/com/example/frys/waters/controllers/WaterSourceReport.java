@@ -19,6 +19,7 @@ import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 
 public class WaterSourceReport extends AppCompatActivity {
     Spinner WaterConditionSpinner;
+    Spinner waterTypeSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +30,20 @@ public class WaterSourceReport extends AppCompatActivity {
         String currentDateandTime = sdf.format(new Date());
 
         List<String> conditions = Arrays.asList("Waste", "Treatable-Clear", "Treatable-Muddy", "Portable");
+        List<String> waterType = Arrays.asList("Bottled", "Well", "Stream", "Lake", "Spring", "Other");
 
         WaterConditionSpinner = (Spinner) findViewById(R.id.spinner2);
+        waterTypeSpinner = (Spinner) findViewById(R.id.typeOfWaterSpinner);
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, conditions);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         WaterConditionSpinner.setAdapter(dataAdapter);
+
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, waterType);
+        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        waterTypeSpinner.setAdapter(typeAdapter);
 
         TextView numReport = (TextView) findViewById(R.id.numberOfReportTextView);
         numReport.setText("" + sourceReports.size());
