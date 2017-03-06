@@ -13,7 +13,7 @@ public class Admin extends Manager {
      * @param password
      * @param address
      */
-    Admin(String username, String name, String email, String password, String address) {
+    public Admin(String username, String name, String email, String password, String address) {
         super(username, name, email, password, address);
     }
 

@@ -13,7 +13,7 @@ public class Worker extends User {
      * @param password
      * @param address
      */
-    Worker(String username, String name, String email, String password, String address) {
+    public Worker(String username, String name, String email, String password, String address) {
         super(username, name, email, password, address);
     }
     /**
