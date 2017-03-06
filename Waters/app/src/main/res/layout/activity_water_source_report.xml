@@ -12,4 +12,37 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.frys.waters.controllers.WaterSourceReport">
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Water Source Report"
+        android:textColor="@color/yellowFont"
+        android:ems="10"
+        android:layout_marginTop="25dp"
+        android:id="@+id/editText"
+        android:layout_marginEnd="51dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:id="@+id/spinner2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Location"
+        android:textColor="@color/yellowFont"
+        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:id="@+id/editText2"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

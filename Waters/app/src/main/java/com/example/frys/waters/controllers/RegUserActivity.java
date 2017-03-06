@@ -67,8 +67,8 @@ public class RegUserActivity extends AppCompatActivity {
     }
 
     private void launchSubmitReport() {
-        Intent intent = new Intent(getApplicationContext(), WaterPurityReport.class);
+        Intent intent = new Intent(getApplicationContext(), WaterSourceReport.class);
         startActivity(intent);
-        finish();
+        //finish();
     }
 }

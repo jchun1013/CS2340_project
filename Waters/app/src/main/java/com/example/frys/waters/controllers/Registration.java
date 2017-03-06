@@ -80,7 +80,7 @@ public class Registration extends AppCompatActivity {
                         } else {
                             UserType type = (UserType) userTypeSpinner.getSelectedItem();
                             User newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-                                    passwordEdit.getText().toString(), addressEdit.getText().toString());;
+                                    passwordEdit.getText().toString(), addressEdit.getText().toString());
                             switch(type) {
                                 case USER: newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
                                         passwordEdit.getText().toString(), addressEdit.getText().toString());
