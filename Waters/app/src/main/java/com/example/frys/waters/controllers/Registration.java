@@ -75,8 +75,23 @@ public class Registration extends AppCompatActivity {
                             Toast toast = Toast.makeText(context, text, duration);
                             toast.show();
                         } else {
-                            User newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-                                    passwordEdit.getText().toString(), addressEdit.getText().toString());
+                            UserType type = (UserType) userTypeSpinner.getSelectedItem();
+                            User newUser;
+                            switch(type) {
+                                case USER: newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                        passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                    break;
+                                case WORKER: newUser = new Worker(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                        passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                    break;
+                                case ADMIN: newUser = new Admin(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                        passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                    break;
+                                case MANAGER: newUser = new Manager(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                        passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                    break;
+
+                            }
                             newUser.setUsertype((UserType) userTypeSpinner.getSelectedItem());
                             registeredUser.put(usernameEdit.getText().toString(), newUser);
 

@@ -179,19 +179,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(email, password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
+//        if (!TextUtils.isEmpty(password) && !isPasswordValid(email, password)) {
+//            mPasswordView.setError(getString(R.string.error_invalid_password));
+
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+            mPasswordView.setError("The password is invalid.");
             focusView = mPasswordView;
             cancel = true;
         }
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
+            mEmailView.setError("The username is invalid.");
             focusView = mEmailView;
             cancel = true;
         } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
+            mEmailView.setError("The username is invalid.");
             focusView = mEmailView;
             cancel = true;
         }
@@ -220,9 +223,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return (registeredUser.containsKey(email));/*email.contains("@");*/
     }
 
-    private boolean isPasswordValid(String email, String password) {
+    //This works
+//    private boolean isPasswordValid(String email, String password) {
+//        //TODO: Replace this with your own logic
+//        return (registeredUser.get(email).getPassword().equals(password));/*password.length() >= 4;*/
+//    }
+
+    private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return (registeredUser.get(email).getPassword().equals(password));/*password.length() >= 4;*/
+        //return (registeredUser.get(email).getPassword().equals(password));/*password.length() >= 4;*/
+        return true;
     }
 
     /**
