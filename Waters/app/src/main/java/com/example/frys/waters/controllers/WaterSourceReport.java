@@ -26,7 +26,7 @@ public class WaterSourceReport extends AppCompatActivity {
 
         List<String> conditions = Arrays.asList("Waste", "Treatable-Clear", "Treatable-Muddy", "Portable");
 
-        WaterConditionSpinner = (Spinner) findViewById(R.id.spinner);
+        WaterConditionSpinner = (Spinner) findViewById(R.id.spinner2);
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, conditions);

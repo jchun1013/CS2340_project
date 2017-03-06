@@ -13,7 +13,7 @@ public class RegUserActivity extends AppCompatActivity {
     TextView _signOut;
     TextView _edit;
     Button _submitReport;
-    static com.example.frys.waters.model.WaterPurityReport[] purityReports = new com.example.frys.waters.model.WaterPurityReport[10];
+    static com.example.frys.waters.model.WaterPurityReport[] sourceReports = new com.example.frys.waters.model.WaterPurityReport[10];
 
 
     /**
