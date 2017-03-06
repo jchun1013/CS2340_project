@@ -179,7 +179,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(email, password)) {
             mPasswordView.setError("The password is invalid.");
             focusView = mPasswordView;
             cancel = true;
@@ -217,12 +217,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return (email.equals("user"));/*email.contains("@");*/
+        if (registeredUser.containsKey(email)) {
+            return true;
+        }
+        return false;
+        //return (email.equals("user"));/*email.contains("@");*/
     }
 
-    private boolean isPasswordValid(String password) {
+    private boolean isPasswordValid(String username, String password) {
         //TODO: Replace this with your own logic
-        return (password.equals("pass"));/*password.length() >= 4;*/
+        if (registeredUser.get(username).getPassword().equals(password)) {
+            return true;
+        }
+        return false;
+        //return (password.equals("pass"));/*password.length() >= 4;*/
     }
 
     /**
@@ -362,6 +370,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 Intent myIntent = new Intent(LoginActivity.this, Application.class);
                 LoginActivity.this.startActivity(myIntent);
                 launchHome();
+
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();

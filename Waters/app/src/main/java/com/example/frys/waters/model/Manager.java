@@ -13,7 +13,7 @@ public class Manager extends Worker {
      * @param password
      * @param address
      */
-    Manager(String username, String name, String email, String password, String address) {
+    public Manager(String username, String name, String email, String password, String address) {
         super(username, name, email, password, address);
     }
 

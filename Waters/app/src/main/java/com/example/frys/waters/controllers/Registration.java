@@ -15,8 +15,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.frys.waters.R;
+import com.example.frys.waters.model.Admin;
+import com.example.frys.waters.model.Manager;
 import com.example.frys.waters.model.User;
 import com.example.frys.waters.model.UserType;
+import com.example.frys.waters.model.Worker;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -76,7 +79,8 @@ public class Registration extends AppCompatActivity {
                             toast.show();
                         } else {
                             UserType type = (UserType) userTypeSpinner.getSelectedItem();
-                            User newUser;
+                            User newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                    passwordEdit.getText().toString(), addressEdit.getText().toString());;
                             switch(type) {
                                 case USER: newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
                                         passwordEdit.getText().toString(), addressEdit.getText().toString());
