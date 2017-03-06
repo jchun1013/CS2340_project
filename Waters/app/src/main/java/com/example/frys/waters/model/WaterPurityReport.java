@@ -5,11 +5,14 @@ package com.example.frys.waters.model;
  */
 
 public class WaterPurityReport {
+    //LocalDateAndTime?
     private String dateTime;
     private int reportNumber;
     private String nameOfWorker;
     private String location;
+    //enum condition?
     private String condition;
+    //PPM in double?
     private String virusPPM;
     private String contaminantPPM;
 

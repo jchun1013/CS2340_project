@@ -27,6 +27,14 @@ public class User {
         this.homeAddress = address;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -75,5 +83,12 @@ public class User {
         this.usertype = type;
     }
 
+    public void submitWaterAvailability() {
+
+    }
+
+    public WaterSourceReport viewWaterSource() {
+        return null;
+    }
 
 }

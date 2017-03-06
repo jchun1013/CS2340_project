@@ -1,5 +1,6 @@
 package com.example.frys.waters.controllers;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.TextView;
 
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.User;
+
+import static com.example.frys.waters.controllers.LoginActivity.currentUser;
+import static com.example.frys.waters.controllers.LoginActivity.registeredUser;
 
 public class EditProfile extends AppCompatActivity {
     private Button _edit_change;
@@ -35,6 +39,11 @@ public class EditProfile extends AppCompatActivity {
         _password = (EditText) findViewById(R.id._password);
         _address = (EditText) findViewById(R.id._address);
 
+        _name.setText(currentUser.getName());
+        _email.setText(currentUser.getEmailAddress());
+        _address.setText(currentUser.getHomeAddress());
+
+
         //user = (User) getIntent().getSerializableExtra("USER");
 
 //        _username.setText(user.getUserName());
@@ -45,6 +54,18 @@ public class EditProfile extends AppCompatActivity {
         _edit_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!_name.getText().toString().equals(currentUser.getName())) {
+                    currentUser.setName(_name.getText().toString());
+                }
+                if (!_email.getText().toString().equals(currentUser.getEmailAddress())) {
+                    currentUser.setEmailAddress(_email.getText().toString());
+                }
+                if (!_address.getText().toString().equals(currentUser.getHomeAddress())) {
+                    currentUser.setHomeAddress(_address.getText().toString());
+                }
+//                _name.setText(currentUser.getName());
+//                _email.setText(currentUser.getEmailAddress());
+//                _address.setText(currentUser.getHomeAddress());
                 finish();
             }
         });
