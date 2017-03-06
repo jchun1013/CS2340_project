@@ -1,9 +1,12 @@
 package com.example.frys.waters.controllers;
 
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,6 +22,8 @@ import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 
 public class WaterSourceReport extends AppCompatActivity {
     Spinner WaterConditionSpinner;
+    Button submit;
+    Button cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,5 +44,19 @@ public class WaterSourceReport extends AppCompatActivity {
 
         TextView numReport = (TextView) findViewById(R.id.numberOfReportTextView);
         numReport.setText("" + sourceReports.size());
+
+        submit = (Button) findViewById(R.id.submitButton);
+        cancel = (Button) findViewById(R.id.cancelButton);
+
+        submit.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RegUserActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
+
 }
