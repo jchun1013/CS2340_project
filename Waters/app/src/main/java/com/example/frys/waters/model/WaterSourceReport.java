@@ -1,5 +1,6 @@
 package com.example.frys.waters.model;
 
+
 /**
  * Created by joon1 on 2017-03-05.
  */
@@ -10,14 +11,16 @@ public class WaterSourceReport {
     private String nameOfReporter;
     private String location;
     private String condition;
+    private String waterType;
 
-    public WaterSourceReport(String dateTime, int reportNumber
-            , String nameOfReporter, String location, String condition) {
+    public WaterSourceReport(String dateTime, int reportNumber,
+                             String nameOfReporter, String location, String condition, String waterType) {
         this.dateTime = dateTime;
         this.reportNumber = reportNumber;
         this.nameOfReporter = nameOfReporter;
         this.location = location;
         this.condition = condition;
+        this.waterType = waterType;
     }
 
     public String getDateTime() {
