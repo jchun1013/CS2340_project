@@ -12,37 +12,84 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.frys.waters.controllers.WaterSourceReport">
 
-    <EditText
+    <TextView
+        android:text="Water Source Report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Water Source Report"
-        android:textColor="@color/yellowFont"
-        android:ems="10"
-        android:layout_marginTop="25dp"
-        android:id="@+id/editText"
-        android:layout_marginEnd="51dp"
+        android:id="@+id/textView11"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="20sp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true" />
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
-        android:id="@+id/spinner2" />
+        android:layout_marginTop="34dp"
+        android:id="@+id/spinner2"
+        android:layout_below="@+id/textView12"
+        android:layout_alignStart="@+id/textView12" />
+
+    <TextView
+        android:text="Select Water Condition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="15sp"
+        android:layout_marginTop="68dp"
+        android:layout_below="@+id/textView11"
+        android:layout_alignStart="@+id/textView13" />
+
+    <TextView
+        android:text="Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView13"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="15sp"
+        android:layout_below="@+id/spinner2"
+        android:layout_toStartOf="@+id/textView11"
+        android:layout_marginTop="44dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Location"
-        android:textColor="@color/yellowFont"
+        android:text="Input Location"
         android:ems="10"
-        android:layout_marginTop="20dp"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/editText4"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/textView13" />
+
+    <TextView
+        android:text="Report Number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView14"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="15sp"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/editText4"
+        android:layout_alignStart="@+id/editText4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:id="@+id/numberOfReportTextView"
+        android:layout_below="@+id/textView14"
+        android:layout_alignStart="@+id/textView14" />
+
+    <TextView
+        android:text="Date and Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView15"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="15sp"
+        android:layout_below="@+id/numberOfReportTextView"
+        android:layout_alignStart="@+id/numberOfReportTextView"
+        android:layout_marginTop="36dp" />
 
 </RelativeLayout>

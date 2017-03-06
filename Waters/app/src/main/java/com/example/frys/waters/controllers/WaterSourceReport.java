@@ -4,7 +4,9 @@ import android.icu.text.SimpleDateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.frys.waters.R;
 
@@ -12,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
+import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 
 public class WaterSourceReport extends AppCompatActivity {
     Spinner WaterConditionSpinner;
@@ -33,6 +37,7 @@ public class WaterSourceReport extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         WaterConditionSpinner.setAdapter(dataAdapter);
 
-
+        TextView numReport = (TextView) findViewById(R.id.numberOfReportTextView);
+        numReport.setText("" + sourceReports.size());
     }
 }
