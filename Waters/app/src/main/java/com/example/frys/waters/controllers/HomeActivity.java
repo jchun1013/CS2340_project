@@ -2,10 +2,7 @@ package com.example.frys.waters.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +13,8 @@ public class HomeActivity extends AppCompatActivity {
     TextView _signOut;
     TextView _edit;
     Button _submitReport;
+    static com.example.frys.waters.model.WaterPurityReport[] purityReports = new com.example.frys.waters.model.WaterPurityReport[10];
+
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -68,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void launchSubmitReport() {
-        Intent intent = new Intent(getApplicationContext(), WaterReportActivity.class);
+        Intent intent = new Intent(getApplicationContext(), WaterPurityReport.class);
         startActivity(intent);
         finish();
     }

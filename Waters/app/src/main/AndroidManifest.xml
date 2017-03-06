@@ -33,7 +33,8 @@
             android:name=".controllers.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".controllers.WaterReportActivity"></activity>
+        <activity android:name=".controllers.WaterPurityReport" />
+        <activity android:name=".controllers.WaterSourceReport"></activity>
     </application>
 
 </manifest>
