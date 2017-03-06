@@ -10,8 +10,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.frys.waters.controllers.HomeActivity"
-    tools:showIn="@layout/activity_home">
+    tools:context="com.example.frys.waters.controllers.RegUserActivity"
+    tools:showIn="@layout/activity_reg_user_screen">
 
     <TextView
         android:text="kGT"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/_hello"
-        android:text="Hello, John(User)"
+        android:text="Hello, Joon(User)"
         android:contentDescription="@string/bottom_sheet_behavior"
         android:textColor="@android:color/holo_orange_light"
         android:layout_alignBaseline="@+id/_signout"

@@ -22,10 +22,34 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                Intent mainIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent mainIntent = new Intent(getApplicationContext(), RegUserActivity.class);
                 startActivity(mainIntent);
                 finish();
             }
         }, SPLASH_DISPLAY_DURATION);
+    }
+
+    private void launchUserScreen() {
+        Intent intent = new Intent(getApplicationContext(), RegUserActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void launchWorkerScreen() {
+        Intent intent = new Intent(getApplicationContext(), WaterPurityReport.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void launchManagerScreen() {
+        Intent intent = new Intent(getApplicationContext(), WaterPurityReport.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void launchAdminScreen() {
+        Intent intent = new Intent(getApplicationContext(), WaterPurityReport.class);
+        startActivity(intent);
+        finish();
     }
 }

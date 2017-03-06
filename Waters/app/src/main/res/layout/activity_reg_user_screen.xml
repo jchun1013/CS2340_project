@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="#FFB8734A"
-    tools:context="com.example.frys.waters.controllers.HomeActivity">
+    tools:context="com.example.frys.waters.controllers.RegUserActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -15,6 +15,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_home" />
+    <include layout="@layout/content_reg_user_screen" />
 
 </android.support.design.widget.CoordinatorLayout>

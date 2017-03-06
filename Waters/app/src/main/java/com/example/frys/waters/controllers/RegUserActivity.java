@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.frys.waters.R;
 
-public class HomeActivity extends AppCompatActivity {
+public class RegUserActivity extends AppCompatActivity {
     TextView _signOut;
     TextView _edit;
     Button _submitReport;
@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_reg_user_screen);
         _edit = (TextView)findViewById(R.id._edit);
         _signOut = (TextView)findViewById(R.id._signout);
         _submitReport = (Button) findViewById(R.id._submit);
@@ -62,8 +62,8 @@ public class HomeActivity extends AppCompatActivity {
      * Lauches Edit Profile Activity
      */
     private void launchEdit() {
-//        Intent intent = new Intent(getApplicationContext(), EditProfileActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), EditProfile.class);
+        startActivity(intent);
     }
 
     private void launchSubmitReport() {
