@@ -11,7 +11,7 @@
     tools:context="com.example.frys.waters.controllers.ActualSourceReportActivity">
 
     <TextView
-        android:text="Water Source Report"
+        android:text="Water Source Report:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -21,7 +21,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="Report Number"
+        android:text="Report Number:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
@@ -30,7 +30,7 @@
         android:layout_alignStart="@+id/textView4" />
 
     <TextView
-        android:text="Name of Reporter"
+        android:text="Name of Reporter:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
@@ -39,7 +39,7 @@
         android:layout_alignStart="@+id/textView5" />
 
     <TextView
-        android:text="Location of Water"
+        android:text="Location of Water:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView7"
@@ -48,7 +48,7 @@
         android:id="@+id/textView9" />
 
     <TextView
-        android:text="Condition of Water"
+        android:text="Condition of Water:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView13"
@@ -57,7 +57,7 @@
         android:id="@+id/textView15" />
 
     <TextView
-        android:text="Date and Time"
+        android:text="Date and Time:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -101,7 +101,7 @@
         android:id="@+id/LocationOfWaterTextView" />
 
     <TextView
-        android:text="Type of Water"
+        android:text="Type of Water:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
