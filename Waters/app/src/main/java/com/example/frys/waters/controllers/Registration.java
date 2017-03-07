@@ -99,7 +99,7 @@ public class Registration extends AppCompatActivity {
                             newUser.setUsertype((UserType) userTypeSpinner.getSelectedItem());
                             registeredUser.put(usernameEdit.getText().toString(), newUser);
 
-                            startActivity(new Intent(Registration.this, LoginActivity.class));
+                            startActivity(new Intent(Registration.this, WelcomeScreen.class));
                         }
                     } else {
                         Context context = getApplicationContext();
