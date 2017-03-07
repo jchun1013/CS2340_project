@@ -43,6 +43,8 @@ public class WaterSourceReport {
         return condition;
     }
 
+    public String getTypeOfWater() { return waterType; }
+
     public String toString() {
         return "Date and Time: " + getDateTime() + "\n"
                 + "Report Number: " + getReportNumber() + "\n"

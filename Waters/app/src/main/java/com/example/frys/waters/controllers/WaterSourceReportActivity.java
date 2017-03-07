@@ -26,14 +26,13 @@ public class WaterSourceReportActivity extends AppCompatActivity {
     Spinner WaterConditionSpinner;
     Spinner waterTypeSpinner;
 
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+    public final String currentDateandTime = sdf.format(new Date());
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_source_report);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
-        final String currentDateandTime = sdf.format(new Date());
-
 
         //water type and water conditions array
         List<String> conditions = Arrays.asList("Waste", "Treatable-Clear", "Treatable-Muddy", "Portable");
