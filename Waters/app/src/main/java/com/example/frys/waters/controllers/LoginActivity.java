@@ -54,7 +54,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public static Map<String, User> registeredUser = new HashMap();
     public static User currentUser;
 
-
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
@@ -75,6 +74,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        registeredUser.put("user", new User("test", "test", "test", "pass", "test"));
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
