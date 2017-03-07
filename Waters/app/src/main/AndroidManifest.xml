@@ -36,7 +36,8 @@
         <activity android:name=".controllers.WaterPurityReport" />
         <activity android:name=".controllers.WaterSourceReportActivity" />
         <activity android:name=".controllers.EditProfile" />
-        <activity android:name=".controllers.WorkerActivity"></activity>
+        <activity android:name=".controllers.WorkerActivity" />
+        <activity android:name=".controllers.ViewReportActivity"></activity>
     </application>
 
 </manifest>

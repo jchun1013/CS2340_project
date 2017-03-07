@@ -16,6 +16,7 @@ public class RegUserActivity extends AppCompatActivity {
     TextView _signOut;
     TextView _edit;
     Button _submitReport;
+    Button _viewReport;
     static List<com.example.frys.waters.model.WaterSourceReport> sourceReports = new ArrayList();
 
     /**
@@ -30,6 +31,7 @@ public class RegUserActivity extends AppCompatActivity {
         _edit = (TextView)findViewById(R.id._edit);
         _signOut = (TextView)findViewById(R.id._signout);
         _submitReport = (Button) findViewById(R.id._submit);
+        _viewReport = (Button) findViewById(R.id._view);
 
         _signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +51,14 @@ public class RegUserActivity extends AppCompatActivity {
                 launchSubmitReport();
             }
         });
+        _viewReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchViewReport();
+            }
+        });
+
+
     }
 
     /**
@@ -72,5 +82,10 @@ public class RegUserActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), WaterSourceReportActivity.class);
         startActivity(intent);
         //finish();
+    }
+
+    private void launchViewReport() {
+        Intent intent = new Intent(getApplicationContext(), ViewReportActivity.class);
+        startActivity(intent);
     }
 }

@@ -42,4 +42,12 @@ public class WaterSourceReport {
     public String getCondition() {
         return condition;
     }
+
+    public String toString() {
+        return "Date and Time: " + getDateTime() + "\n"
+                + "Report Number: " + getReportNumber() + "\n"
+                + "Name of Reporter: " + getNameOfReporter() + "\n"
+                + "Location: " + getLocation() + "\n"
+                + "Condition: " + getCondition();
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.frys.waters.controllers;
 
 import android.content.Context;
-import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,7 +40,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         List<String> waterType = Arrays.asList("Bottled", "Well", "Stream", "Lake", "Spring", "Other");
 
         //buttons
-        Button submitButton = (Button) findViewById(R.id.submitButton);
+        Button submitButton = (Button) findViewById(R.id.viewButton);
         Button cancelButton = (Button) findViewById(R.id.cancelButton);
 
         WaterConditionSpinner = (Spinner) findViewById(R.id.spinner2);
