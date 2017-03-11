@@ -17,6 +17,7 @@ public class RegUserActivity extends AppCompatActivity {
     TextView _edit;
     Button _submitReport;
     Button _viewReport;
+    Button _waterAvailabilityMap;
     static List<com.example.frys.waters.model.WaterSourceReport> sourceReports = new ArrayList();
 
     /**
@@ -86,6 +87,11 @@ public class RegUserActivity extends AppCompatActivity {
 
     private void launchViewReport() {
         Intent intent = new Intent(getApplicationContext(), ViewReportActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchWaterAvailabilityMap() {
+        Intent intent = new Intent(getApplicationContext(), WaterAvailabilityActivity.class);
         startActivity(intent);
     }
 }

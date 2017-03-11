@@ -33,4 +33,5 @@
     <string name="title_activity_login_fire_base">LoginFireBase</string>
     <string name="auth_failed" />
     <string name="title_activity_home__worker_">Home_Worker_Activity</string>
+    <string name="title_activity_water_availability">Map</string>
 </resources>
