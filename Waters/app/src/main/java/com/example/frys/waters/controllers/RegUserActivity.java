@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.frys.waters.R;
+import com.example.frys.waters.model.WaterSourceReport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +28,14 @@ public class RegUserActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sourceReports.add(new WaterSourceReport(1, Joon, ))
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_user_screen);
         _edit = (TextView)findViewById(R.id._edit);
         _signOut = (TextView)findViewById(R.id._signout);
         _submitReport = (Button) findViewById(R.id._submit);
         _viewReport = (Button) findViewById(R.id._view);
+        _waterAvailabilityMap = (Button) findViewById(R.id.waterAvailabilityMapButton);
 
         _signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,8 +61,12 @@ public class RegUserActivity extends AppCompatActivity {
                 launchViewReport();
             }
         });
-
-
+        _waterAvailabilityMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchWaterAvailabilityMap();
+            }
+        });
     }
 
     /**
