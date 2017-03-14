@@ -28,7 +28,6 @@ public class RegUserActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        sourceReports.add(new WaterSourceReport(1, Joon, ))
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_user_screen);
         _edit = (TextView)findViewById(R.id._edit);

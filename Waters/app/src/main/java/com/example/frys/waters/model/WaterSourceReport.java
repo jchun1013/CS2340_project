@@ -13,6 +13,7 @@ public class WaterSourceReport {
     private String condition;
     private String waterType;
 
+
     public WaterSourceReport(String dateTime, int reportNumber,
                              String nameOfReporter, String location, String condition, String waterType) {
         this.dateTime = dateTime;

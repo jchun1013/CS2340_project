@@ -9,6 +9,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -16,6 +17,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class WaterAvailabilityActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Marker prevMarker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,30 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
                 // Placing a marker on the touched position
                 mMap.addMarker(markerOptions);
             }
+        });
+
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+
+                double aa= marker.getPosition().latitude;
+                double bb=marker.getPosition().longitude;
+                if (prevMarker != null) {
+                    //Set prevMarker back to default color
+                    prevMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                }
+
+                //leave Marker default color if re-click current Marker
+                if (!marker.equals(prevMarker)) {
+                    //marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+                    marker.remove();
+                    prevMarker = marker;
+                }
+                prevMarker = marker;
+                return false;
+            }
+
         });
     }
 }
