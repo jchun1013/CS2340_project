@@ -91,11 +91,14 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {
+                    double lat = newLocation.getLatitude();
+                    double longi = newLocation.getLongitude();
                     WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, sourceReports.size() + 1, currentUser.getName(),
-                            newLocation, (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
+                            new Location(lat, longi), (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
                     sourceReports.add(newReport);
                 }
                 startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));
+                finish();
             }
         });
 

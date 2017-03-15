@@ -41,7 +41,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
         mapFragment.getMapAsync(this);
     }
 
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -54,18 +53,17 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        List<WaterSourceReport> reportList = sourceReports;
-        for (com.example.frys.waters.model.WaterSourceReport r : sourceReports) {
+        
+        for (WaterSourceReport r : sourceReports) {
             LatLng loc = new LatLng(r.getLocation().getLatitude(), r.getLocation().getLongitude());
             mMap.addMarker(new MarkerOptions().position(loc).title(r.getNameOfReporter()).snippet(r.getDateTime()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
-            System.out.println("HAAAAAAAAAALLLLLLLLOOOOOOO");
         }
 
 
         // Add a marker in Sydney and move the camera
         if (currentUser.getIsReporting() == true) {
+
             mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                 @Override
                 public void onMapClick(LatLng latLng) {
@@ -106,7 +104,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
                     prevMarker = marker;
                     return false;
                 }
-
             });
         }
     }
