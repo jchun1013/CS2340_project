@@ -117,10 +117,5 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
             });
         }
-
-
-
-
-
     }
 }
