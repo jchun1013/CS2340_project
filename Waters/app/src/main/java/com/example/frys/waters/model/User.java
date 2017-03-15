@@ -92,6 +92,7 @@ public class User {
         this.isReporting = isReporting;
     }
 
+    // MUST EDIT!!!!!!!
     public void submitWaterAvailability() {
 
     }
