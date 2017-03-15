@@ -28,6 +28,7 @@ import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 public class WaterSourceReportActivity extends AppCompatActivity {
     Spinner WaterConditionSpinner;
     Spinner waterTypeSpinner;
+    static Location newLocation = new Location(0.0, 0.0);
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
     public final String currentDateandTime = sdf.format(new Date());
@@ -89,9 +90,8 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {
-                    Location hi = null;
                     WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, sourceReports.size() + 1, currentUser.getName(),
-                            hi, (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
+                            newLocation, (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
                     sourceReports.add(newReport);
                 }
                 startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));

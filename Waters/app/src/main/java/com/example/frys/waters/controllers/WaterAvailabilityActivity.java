@@ -19,12 +19,13 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
+import static com.example.frys.waters.controllers.WaterSourceReportActivity.newLocation;
 
 public class WaterAvailabilityActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Marker prevMarker;
-    static Location newLocation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,26 +53,26 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
         // Add a marker in Sydney and move the camera
         if (currentUser.getIsReporting() == true) {
-            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                @Override
-                public boolean onMarkerClick(Marker marker) {
-                    double latitude = marker.getPosition().latitude;
-                    double longitude = marker.getPosition().longitude;
-                    newLocation.set_latitude((latitude));
-                    newLocation.set_latitude((longitude));
-                    if (prevMarker != null) {
-                        //Set prevMarker back to default color
-                        prevMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                    }
-                    if (!marker.equals(prevMarker)) {
-                        //marker.remove();
-                        prevMarker = marker;
-                    }
-                    prevMarker = marker;
-                    return false;
-                }
-
-            });
+//            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+//                @Override
+//                public boolean onMarkerClick(Marker marker) {
+//                    double latitude = marker.getPosition().latitude;
+//                    double longitude = marker.getPosition().longitude;
+//                    newLocation.set_latitude((latitude));
+//                    newLocation.set_latitude((longitude));
+//                    if (prevMarker != null) {
+//                        //Set prevMarker back to default color
+//                        prevMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+//                    }
+//                    if (!marker.equals(prevMarker)) {
+//                        //marker.remove();
+//                        prevMarker = marker;
+//                    }
+//                    prevMarker = marker;
+//                    return false;
+//                }
+//
+//            });
 
             mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                 @Override
@@ -87,6 +88,9 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
                     // Placing a marker on the touched position
                     mMap.addMarker(markerOptions);
+
+                    newLocation.set_latitude((latLng.latitude));
+                    newLocation.set_longitude((latLng.longitude));
 
                     currentUser.setIsReporting(false);
                     finish();
