@@ -95,7 +95,6 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                     sourceReports.add(newReport);
                 }
                 startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));
-
             }
         });
 

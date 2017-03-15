@@ -57,8 +57,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
                 public boolean onMarkerClick(Marker marker) {
                     double latitude = marker.getPosition().latitude;
                     double longitude = marker.getPosition().longitude;
-                    newLocation.set_latitude((latitude));
-                    newLocation.set_latitude((longitude));
                     if (prevMarker != null) {
                         //Set prevMarker back to default color
                         prevMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
