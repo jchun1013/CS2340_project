@@ -60,10 +60,7 @@
 
         <activity
             android:name=".controllers.WaterAvailabilityActivity"
-            android:label="@string/title_activity_water_availability" />
-        <activity
-            android:name=".controllers.displayLocation"
-            android:label="@string/title_activity_display_location"></activity>
+            android:label="@string/title_activity_water_availability"></activity>
     </application>
 
 </manifest>

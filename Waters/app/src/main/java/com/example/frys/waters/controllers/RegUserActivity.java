@@ -98,7 +98,7 @@ public class RegUserActivity extends AppCompatActivity {
     }
 
     private void launchWaterAvailabilityMap() {
-        Intent intent = new Intent(getApplicationContext(), displayLocation.class);
+        Intent intent = new Intent(getApplicationContext(), WaterAvailabilityActivity.class);
         startActivity(intent);
     }
 }

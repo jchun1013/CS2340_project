@@ -51,7 +51,7 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
             @Override
             public void onMapClick(LatLng latLng) {
-                
+
                 // Creating a marker
                 MarkerOptions markerOptions = new MarkerOptions();
 

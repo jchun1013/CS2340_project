@@ -1,7 +1,6 @@
 package com.example.frys.waters.controllers;
 
 import android.content.Context;
-import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,7 +41,6 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         //buttons
         Button submitButton = (Button) findViewById(R.id.viewButton);
         Button cancelButton = (Button) findViewById(R.id.cancelButton);
-        Button gMapButton = (Button) findViewById(R.id.gMap_Button);
 
         WaterConditionSpinner = (Spinner) findViewById(R.id.spinner2);
         waterTypeSpinner = (Spinner) findViewById(R.id.typeOfWaterSpinner);
@@ -63,16 +61,10 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         numReport.setText("" + (sourceReports.size() + 1));
         dateAndtime.setText(currentDateandTime);
 
-        gMapButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                launchWaterAvailabilityMap();
-            }
-        });
-
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText locationEdit = (EditText) findViewById(R.id.locationTextView);
+                EditText locationEdit = (EditText) findViewById(R.id.LocationEditText);
                 if (locationEdit.getText().toString().equals("")) {
                     Context context = getApplicationContext();
                     CharSequence text = "Location is required.";
@@ -95,10 +87,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
 
-    private void launchWaterAvailabilityMap() {
-        Intent intent = new Intent(getApplicationContext(), WaterAvailabilityActivity.class);
-        startActivity(intent);
+
     }
 }
