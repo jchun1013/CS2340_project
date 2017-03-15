@@ -73,7 +73,6 @@ public class WaterSourceReportActivity extends AppCompatActivity {
             public void onClick(View v) {
                 currentUser.setIsReporting(true);
                 startActivity(new Intent(WaterSourceReportActivity.this, WaterAvailabilityActivity.class));
-                //currentUser.setIsReporting(false);
             }
         });
 

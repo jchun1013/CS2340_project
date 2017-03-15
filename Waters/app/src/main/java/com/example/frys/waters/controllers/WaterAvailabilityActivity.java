@@ -109,8 +109,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
                     //leave Marker default color if re-click current Marker
                     if (!marker.equals(prevMarker)) {
-                        //marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-                        //marker.remove();
                         prevMarker = marker;
                     }
                     prevMarker = marker;
