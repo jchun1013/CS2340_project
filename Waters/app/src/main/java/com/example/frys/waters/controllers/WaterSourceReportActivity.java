@@ -67,10 +67,6 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         numReport.setText("" + (sourceReports.size() + 1));
         dateAndtime.setText(currentDateandTime);
 
-        // MUST EDIT!!!!!!
-        TextView locationAddress = (TextView) findViewById(R.id.locationAddressTextView);
-        locationAddress.setText("HI");
-
         enterLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,8 +89,9 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                 } else {
                     double lat = newLocation.getLatitude();
                     double longi = newLocation.getLongitude();
+                    Location newLoc = new Location(lat, longi);
                     WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, sourceReports.size() + 1, currentUser.getName(),
-                            new Location(lat, longi), (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
+                            newLoc, (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
                     sourceReports.add(newReport);
                 }
                 startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));

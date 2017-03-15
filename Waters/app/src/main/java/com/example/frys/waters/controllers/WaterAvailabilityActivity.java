@@ -1,6 +1,7 @@
 package com.example.frys.waters.controllers;
 
 import android.content.Intent;
+import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
+import java.util.Locale;
 
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
@@ -30,6 +32,8 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     public static GoogleMap mMap;
     private Marker prevMarker;
     private List<LatLng> markerList;
+//    Geocoder geocoder;
+//    List<String> address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,7 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        
+
         for (WaterSourceReport r : sourceReports) {
             LatLng loc = new LatLng(r.getLocation().getLatitude(), r.getLocation().getLongitude());
             mMap.addMarker(new MarkerOptions().position(loc).title(r.getNameOfReporter()).snippet(r.getDateTime()));
@@ -79,8 +83,12 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
                     // Placing a marker on the touched position
                     mMap.addMarker(markerOptions);
 
+
                     newLocation.set_latitude((latLng.latitude));
                     newLocation.set_longitude((latLng.longitude));
+
+                    //Geocoder geocoder = new Geocoder(this, Locale.getDafault());
+                    //List<String> address = geocoder.getFromLocation(newLocation.getLatitude(), newLocation.getLongitude(), 1);
 
                     currentUser.setIsReporting(false);
                     finish();
@@ -106,5 +114,8 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
                 }
             });
         }
+
     }
+
+
 }

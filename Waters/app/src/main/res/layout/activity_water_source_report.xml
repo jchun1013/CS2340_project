@@ -59,7 +59,7 @@
         android:id="@+id/textView14"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="15sp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="21dp"
         android:layout_below="@+id/EnterLocationButton"
         android:layout_alignStart="@+id/EnterLocationButton" />
 
@@ -136,15 +136,7 @@
         android:layout_height="wrap_content"
         android:text="Enter Location"
         android:layout_below="@+id/locationTextView"
-        android:layout_alignStart="@+id/locationTextView" />
-
-    <TextView
-        android:id="@+id/locationAddressTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView14"
-        android:layout_below="@+id/EnterLocationButton"
-        android:layout_marginTop="18dp"
-        android:text="Location Address" />
+        android:layout_alignStart="@+id/locationTextView"
+        android:layout_marginTop="15dp" />
 
 </RelativeLayout>

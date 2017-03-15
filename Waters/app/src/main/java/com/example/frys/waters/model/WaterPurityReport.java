@@ -27,30 +27,51 @@ public class WaterPurityReport {
         this.contaminantPPM = contaminantPPM;
     }
 
+    /**
+     * Get date and time of the report
+     */
     public String getDateTime() {
         return dateTime;
     }
 
+    /**
+     * get report number of the water purity report
+     */
     public int getReportNumber() {
         return reportNumber;
     }
 
+    /**
+     * get the name of the worker who submitted the report
+     */
     public String getNameOfWorker() {
         return nameOfWorker;
     }
 
+    /**
+     * get the location of the report
+     */
     public String getLocation() {
         return location;
     }
 
+    /**
+     * get the water condition from the report submitted
+     */
     public String getCondition() {
         return condition;
     }
 
+    /**
+     * get the virus in ppm of the report submitted
+     */
     public String getVirusPPM() {
         return virusPPM;
     }
 
+    /**
+     * Get the contaminant in ppm of the report submitted
+     */
     public String getContaminantPPM() {
         return contaminantPPM;
     }

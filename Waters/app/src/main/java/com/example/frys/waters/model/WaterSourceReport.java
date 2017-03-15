@@ -24,28 +24,49 @@ public class WaterSourceReport {
         this.waterType = waterType;
     }
 
+    /**
+     * Get the date and time of the historical report submitted
+     */
     public String getDateTime() {
         return dateTime;
     }
 
+    /**
+     * Get historical reports' report number
+     */
     public int getReportNumber() {
         return reportNumber;
     }
 
+    /**
+     * returns the name of reporter
+     */
     public String getNameOfReporter() {
         return nameOfReporter;
     }
 
+    /**
+     * returns location of the historical report
+     */
     public Location getLocation() {
         return location;
     }
 
+    /**
+     * the water condition recorded in the historical report
+     */
     public String getCondition() {
         return condition;
     }
 
+    /**
+     * returns the type of water recorded in the historical report
+     */
     public String getTypeOfWater() { return waterType; }
 
+    /**
+     * returns string representation of the historical report
+     */
     public String toString() {
 //        return "Date and Time: " + getDateTime() + "\n"
 //                + "Report Number: " + getReportNumber() + "\n"
