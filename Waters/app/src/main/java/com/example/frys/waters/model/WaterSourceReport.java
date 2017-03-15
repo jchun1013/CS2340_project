@@ -47,10 +47,11 @@ public class WaterSourceReport {
     public String getTypeOfWater() { return waterType; }
 
     public String toString() {
-        return "Date and Time: " + getDateTime() + "\n"
-                + "Report Number: " + getReportNumber() + "\n"
-                + "Name of Reporter: " + getNameOfReporter() + "\n"
-                + "Location: " + getLocation() + "\n"
-                + "Condition: " + getCondition();
+//        return "Date and Time: " + getDateTime() + "\n"
+//                + "Report Number: " + getReportNumber() + "\n"
+//                + "Name of Reporter: " + getNameOfReporter() + "\n"
+//                + "Location: " + getLocation() + "\n"
+//                + "Condition: " + getCondition();
+        return "one";
     }
 }

@@ -19,7 +19,7 @@ public class RegUserActivity extends AppCompatActivity {
     Button _submitReport;
     Button _viewReport;
     Button _waterAvailabilityMap;
-    static List<com.example.frys.waters.model.WaterSourceReport> sourceReports = new ArrayList();
+    static List<WaterSourceReport> sourceReports = new ArrayList();
 
     /**
      * OnCreate method required to load activity and loads everything that
