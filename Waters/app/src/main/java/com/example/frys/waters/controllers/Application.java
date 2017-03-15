@@ -8,8 +8,14 @@ import android.widget.Button;
 
 import com.example.frys.waters.R;
 
+/**
+ * This class launches welcome screen
+ */
 public class Application extends AppCompatActivity {
-
+    /**
+     * launches welcome screen
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

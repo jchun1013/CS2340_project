@@ -68,7 +68,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
 
         // MUST EDIT!!!!!!
         TextView locationAddress = (TextView) findViewById(R.id.locationAddressTextView);
-        locationAddress.setText("HI");
+        locationAddress.setText(new Location(newLocation.getLatitude(), newLocation.getLongitude()).toString());
 
         enterLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +77,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                 startActivity(new Intent(WaterSourceReportActivity.this, WaterAvailabilityActivity.class));
             }
         });
+
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override

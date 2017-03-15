@@ -25,12 +25,19 @@ import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 import static com.example.frys.waters.controllers.WaterSourceReportActivity.newLocation;
 
+/**
+ * This class displays water reports in google map
+ */
 public class WaterAvailabilityActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Marker prevMarker;
 
-
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +62,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
         mMap = googleMap;
 
         for (WaterSourceReport r : sourceReports) {
-            System.out.println("Hello World Hello World " + sourceReports.toString());
             LatLng loc = new LatLng(r.getLocation().getLatitude(), r.getLocation().getLongitude());
             mMap.addMarker(new MarkerOptions().position(loc).title(r.getNameOfReporter()).snippet(r.getDateTime()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));

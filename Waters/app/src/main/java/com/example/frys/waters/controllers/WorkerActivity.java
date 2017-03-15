@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 import com.example.frys.waters.R;
 
+/**
+ * Worker Activity
+ */
 public class WorkerActivity extends AppCompatActivity {
 
     @Override

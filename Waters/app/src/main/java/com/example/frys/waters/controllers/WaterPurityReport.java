@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 import com.example.frys.waters.R;
 
+/**
+ * Water Purity Report
+ */
 public class WaterPurityReport extends AppCompatActivity {
 
     @Override
