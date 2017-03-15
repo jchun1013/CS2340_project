@@ -30,14 +30,14 @@ import static com.example.frys.waters.controllers.WaterSourceReportActivity.newL
  */
 public class WaterAvailabilityActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
+    public static GoogleMap mMap;
     private Marker prevMarker;
-
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
      * @param savedInstanceState
      */
+    private List<LatLng> markerList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +60,13 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        
         for (WaterSourceReport r : sourceReports) {
             LatLng loc = new LatLng(r.getLocation().getLatitude(), r.getLocation().getLongitude());
             mMap.addMarker(new MarkerOptions().position(loc).title(r.getNameOfReporter()).snippet(r.getDateTime()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
         }
+
 
         // Add a marker in Sydney and move the camera
         if (currentUser.getIsReporting() == true) {
