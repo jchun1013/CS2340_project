@@ -15,4 +15,16 @@ public class Location {
 
     public double getLatitude() { return _latitude; }
     public double get_longitude() { return _longitude; }
+
+    public void set_latitude(double lat) {
+        this._latitude = lat;
+    }
+
+    public void set_longitude(double longi) {
+        this._longitude = longi;
+    }
+
+    public String toString() {
+        return " ~ ";
+    }
 }

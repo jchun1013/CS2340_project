@@ -9,13 +9,13 @@ public class WaterSourceReport {
     private String dateTime;
     private int reportNumber;
     private String nameOfReporter;
-    private String location;
+    private Location location;
     private String condition;
     private String waterType;
 
 
     public WaterSourceReport(String dateTime, int reportNumber,
-                             String nameOfReporter, String location, String condition, String waterType) {
+                             String nameOfReporter, Location location, String condition, String waterType) {
         this.dateTime = dateTime;
         this.reportNumber = reportNumber;
         this.nameOfReporter = nameOfReporter;
@@ -36,7 +36,7 @@ public class WaterSourceReport {
         return nameOfReporter;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 

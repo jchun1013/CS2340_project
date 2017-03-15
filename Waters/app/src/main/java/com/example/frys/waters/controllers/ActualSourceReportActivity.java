@@ -30,7 +30,7 @@ public class ActualSourceReportActivity extends AppCompatActivity {
         dateAndTime.setText(sourceReports.get(selectedReport - 1).getDateTime());
         reporterNum.setText("" + sourceReports.get(selectedReport - 1).getReportNumber());
         reporterName.setText(sourceReports.get(selectedReport - 1).getNameOfReporter());
-        waterLocation.setText(sourceReports.get(selectedReport - 1).getLocation());
+        waterLocation.setText(sourceReports.get(selectedReport - 1).getLocation().toString());
         typeOfWater.setText(sourceReports.get(selectedReport - 1).getTypeOfWater());
         conditionWater.setText(sourceReports.get(selectedReport - 1).getCondition());
 

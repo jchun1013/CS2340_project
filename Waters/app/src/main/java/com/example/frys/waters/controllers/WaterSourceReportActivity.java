@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.frys.waters.R;
+import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterSourceReport;
 import com.google.android.gms.maps.GoogleMap;
 
@@ -88,8 +89,9 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {
+                    Location hi = null;
                     WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, sourceReports.size() + 1, currentUser.getName(),
-                            locationText.getText().toString(), (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
+                            hi, (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
                     sourceReports.add(newReport);
                 }
                 startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));

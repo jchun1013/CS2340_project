@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.example.frys.waters.R;
 
+import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.UserType;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,6 +24,7 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
     private GoogleMap mMap;
     private Marker prevMarker;
+    static Location newLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,22 +51,19 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        //
         if (currentUser.getIsReporting() == true) {
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker) {
-                    double aa = marker.getPosition().latitude;
-                    double bb = marker.getPosition().longitude;
+                    double latitude = marker.getPosition().latitude;
+                    double longitude = marker.getPosition().longitude;
+                    newLocation.set_latitude((latitude));
+                    newLocation.set_latitude((longitude));
                     if (prevMarker != null) {
                         //Set prevMarker back to default color
                         prevMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
                     }
                     if (!marker.equals(prevMarker)) {
-                        //marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
                         //marker.remove();
                         prevMarker = marker;
                     }
@@ -77,7 +76,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
             mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                 @Override
                 public void onMapClick(LatLng latLng) {
-
                     // Creating a marker
                     MarkerOptions markerOptions = new MarkerOptions();
 
@@ -95,13 +93,11 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
                 }
             });
         } else {
-
-
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker) {
-                    double aa = marker.getPosition().latitude;
-                    double bb = marker.getPosition().longitude;
+                    double latitude = marker.getPosition().latitude;
+                    double longitude = marker.getPosition().longitude;
                     if (prevMarker != null) {
                         //Set prevMarker back to default color
                         prevMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
