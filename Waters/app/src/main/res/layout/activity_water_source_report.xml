@@ -37,31 +37,19 @@
         android:id="@+id/textView12"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="15sp"
-        android:layout_marginTop="32dp"
-        android:layout_below="@+id/textView11"
-        android:layout_alignStart="@+id/locationTextView" />
+        android:layout_below="@+id/numberOfReportTextView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="28dp" />
 
-    <TextView
-        android:text="Location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/locationTextView"
-        android:textColor="@android:color/holo_orange_light"
-        android:textSize="15sp"
-        android:layout_marginTop="12dp"
-        android:layout_below="@+id/spinner2"
-        android:layout_toStartOf="@+id/textView11" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Input Location"
-        android:ems="10"
-        android:id="@+id/LocationEditText"
-        android:layout_marginTop="12dp"
-        android:layout_below="@+id/locationTextView"
-        android:layout_alignStart="@+id/locationTextView" />
+    <!--<TextView-->
+        <!--android:text="Location"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/locationTextView"-->
+        <!--android:textColor="@android:color/holo_orange_light"-->
+        <!--android:textSize="15sp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_toEndOf="@+id/numberOfReportTextView" />-->
 
     <TextView
         android:text="Report Number"
@@ -70,9 +58,9 @@
         android:id="@+id/textView14"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="15sp"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/LocationEditText"
-        android:layout_alignStart="@+id/LocationEditText" />
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/textView11"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="Date and Time"
@@ -81,9 +69,9 @@
         android:id="@+id/dateAndTimeTextView"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="15sp"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/numberOfReportTextView"
-        android:layout_alignStart="@+id/numberOfReportTextView" />
+        android:layout_above="@+id/localDateTimeActual"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp" />
 
     <Button
         android:text="Cancel"
@@ -99,17 +87,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/typeOfWaterSpinner"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="10dp"
-        android:layout_alignStart="@+id/textView2" />
+        android:layout_above="@+id/gMap_Button"
+        android:layout_toEndOf="@+id/numberOfReportTextView"
+        android:layout_marginBottom="32dp" />
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
         android:id="@+id/spinner2"
         android:layout_below="@+id/textView12"
-        android:layout_alignStart="@+id/locationTextView" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp" />
 
     <Button
         android:text="Submit"
@@ -125,20 +113,29 @@
         android:text="Type Of Water"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
         android:id="@+id/textView2"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="15sp"
-        android:layout_below="@+id/dateAndTimeTextView"
-        android:layout_toEndOf="@+id/numberOfReportTextView" />
+        android:layout_above="@+id/typeOfWaterSpinner"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:ems="10"
         android:id="@+id/localDateTimeActual"
-        android:layout_below="@+id/dateAndTimeTextView"
-        android:layout_alignStart="@+id/textView2" />
+        android:layout_above="@+id/typeOfWaterSpinner"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="52dp" />
+
+    <Button
+        android:id="@+id/gMap_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SELECT LOCATION"
+        android:layout_above="@+id/viewButton"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="52dp" />
 
 </RelativeLayout>
