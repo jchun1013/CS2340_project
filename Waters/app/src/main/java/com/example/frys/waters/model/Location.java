@@ -14,7 +14,7 @@ public class Location {
     }
 
     public double getLatitude() { return _latitude; }
-    public double get_longitude() { return _longitude; }
+    public double getLongitude() { return _longitude; }
 
     public void set_latitude(double lat) {
         this._latitude = lat;
@@ -25,6 +25,6 @@ public class Location {
     }
 
     public String toString() {
-        return "" + getLatitude() + " " + get_longitude();
+        return "" + getLatitude() + " " + getLongitude();
     }
 }
