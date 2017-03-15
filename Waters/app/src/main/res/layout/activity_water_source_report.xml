@@ -52,17 +52,6 @@
         android:layout_below="@+id/spinner2"
         android:layout_toStartOf="@+id/textView11" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Input Location"
-        android:ems="10"
-        android:id="@+id/LocationEditText"
-        android:layout_marginTop="12dp"
-        android:layout_below="@+id/locationTextView"
-        android:layout_alignStart="@+id/locationTextView" />
-
     <TextView
         android:text="Report Number"
         android:layout_width="wrap_content"
@@ -70,9 +59,9 @@
         android:id="@+id/textView14"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="15sp"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/LocationEditText"
-        android:layout_alignStart="@+id/LocationEditText" />
+        android:layout_marginTop="54dp"
+        android:layout_below="@+id/EnterLocationButton"
+        android:layout_alignStart="@+id/EnterLocationButton" />
 
     <TextView
         android:text="Date and Time"
@@ -140,5 +129,22 @@
         android:id="@+id/localDateTimeActual"
         android:layout_below="@+id/dateAndTimeTextView"
         android:layout_alignStart="@+id/textView2" />
+
+    <Button
+        android:id="@+id/EnterLocationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Location"
+        android:layout_below="@+id/locationTextView"
+        android:layout_alignStart="@+id/locationTextView" />
+
+    <TextView
+        android:id="@+id/locationAddressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView14"
+        android:layout_below="@+id/EnterLocationButton"
+        android:layout_marginTop="18dp"
+        android:text="Location Address" />
 
 </RelativeLayout>

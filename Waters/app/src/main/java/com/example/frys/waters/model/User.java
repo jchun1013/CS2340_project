@@ -16,6 +16,7 @@ public class User {
     private String homeAddress;
     private String title;
     private UserType usertype;
+    private boolean isReporting = false;
 
     public static List<UserType> typeList = Arrays.asList(UserType.values());
 
@@ -81,6 +82,14 @@ public class User {
 
     public void setUsertype(UserType type) {
         this.usertype = type;
+    }
+
+    public boolean getIsReporting() {
+        return isReporting;
+    }
+
+    public void setIsReporting(boolean isReporting) {
+        this.isReporting = isReporting;
     }
 
     public void submitWaterAvailability() {

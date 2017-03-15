@@ -1,6 +1,7 @@
 package com.example.frys.waters.controllers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.WaterSourceReport;
+import com.google.android.gms.maps.GoogleMap;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -41,6 +43,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         //buttons
         Button submitButton = (Button) findViewById(R.id.viewButton);
         Button cancelButton = (Button) findViewById(R.id.cancelButton);
+        Button enterLocationButton = (Button) findViewById(R.id.EnterLocationButton);
 
         WaterConditionSpinner = (Spinner) findViewById(R.id.spinner2);
         waterTypeSpinner = (Spinner) findViewById(R.id.typeOfWaterSpinner);
@@ -61,11 +64,24 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         numReport.setText("" + (sourceReports.size() + 1));
         dateAndtime.setText(currentDateandTime);
 
+        // MUST EDIT!!!!!!
+        TextView locationAddress = (TextView) findViewById(R.id.locationAddressTextView);
+        locationAddress.setText("HI");
+
+        enterLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentUser.setIsReporting(true);
+                startActivity(new Intent(WaterSourceReportActivity.this, WaterAvailabilityActivity.class));
+                currentUser.setIsReporting(false);
+            }
+        });
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText locationEdit = (EditText) findViewById(R.id.LocationEditText);
-                if (locationEdit.getText().toString().equals("")) {
+                TextView locationText = (TextView) findViewById(R.id.locationAddressTextView);
+                if (locationText.getText().toString().equals("")) {
                     Context context = getApplicationContext();
                     CharSequence text = "Location is required.";
                     int duration = Toast.LENGTH_SHORT;
@@ -74,10 +90,11 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                     toast.show();
                 } else {
                     WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, sourceReports.size() + 1, currentUser.getName(),
-                            locationEdit.getText().toString(), (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
+                            locationText.getText().toString(), (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
                     sourceReports.add(newReport);
                 }
-                finish();
+                startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));
+
             }
         });
 
@@ -87,7 +104,6 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
     }
 }
