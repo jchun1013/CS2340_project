@@ -26,11 +26,19 @@ import java.util.Map;
 
 import static com.example.frys.waters.controllers.LoginActivity.registeredUser;
 
+/**
+ * This class allows new user to register
+ */
 public class Registration extends AppCompatActivity {
 
     private Spinner userTypeSpinner;
     private Spinner typeSpinner;
 
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

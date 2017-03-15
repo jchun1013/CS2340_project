@@ -19,9 +19,18 @@ import java.util.List;
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 
+/**
+ * This class allows user to view reports that have been submitted
+ */
 public class ViewReportActivity extends AppCompatActivity {
     public static Spinner viewSpinner;
     public static int selectedReport;
+
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

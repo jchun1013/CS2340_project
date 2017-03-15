@@ -13,8 +13,14 @@ import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 import static com.example.frys.waters.controllers.ViewReportActivity.selectedReport;
 import static com.example.frys.waters.controllers.ViewReportActivity.viewSpinner;
 
+/**
+ * This class displays each of water source report information
+ */
 public class ActualSourceReportActivity extends AppCompatActivity {
-
+    /**
+     * Displays water source report information
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

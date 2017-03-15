@@ -8,10 +8,16 @@ import android.widget.Button;
 
 import com.example.frys.waters.R;
 
+/**
+ * This class represents the welcome screen. First Screen that user encounters
+ */
 public class WelcomeScreen extends AppCompatActivity {
 
-
-
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -7,6 +7,10 @@ import android.os.Bundle;
 
 import com.example.frys.waters.R;
 
+/**
+ * This class is an pop-up screen that shows up between
+ * login page and RegUserScreen.
+ */
 public class SplashActivity extends AppCompatActivity {
     private final int SPLASH_DISPLAY_DURATION = 1000;
 
@@ -29,24 +33,36 @@ public class SplashActivity extends AppCompatActivity {
         }, SPLASH_DISPLAY_DURATION);
     }
 
+    /**
+     * Launches RegUserActivity
+     */
     private void launchUserScreen() {
         Intent intent = new Intent(getApplicationContext(), RegUserActivity.class);
         startActivity(intent);
         finish();
     }
 
+    /**
+     * Launches WaterPurityReport
+     */
     private void launchWorkerScreen() {
         Intent intent = new Intent(getApplicationContext(), WaterPurityReport.class);
         startActivity(intent);
         finish();
     }
 
+    /**
+     * Launches WaterPurityReport
+     */
     private void launchManagerScreen() {
         Intent intent = new Intent(getApplicationContext(), WaterPurityReport.class);
         startActivity(intent);
         finish();
     }
 
+    /**
+     * Launches Admin Screen
+     */
     private void launchAdminScreen() {
         Intent intent = new Intent(getApplicationContext(), WaterPurityReport.class);
         startActivity(intent);

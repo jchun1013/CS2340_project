@@ -27,14 +27,19 @@ import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 import static com.example.frys.waters.controllers.WaterSourceReportActivity.newLocation;
 
+/**
+ * This class displays water reports in google map
+ */
 public class WaterAvailabilityActivity extends FragmentActivity implements OnMapReadyCallback {
 
     public static GoogleMap mMap;
     private Marker prevMarker;
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     * @param savedInstanceState
+     */
     private List<LatLng> markerList;
-//    Geocoder geocoder;
-//    List<String> address;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

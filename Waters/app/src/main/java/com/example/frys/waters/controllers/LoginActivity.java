@@ -72,6 +72,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         registeredUser.put("user", new User("test", "test", "test", "pass", "test"));
@@ -115,14 +120,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
     }
 
+    /**
+     * Populates auto complete
+     */
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
         }
-
         getLoaderManager().initLoader(0, null, this);
     }
 
+    /**
+     * Determines whether or not contacts permissions are needed for providing email
+     * @return whether or not contacts permissions are needed for providing email
+     */
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
@@ -331,6 +342,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mPassword = password;
         }
 
+        /**
+         * Checks whether or not the email and password combination that user put in
+         * matches the combination thats in the system
+         * @param params
+         * @return
+         */
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
@@ -359,6 +376,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             return false;
         }
 
+        /**
+         * if login is success, then switch to application class
+         * @param success
+         */
         @Override
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
@@ -375,12 +396,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         }
 
+        /**
+         * In the case of cancel
+         */
         @Override
         protected void onCancelled() {
             mAuthTask = null;
             showProgress(false);
         }
 
+        /**
+         * Helper method to launch splash activity
+         */
         private void launchHome() {
             Intent intent = new Intent(getApplicationContext(), SplashActivity.class);
             startActivity(intent);

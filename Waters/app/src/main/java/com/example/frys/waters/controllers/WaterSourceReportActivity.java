@@ -66,6 +66,10 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         TextView dateAndtime = (TextView) findViewById(R.id.localDateTimeActual);
         numReport.setText("" + (sourceReports.size() + 1));
         dateAndtime.setText(currentDateandTime);
+        
+        // MUST EDIT!!!!!!
+        TextView locationAddress = (TextView) findViewById(R.id.locationAddressTextView);
+        locationAddress.setText(new Location(newLocation.getLatitude(), newLocation.getLongitude()).toString());
 
         enterLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +78,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                 startActivity(new Intent(WaterSourceReportActivity.this, WaterAvailabilityActivity.class));
             }
         });
+
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override

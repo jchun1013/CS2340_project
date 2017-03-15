@@ -16,6 +16,9 @@ import com.example.frys.waters.model.User;
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 import static com.example.frys.waters.controllers.LoginActivity.registeredUser;
 
+/**
+ * This class allows user to edit his/her profile
+ */
 public class EditProfile extends AppCompatActivity {
     private Button _edit_change;
     private Button _edit_cancel;
