@@ -27,9 +27,9 @@ import static com.example.frys.waters.controllers.WaterSourceReportActivity.newL
 
 public class WaterAvailabilityActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
+    public static GoogleMap mMap;
     private Marker prevMarker;
-
+    private List<LatLng> markerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +56,13 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
         mMap = googleMap;
 
         List<WaterSourceReport> reportList = sourceReports;
-        for (WaterSourceReport r : reportList) {
+        for (com.example.frys.waters.model.WaterSourceReport r : sourceReports) {
             LatLng loc = new LatLng(r.getLocation().getLatitude(), r.getLocation().getLongitude());
             mMap.addMarker(new MarkerOptions().position(loc).title(r.getNameOfReporter()).snippet(r.getDateTime()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+            System.out.println("HAAAAAAAAAALLLLLLLLOOOOOOO");
         }
+
 
         // Add a marker in Sydney and move the camera
         if (currentUser.getIsReporting() == true) {

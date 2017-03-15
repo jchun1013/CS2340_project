@@ -29,6 +29,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
     Spinner WaterConditionSpinner;
     Spinner waterTypeSpinner;
     static Location newLocation = new Location(0.0, 0.0);
+    List<WaterSourceReport> lists;
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
     public final String currentDateandTime = sdf.format(new Date());
