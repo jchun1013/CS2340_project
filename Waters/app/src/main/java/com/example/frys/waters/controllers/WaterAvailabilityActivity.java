@@ -64,8 +64,8 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
                         prevMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
                     }
                     if (!marker.equals(prevMarker)) {
-                        marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-                        marker.remove();
+                        //marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+                        //marker.remove();
                         prevMarker = marker;
                     }
                     prevMarker = marker;
@@ -90,6 +90,7 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
                     // Placing a marker on the touched position
                     mMap.addMarker(markerOptions);
 
+                    currentUser.setIsReporting(false);
                     finish();
                 }
             });
