@@ -2,6 +2,8 @@ package com.example.frys.waters.controllers;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.frys.waters.R;
 
@@ -24,6 +26,15 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_availability);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        Button saveButton = (Button) findViewById(R.id.save_Button);
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //get coordinates and save in user's location object
+            }
+        });
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -51,7 +62,7 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
             @Override
             public void onMapClick(LatLng latLng) {
-                
+
                 // Creating a marker
                 MarkerOptions markerOptions = new MarkerOptions();
 
