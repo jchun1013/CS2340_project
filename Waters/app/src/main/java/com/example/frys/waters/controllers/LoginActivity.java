@@ -72,6 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.

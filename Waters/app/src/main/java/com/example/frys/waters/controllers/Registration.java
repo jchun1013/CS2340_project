@@ -33,6 +33,7 @@ public class Registration extends AppCompatActivity {
 
     private Spinner userTypeSpinner;
     private Spinner typeSpinner;
+    RegistrationDataBaseHandler registrationDataBase;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -52,7 +53,7 @@ public class Registration extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         userTypeSpinner.setAdapter(adapter);
 
-        Button registerButton = (Button) findViewById(R.id.registerButton);
+        final Button registerButton = (Button) findViewById(R.id.registerButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +107,8 @@ public class Registration extends AppCompatActivity {
                             }
                             newUser.setUsertype((UserType) userTypeSpinner.getSelectedItem());
                             registeredUser.put(usernameEdit.getText().toString(), newUser);
+                            registrationDataBase = new RegistrationDataBaseHandler(Registration.this, null, null, 2);
+                            registrationDataBase.addRegister(newUser);
 
                             startActivity(new Intent(Registration.this, WelcomeScreen.class));
                         }

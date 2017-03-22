@@ -1,17 +1,23 @@
 package com.example.frys.waters.controllers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.frys.waters.R;
+import com.example.frys.waters.model.UserType;
+import com.example.frys.waters.model.WaterPurityReport;
 import com.example.frys.waters.model.WaterSourceReport;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 
 public class RegUserActivity extends AppCompatActivity {
     TextView _signOut;
@@ -19,7 +25,10 @@ public class RegUserActivity extends AppCompatActivity {
     Button _submitReport;
     Button _viewReport;
     Button _waterAvailabilityMap;
+    Button _waterQualityReport;
+    Button _viewPurityReport;
     static List<WaterSourceReport> sourceReports = new ArrayList();
+    static List<WaterPurityReport> purityReports = new ArrayList();
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -36,6 +45,8 @@ public class RegUserActivity extends AppCompatActivity {
         _submitReport = (Button) findViewById(R.id._submit);
         _viewReport = (Button) findViewById(R.id._view);
         _waterAvailabilityMap = (Button) findViewById(R.id.waterAvailabilityMapButton);
+        _waterQualityReport = (Button) findViewById(R.id.waterQualityReportButton);
+        _viewPurityReport = (Button) findViewById(R.id.viewWaterQualityReportButton);
 
         _signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +76,38 @@ public class RegUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 launchWaterAvailabilityMap();
+            }
+        });
+
+        _waterQualityReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentUser.getUsertype() == UserType.MANAGER || currentUser.getUsertype() == UserType.WORKER) {
+                    startActivity(new Intent(RegUserActivity.this, WaterPurityReportActivity.class));
+                } else {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Only Manager or Worker has access to water quality report.";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+            }
+        });
+
+        _viewPurityReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentUser.getUsertype() == UserType.MANAGER) {
+                    startActivity(new Intent(RegUserActivity.this, ViewPurityReportActivity.class));
+                } else {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Only Manager has access to water quality report.";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
             }
         });
     }

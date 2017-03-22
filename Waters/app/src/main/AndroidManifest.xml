@@ -40,7 +40,7 @@
             android:name=".controllers.RegUserActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".controllers.WaterPurityReport" />
+        <activity android:name=".controllers.WaterPurityReportActivity" />
         <activity android:name=".controllers.WaterSourceReportActivity" />
         <activity android:name=".controllers.EditProfile" />
         <activity android:name=".controllers.WorkerActivity" />
@@ -60,7 +60,15 @@
 
         <activity
             android:name=".controllers.WaterAvailabilityActivity"
-            android:label="@string/title_activity_water_availability"></activity>
+            android:label="@string/title_activity_water_availability" />
+        <activity android:name=".controllers.ViewPurityReportActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".controllers.ActualPurityReportActivity"></activity>
     </application>
 
 </manifest>

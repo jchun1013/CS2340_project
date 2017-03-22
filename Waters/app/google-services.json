@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "534063996074",
+    "firebase_url": "https://waters-database.firebaseio.com",
+    "project_id": "waters-database",
+    "storage_bucket": "waters-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534063996074:android:86324edcdd6c9d69",
+        "android_client_info": {
+          "package_name": "com.example.frys.waters"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "534063996074-cleujmran35ob4rk4as186eeo1fp0e5n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZatUmPGnJJpDimMmr8EnrnuX_qh90Azg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

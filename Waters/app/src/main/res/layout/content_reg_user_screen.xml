@@ -50,28 +50,9 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_above="@+id/imageView4"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout2">
 
-        <Button
-            android:id="@+id/waterAvailabilityMapButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Water Availability Map" />
-
-        <Button
-            android:text="submit a report on water availability"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/_submit"
-            android:layout_weight="1" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/_view"
-            android:layout_weight="1"
-            android:text="view available water sources" />
     </LinearLayout>
 
     <TextView
@@ -95,11 +76,57 @@
         android:layout_toEndOf="@+id/textView10" />
 
     <ImageView
-        app:srcCompat="@drawable/water"
         android:id="@+id/imageView4"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/_signout" />
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        android:layout_marginTop="56dp"
+        app:srcCompat="@drawable/water"
+        android:layout_below="@+id/waterQualityReportButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/waterAvailabilityMapButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Water Availability Map"
+        android:layout_below="@+id/_submit"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="view available water sources"
+        android:layout_below="@+id/textView10"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="submit a report on water availability"
+        android:layout_below="@+id/_view"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/waterQualityReportButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="submit water quality report"
+        android:layout_below="@+id/waterAvailabilityMapButton"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/viewWaterQualityReportButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:text="View Water Quality Report"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

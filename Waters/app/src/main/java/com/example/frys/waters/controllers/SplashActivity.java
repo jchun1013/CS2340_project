@@ -43,19 +43,19 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     /**
-     * Launches WaterPurityReport
+     * Launches WaterPurityReportActivity
      */
     private void launchWorkerScreen() {
-        Intent intent = new Intent(getApplicationContext(), WaterPurityReport.class);
+        Intent intent = new Intent(getApplicationContext(), WaterPurityReportActivity.class);
         startActivity(intent);
         finish();
     }
 
     /**
-     * Launches WaterPurityReport
+     * Launches WaterPurityReportActivity
      */
     private void launchManagerScreen() {
-        Intent intent = new Intent(getApplicationContext(), WaterPurityReport.class);
+        Intent intent = new Intent(getApplicationContext(), WaterPurityReportActivity.class);
         startActivity(intent);
         finish();
     }
@@ -64,7 +64,7 @@ public class SplashActivity extends AppCompatActivity {
      * Launches Admin Screen
      */
     private void launchAdminScreen() {
-        Intent intent = new Intent(getApplicationContext(), WaterPurityReport.class);
+        Intent intent = new Intent(getApplicationContext(), WaterPurityReportActivity.class);
         startActivity(intent);
         finish();
     }

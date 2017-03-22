@@ -13,11 +13,11 @@ public class WaterPurityReport {
     //enum condition?
     private String condition;
     //PPM in double?
-    private String virusPPM;
-    private String contaminantPPM;
+    private double virusPPM;
+    private double contaminantPPM;
 
     public WaterPurityReport(String dateTime, int reportNumber, String nameOfWorker
-            , String location, String condition, String virusPPM, String contaminantPPM) {
+            , String location, String condition, double virusPPM, double contaminantPPM) {
         this.dateTime = dateTime;
         this.reportNumber = reportNumber;
         this.nameOfWorker = nameOfWorker;
@@ -65,14 +65,14 @@ public class WaterPurityReport {
     /**
      * get the virus in ppm of the report submitted
      */
-    public String getVirusPPM() {
+    public double getVirusPPM() {
         return virusPPM;
     }
 
     /**
      * Get the contaminant in ppm of the report submitted
      */
-    public String getContaminantPPM() {
+    public double getContaminantPPM() {
         return contaminantPPM;
     }
 }
