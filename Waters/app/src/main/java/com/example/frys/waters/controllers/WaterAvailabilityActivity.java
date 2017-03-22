@@ -34,6 +34,7 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
     public static GoogleMap mMap;
     private Marker prevMarker;
+    SourceReportDataBaseHandler db;
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
@@ -63,11 +64,31 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        for (WaterSourceReport r : sourceReports) {
-            LatLng loc = new LatLng(r.getLocation().getLatitude(), r.getLocation().getLongitude());
-            mMap.addMarker(new MarkerOptions().position(loc).title(r.getNameOfReporter()).snippet(r.getDateTime()));
+//        for (WaterSourceReport r : sourceReports) {
+//            LatLng loc = new LatLng(r.getLocation().getLatitude(), r.getLocation().getLongitude());
+//            mMap.addMarker(new MarkerOptions().position(loc).title(r.getNameOfReporter()).snippet(r.getDateTime()));
+//            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+//        }
+
+        db = new SourceReportDataBaseHandler(WaterAvailabilityActivity.this, null, null, 2);
+        //String locations = db.getLocation("2");
+//        String[] eachLoc = locations.split(",");
+//        LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
+//
+//        mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+
+        String locations = db.getLocations();
+        String[] splitLocations = locations.split(" ");
+
+        for (int i = 0; i < splitLocations.length; i++) {
+            String[] eachLoc = splitLocations[i].split(",");
+            LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
+
+            mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
         }
+
 
 
         // Add a marker in Sydney and move the camera

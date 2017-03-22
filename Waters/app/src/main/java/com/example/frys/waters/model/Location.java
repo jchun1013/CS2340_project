@@ -50,6 +50,6 @@ public class Location {
      * @return String form of latitude and longitude
      */
     public String toString() {
-        return "" + getLatitude() + " " + getLongitude();
+        return "" + getLatitude() + "," + getLongitude();
     }
 }
