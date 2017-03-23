@@ -21,6 +21,7 @@ public class ActualSourceReportActivity extends AppCompatActivity {
      * Displays water source report information
      * @param savedInstanceState
      */
+    SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(ActualSourceReportActivity.this, null, null, 1);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +34,12 @@ public class ActualSourceReportActivity extends AppCompatActivity {
         TextView typeOfWater = (TextView) findViewById(R.id.typeOfWaterTextView);
         TextView conditionWater = (TextView) findViewById(R.id.conditionOfWaterTextView);
 
-        dateAndTime.setText(sourceReports.get(selectedReport - 1).getDateTime());
-        reporterNum.setText("" + sourceReports.get(selectedReport - 1).getReportNumber());
-        reporterName.setText(sourceReports.get(selectedReport - 1).getNameOfReporter());
-        waterLocation.setText(sourceReports.get(selectedReport - 1).getLocation().toString());
-        typeOfWater.setText(sourceReports.get(selectedReport - 1).getTypeOfWater());
-        conditionWater.setText(sourceReports.get(selectedReport - 1).getCondition());
+        dateAndTime.setText(db.getDateTime(selectedReport - 1));
+        reporterNum.setText("" + selectedReport);
+        reporterName.setText(db.getReporterName(selectedReport - 1));
+        waterLocation.setText(db.getLocation(selectedReport - 1));
+        typeOfWater.setText(db.getWaterType(selectedReport - 1));
+        conditionWater.setText(db.getCondition(selectedReport - 1));
 
         Button okButton = (Button) findViewById(R.id.OKbutton);
         okButton.setOnClickListener(new View.OnClickListener() {

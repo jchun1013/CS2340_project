@@ -70,25 +70,25 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 //            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
 //        }
 
-        db = new SourceReportDataBaseHandler(WaterAvailabilityActivity.this, null, null, 2);
-        //String locations = db.getLocation("2");
+        db = new SourceReportDataBaseHandler(WaterAvailabilityActivity.this, null, null, 1);
+//        String locations = db.getLocation("1");
 //        String[] eachLoc = locations.split(",");
 //        LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
 //
 //        mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+        if (db.countReport() >= 1) {
+            String locations = db.getAllLocations();
+            String[] splitLocations = locations.split(" ");
 
-        String locations = db.getLocations();
-        String[] splitLocations = locations.split(" ");
+            for (int i = 0; i < splitLocations.length; i++) {
+                String[] eachLoc = splitLocations[i].split(",");
+                LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
 
-        for (int i = 0; i < splitLocations.length; i++) {
-            String[] eachLoc = splitLocations[i].split(",");
-            LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
-
-            mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+                mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+            }
         }
-
 
 
         // Add a marker in Sydney and move the camera

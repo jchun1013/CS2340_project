@@ -34,7 +34,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
     public final String currentDateandTime = sdf.format(new Date());
 
-    SourceReportDataBaseHandler db;
+    SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this, null, null, 2);;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,8 @@ public class WaterSourceReportActivity extends AppCompatActivity {
 
         TextView numReport = (TextView) findViewById(R.id.numberOfReportTextView);
         TextView dateAndtime = (TextView) findViewById(R.id.localDateTimeActual);
-        numReport.setText("" + (sourceReports.size() + 1));
+
+        numReport.setText("" + (db.countReport() + 1));
         dateAndtime.setText(currentDateandTime);
 
         // MUST EDIT!!!!!!
@@ -94,11 +95,10 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {
-                    db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this, null, null, 2);
                     double lat = newLocation.getLatitude();
                     double longi = newLocation.getLongitude();
                     Location newLoc = new Location(lat, longi);
-                    WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, sourceReports.size() + 1, currentUser.getName(),
+                    WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, db.countReport() + 1, currentUser.getName(),
                             newLoc, (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
                     sourceReports.add(newReport);
                     db.addSourceReport(newReport);

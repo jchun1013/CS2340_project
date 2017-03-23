@@ -46,7 +46,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addSourceReport(WaterSourceReport report) {
+    public void addSourceReport(WaterSourceReport report) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_REPORT_NUMBER, report.getReportNumber());
@@ -60,11 +60,11 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    void deleteEntry(String reportNumber) {
+    public void deleteEntry(int reportNumber) {
         db.delete(TABLE_SOURCEREPORT, KEY_REPORT_NUMBER + " = " + reportNumber, null);
     }
 
-    String getLocations() {
+    public String getAllLocations() {
         String coordinates = "";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_SOURCEREPORT, new String[]{Col_LOCATION}, null, null, null, null, null);
@@ -75,10 +75,11 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         return coordinates;
     }
 
-    String getLocation(String rNumber) {
+    public String getLocation(int rNumber) {
         String coordinates = "";
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_SOURCEREPORT, null, "reportNumber = ?", new String[]{rNumber}, null,null,null);
+        //Cursor cursor = db.query(TABLE_SOURCEREPORT, new String[]{Col_LOCATION}, KEY_REPORT_NUMBER + "= ?", new String[]{rNumber}, null,null,null);
+        Cursor cursor =  db.rawQuery( "select * from sourceReport where reportNumber=" + rNumber + "", null );
 
         if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
             coordinates = cursor.getString(cursor.getColumnIndex(Col_LOCATION));
@@ -86,10 +87,68 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         }
         return coordinates;
     }
-//    String getName() {
-//        String name = "";
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.query(TABLE_SOURCEREPORT, new String[] {Col_NAME_OF_REPORTER}, null, null, null, null, null);
-//
-//    }
+
+    public String getReporterName(int rNumber) {
+        String name = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery( "select * from sourceReport where reportNumber=" + rNumber + "", null );
+        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
+            name = cursor.getString(cursor.getColumnIndex(Col_NAME_OF_REPORTER));
+        }
+        return name;
+    }
+
+    public String getCondition(int rNumber) {
+        String condition = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery( "select * from sourceReport where reportNumber=" + rNumber + "", null );
+        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
+            condition = cursor.getString(cursor.getColumnIndex(Col_CONDITION));
+        }
+        return condition;
+    }
+
+    public String getWaterType(int rNumber) {
+        String waterType = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery( "select * from sourceReport where reportNumber=" + rNumber + "", null );
+        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
+            waterType = cursor.getString(cursor.getColumnIndex(Col_WATERTYPE));
+        }
+        return waterType;
+    }
+
+    public String getDateTime(int rNumber) {
+        String dateTime = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery( "select * from sourceReport where reportNumber=" + rNumber + "", null );
+        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
+            dateTime = cursor.getString(cursor.getColumnIndex(Col_DATETIME));
+        }
+        return dateTime;
+    }
+
+    public int countReport() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from sourceReport", null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count;
+    }
+
+    public int[] getAllReportNum() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from sourceReport", null);
+        String nums = "";
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            nums += cursor.getString(cursor.getColumnIndex(KEY_REPORT_NUMBER)) + " ";
+        }
+        String[] stringNums = nums.split(" ");
+        int[] reportNums = new int[stringNums.length];
+        for(int i = 0; i < reportNums.length; i++) {
+            reportNums[i] = Integer.parseInt(stringNums[i]);
+        }
+        return reportNums;
+    }
 }
+
