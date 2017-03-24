@@ -33,7 +33,7 @@ public class Registration extends AppCompatActivity {
 
     private Spinner userTypeSpinner;
     private Spinner typeSpinner;
-    RegistrationDataBaseHandler registrationDataBase;
+    RegistrationDataBaseHandler db = new RegistrationDataBaseHandler(Registration.this);
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -107,8 +107,11 @@ public class Registration extends AppCompatActivity {
                             }
                             newUser.setUsertype((UserType) userTypeSpinner.getSelectedItem());
                             registeredUser.put(usernameEdit.getText().toString(), newUser);
-                            registrationDataBase = new RegistrationDataBaseHandler(Registration.this, null, null, 2);
-                            registrationDataBase.addRegister(newUser);
+
+                            db.addRegister(newUser);
+                            System.out.println("------------------------------------------------------------------------------");
+                            System.out.println("add successful");
+                            System.out.println(db.getAllNames());
 
                             startActivity(new Intent(Registration.this, WelcomeScreen.class));
                         }

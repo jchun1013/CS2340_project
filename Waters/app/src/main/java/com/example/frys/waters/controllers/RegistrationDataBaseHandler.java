@@ -13,23 +13,32 @@ import com.example.frys.waters.model.User;
  */
 
 public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
-    String password;
     private SQLiteDatabase db;
+
+    //databse version
     private static final int DATABASE_VERSION = 1;
+
+    //database name
     private static String DATABASE_NAME = "login.db";
+
+    //table name
     private static final String TABLE_REGISTER = "register";
+
+    //table column names
     public static final String Col_USERNAME = "username";
     public static final String Col_NAME = "name";
     public static final String Col_PASSWORD = "password";
-    public static final String Col_STANDING = "standing";
     public static final String Col_EMAIL = "email";
     public static final String Col_ADDRESS = "address";
-    public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_REGISTER + " ("
-            + Col_USERNAME + " TEXT, " + Col_NAME + " TEXT, " + Col_PASSWORD + " TEXT, "
-            + Col_EMAIL + " TEXT " + Col_ADDRESS + " TEXT " + Col_STANDING + ")";
+    public static final String Col_USERTYPE = "type";
+
+    //create table sql query
+    public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_REGISTER + " (" + Col_USERNAME
+            + " TEXT, " + Col_NAME + " TEXT, " + Col_PASSWORD + " TEXT, " + Col_EMAIL
+            + " TEXT, " + Col_ADDRESS + " TEXT, " + Col_USERTYPE + ")";
 
 
-    public RegistrationDataBaseHandler(Context context, Object name, Object factory, int version) {
+    public RegistrationDataBaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -45,68 +54,102 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addRegister(User user) {
+    public void addRegister(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(Col_USERNAME, user.getUsername());
         values.put(Col_NAME, user.getName());
         values.put(Col_PASSWORD, user.getPassword());
-        values.put(Col_STANDING, user.getUsertype().toString());
+        values.put(Col_EMAIL, user.getEmailAddress());
+        values.put(Col_ADDRESS, user.getHomeAddress());
+        values.put(Col_USERTYPE, user.getUsertype().toString());
 
         db.insert(TABLE_REGISTER, null, values);
         db.close();
     }
 
-    void deleteEntry(String username) {
+    public void deleteEntry(String username) {
         db.delete(TABLE_REGISTER, Col_USERNAME + " = " + username, null);
     }
 
-    String getName(String username) {
+    public String getAllNames() {
         String name = "";
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_REGISTER, null, "ID = ?", new String[]{username}, null,null,null);
-        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
-            name = cursor.getString(cursor.getColumnIndex(Col_NAME));
+        Cursor cursor = db.query(TABLE_REGISTER, new String[]{Col_USERNAME}, null, null, null, null, null);
+
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            name += cursor.getString(cursor.getColumnIndex(Col_USERNAME)) + " ";
         }
         return name;
     }
 
-    String getKeyStanding(String username) {
-        String standing = "";
+    public boolean usernameExist(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_REGISTER, null, "ID = ?", new String[]{username},null,null,null);
-        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
-            standing = cursor.getString(cursor.getColumnIndex(Col_STANDING));
+        Cursor cursor = db.query(TABLE_REGISTER, null, "username = ?", new String[]{username}, null,null,null);
+
+        if (cursor.getCount() > 0) {
+            return true;
         }
-        return standing;
+        return false;
     }
 
-    String getRegister(String username) {
+    public String getPassword(String username) {
+        String password = "";
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_REGISTER, null, "ID = ?", new String[]{username},null,null,null);
-        if (cursor.getCount() < 1) {
-            cursor.close();
-            return "NOT EXIST";
-        } else if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
+        Cursor cursor =  db.query(TABLE_REGISTER, null, "username = ?", new String[]{username}, null,null,null);
+
+        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
             password = cursor.getString(cursor.getColumnIndex(Col_PASSWORD));
             cursor.close();
         }
         return password;
     }
 
-    public String getDataBaseName() {
-        return DATABASE_NAME;
+    public String getName(String username) {
+        String name = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.query(TABLE_REGISTER, null, "username = ?", new String[]{username}, null,null,null);
+
+        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
+            name = cursor.getString(cursor.getColumnIndex(Col_NAME));
+            cursor.close();
+        }
+        return name;
     }
 
-    public static String getUserName() {
-        return Col_USERNAME;
+    public String getEmail(String username) {
+        String email = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.query(TABLE_REGISTER, null, "username = ?", new String[]{username}, null,null,null);
+
+        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
+            email = cursor.getString(cursor.getColumnIndex(Col_EMAIL));
+            cursor.close();
+        }
+        return email;
     }
 
-    public static String getTableContacts() {
-        return TABLE_REGISTER;
+    public String getHomeAddress(String username) {
+        String address = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.query(TABLE_REGISTER, null, "username = ?", new String[]{username}, null,null,null);
+
+        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
+            address = cursor.getString(cursor.getColumnIndex(Col_ADDRESS));
+            cursor.close();
+        }
+        return address;
     }
 
-    public static int getDatabaseVersion() {
-        return DATABASE_VERSION;
+    public String getUserType(String username) {
+        String type = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.query(TABLE_REGISTER, null, "username = ?", new String[]{username}, null,null,null);
+
+        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
+            type = cursor.getString(cursor.getColumnIndex(Col_USERTYPE));
+            cursor.close();
+        }
+        return type;
     }
 }
