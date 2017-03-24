@@ -108,10 +108,8 @@ public class Registration extends AppCompatActivity {
                             newUser.setUsertype((UserType) userTypeSpinner.getSelectedItem());
                             registeredUser.put(usernameEdit.getText().toString(), newUser);
 
+                            //adding to database
                             db.addRegister(newUser);
-                            System.out.println("------------------------------------------------------------------------------");
-                            System.out.println("add successful");
-                            System.out.println(db.getAllNames());
 
                             startActivity(new Intent(Registration.this, WelcomeScreen.class));
                         }

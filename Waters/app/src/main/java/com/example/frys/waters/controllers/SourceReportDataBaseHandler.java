@@ -40,7 +40,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
             + " TEXT, " + Col_DATETIME + ")";
 
     //constructor
-    public SourceReportDataBaseHandler(Context context, Object name, Object factory, int version) {
+    public SourceReportDataBaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -196,10 +196,14 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             nums += cursor.getString(cursor.getColumnIndex(KEY_REPORT_NUMBER)) + " ";
         }
+
         String[] stringNums = nums.split(" ");
+
         int[] reportNums = new int[stringNums.length];
-        for(int i = 0; i < reportNums.length; i++) {
-            reportNums[i] = Integer.parseInt(stringNums[i]);
+        if (reportNums.length > 1) {
+            for (int i = 0; i < reportNums.length; i++) {
+                reportNums[i] = Integer.parseInt(stringNums[i]);
+            }
         }
         return reportNums;
     }

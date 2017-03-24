@@ -70,28 +70,23 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 //            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
 //        }
 
-        db = new SourceReportDataBaseHandler(WaterAvailabilityActivity.this, null, null, 1);
-//        String locations = db.getLocation("1");
-//        String[] eachLoc = locations.split(",");
-//        LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
-//
-//        mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+        db = new SourceReportDataBaseHandler(WaterAvailabilityActivity.this);
         if (db.countReport() >= 1) {
             String locations = db.getAllLocations();
             String[] splitLocations = locations.split(" ");
+            if (splitLocations.length > 1) {
+                for (int i = 0; i < splitLocations.length; i++) {
+                    String[] eachLoc = splitLocations[i].split(",");
+                    LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
 
-            for (int i = 0; i < splitLocations.length; i++) {
-                String[] eachLoc = splitLocations[i].split(",");
-                LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
-
-                mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+                    mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+                }
             }
         }
 
 
-        // Add a marker in Sydney and move the camera
+        //adding marker during submitting report
         if (currentUser.getIsReporting() == true) {
 
             mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {

@@ -34,7 +34,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
     public final String currentDateandTime = sdf.format(new Date());
 
-    SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this, null, null, 2);;
+    SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this);;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, conditions);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         WaterConditionSpinner.setAdapter(dataAdapter);
 
@@ -86,6 +87,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                currentUser.setIsReporting(false);
                 TextView locationText = (TextView) findViewById(R.id.locationAddressTextView);
                 if (locationText.getText().toString().equals("")) {
                     Context context = getApplicationContext();

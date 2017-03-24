@@ -6,7 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.frys.waters.model.Admin;
+import com.example.frys.waters.model.Manager;
 import com.example.frys.waters.model.User;
+import com.example.frys.waters.model.Worker;
 
 /**
  * Created by joon1 on 2017-03-20.
@@ -151,5 +154,24 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
             cursor.close();
         }
         return type;
+    }
+
+    public User getUser(String username) {
+        User currentUser = new User(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
+        String type = getUserType(username);
+        switch (type) {
+            case "USER" :
+                currentUser = new User(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
+                break;
+            case "WORKER" :
+                currentUser = new Worker(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
+                break;
+            case "MANAGER" :
+                currentUser = new Manager(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
+                break;
+            case "ADMIN" :
+                currentUser = new Admin(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
+        }
+        return currentUser;
     }
 }

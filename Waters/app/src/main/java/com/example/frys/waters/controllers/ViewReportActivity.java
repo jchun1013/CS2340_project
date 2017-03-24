@@ -33,15 +33,12 @@ public class ViewReportActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(ViewReportActivity.this, null, null, 1);;
+        SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(ViewReportActivity.this);;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_report);
         List<Integer> reports = new ArrayList<>();
-//        Iterator<WaterSourceReport> reportIterator = sourceReports.iterator();
-//        while (reportIterator.hasNext()) {
-//            reports.add(reportIterator.next().getReportNumber());
-//        }
+
         int[] reportNums = db.getAllReportNum();
         for (int i = 0; i < reportNums.length; i++) {
             reports.add(reportNums[i]);

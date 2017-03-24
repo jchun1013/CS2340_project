@@ -57,8 +57,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     RegistrationDataBaseHandler db;
 
-
-
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
@@ -95,12 +93,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void attemptLogin() {
         db = new RegistrationDataBaseHandler(LoginActivity.this);
-        System.out.println("******************************************************************************************");
-        System.out.println(db.getAllNames());
-        System.out.println(db.usernameExist(username.getText().toString()));
         if (db.usernameExist(username.getText().toString())) {
             String passwordInDB = db.getPassword(username.getText().toString());
             if (password.getText().toString().equals(passwordInDB)) {
+                currentUser = db.getUser(username.getText().toString());
+                currentUser.setIsReporting(false);
                 startActivity(new Intent(getApplicationContext(), SplashActivity.class));
             } else {
                 Context context = getApplicationContext();
