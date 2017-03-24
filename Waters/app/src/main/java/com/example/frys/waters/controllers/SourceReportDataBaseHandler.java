@@ -39,11 +39,15 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
             + " TEXT, " + Col_CONDITION + " TEXT, " + Col_WATERTYPE
             + " TEXT, " + Col_DATETIME + ")";
 
-    //constructor
+    /**
+     * constructor
+     * @param context is name of the class this method is being called from + .class
+     */
     public SourceReportDataBaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    //execute CREATE TABLE
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE);
@@ -75,6 +79,10 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * deletes corresponding row
+     * @param reportNumber
+     */
     public void deleteEntry(int reportNumber) {
         db.delete(TABLE_SOURCEREPORT, KEY_REPORT_NUMBER + " = " + reportNumber, null);
     }
@@ -200,9 +208,11 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         String[] stringNums = nums.split(" ");
 
         int[] reportNums = new int[stringNums.length];
-        if (reportNums.length > 1) {
-            for (int i = 0; i < reportNums.length; i++) {
-                reportNums[i] = Integer.parseInt(stringNums[i]);
+        if (countReport() > 0) {
+            if (reportNums.length > 0) {
+                for (int i = 0; i < reportNums.length; i++) {
+                    reportNums[i] = Integer.parseInt(stringNums[i]);
+                }
             }
         }
         return reportNums;

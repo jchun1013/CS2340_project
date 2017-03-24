@@ -93,8 +93,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void attemptLogin() {
         db = new RegistrationDataBaseHandler(LoginActivity.this);
+
+        //checks if username exists in the database
         if (db.usernameExist(username.getText().toString())) {
             String passwordInDB = db.getPassword(username.getText().toString());
+            //if username exists, then compare the password
             if (password.getText().toString().equals(passwordInDB)) {
                 currentUser = db.getUser(username.getText().toString());
                 currentUser.setIsReporting(false);
@@ -108,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                 toast.show();
             }
         } else {
+            //case when username doesn't exist in the database
             Context context = getApplicationContext();
             CharSequence text = "Bad login attempt. Username doesn't exist.";
             int duration = Toast.LENGTH_SHORT;

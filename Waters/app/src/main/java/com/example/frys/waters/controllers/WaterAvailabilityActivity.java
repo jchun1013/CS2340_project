@@ -71,10 +71,10 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 //        }
 
         db = new SourceReportDataBaseHandler(WaterAvailabilityActivity.this);
-        if (db.countReport() >= 1) {
+        if (db.countReport() > 0) {
             String locations = db.getAllLocations();
             String[] splitLocations = locations.split(" ");
-            if (splitLocations.length > 1) {
+            if (splitLocations.length > 0) {
                 for (int i = 0; i < splitLocations.length; i++) {
                     String[] eachLoc = splitLocations[i].split(",");
                     LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));

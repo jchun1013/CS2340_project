@@ -40,7 +40,10 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
             + " TEXT, " + Col_NAME + " TEXT, " + Col_PASSWORD + " TEXT, " + Col_EMAIL
             + " TEXT, " + Col_ADDRESS + " TEXT, " + Col_USERTYPE + ")";
 
-
+    /**
+     * constructor
+     * @param context is name of the class this method is being called from + .class
+     */
     public RegistrationDataBaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -57,6 +60,10 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /**
+     * Adds new user to the database
+     * @param user
+     */
     public void addRegister(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -71,10 +78,18 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * Deletes corresponding row
+     * @param username
+     */
     public void deleteEntry(String username) {
         db.delete(TABLE_REGISTER, Col_USERNAME + " = " + username, null);
     }
 
+    /**
+     * This method gets all the usernames that are in the database
+     * @return all usernames
+     */
     public String getAllNames() {
         String name = "";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -86,6 +101,11 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         return name;
     }
 
+    /**
+     * This method checks if username exists in the database
+     * @param username
+     * @return whether or not username exists in the database
+     */
     public boolean usernameExist(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_REGISTER, null, "username = ?", new String[]{username}, null,null,null);
@@ -96,6 +116,11 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         return false;
     }
 
+    /**
+     * this method gets corresponding password of username
+     * @param username
+     * @return password
+     */
     public String getPassword(String username) {
         String password = "";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -108,6 +133,11 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         return password;
     }
 
+    /**
+     * This method gets the name of corresponding username
+     * @param username
+     * @return name
+     */
     public String getName(String username) {
         String name = "";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -120,6 +150,11 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         return name;
     }
 
+    /**
+     * This method gets email of corresponding username
+     * @param username
+     * @return email
+     */
     public String getEmail(String username) {
         String email = "";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -132,6 +167,11 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         return email;
     }
 
+    /**
+     * This method gets home address of corresponding username
+     * @param username
+     * @return home address
+     */
     public String getHomeAddress(String username) {
         String address = "";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -144,6 +184,11 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         return address;
     }
 
+    /**
+     * This method gets the UserType of corresponding username
+     * @param username
+     * @return user type
+     */
     public String getUserType(String username) {
         String type = "";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -156,6 +201,12 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         return type;
     }
 
+    /**
+     * This method returns User object of corresponding username.
+     * this is to set the currentUser.
+     * @param username
+     * @return user
+     */
     public User getUser(String username) {
         User currentUser = new User(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
         String type = getUserType(username);
