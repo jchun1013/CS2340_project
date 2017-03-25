@@ -26,7 +26,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_SOURCEREPORT = "sourceReport";
 
     //table column names
-    public static final String KEY_REPORT_NUMBER = "reportNumber";
+    public static final String Col_REPORT_NUMBER = "reportNumber";
     public static final String Col_NAME_OF_REPORTER = "nameOfReporter";
     public static final String Col_LOCATION = "location";
     public static final String Col_CONDITION = "condition";
@@ -35,7 +35,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
 
     //create table sql query
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_SOURCEREPORT + " ("
-            + KEY_REPORT_NUMBER + " TEXT, " + Col_NAME_OF_REPORTER + " TEXT, " + Col_LOCATION
+            + Col_REPORT_NUMBER + " TEXT, " + Col_NAME_OF_REPORTER + " TEXT, " + Col_LOCATION
             + " TEXT, " + Col_CONDITION + " TEXT, " + Col_WATERTYPE
             + " TEXT, " + Col_DATETIME + ")";
 
@@ -67,7 +67,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
     public void addSourceReport(WaterSourceReport report) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_REPORT_NUMBER, report.getReportNumber());
+        values.put(Col_REPORT_NUMBER, report.getReportNumber());
         values.put(Col_NAME_OF_REPORTER, report.getNameOfReporter());
         values.put(Col_LOCATION, report.getLocation().toString());
         values.put(Col_CONDITION, report.getCondition());
@@ -80,15 +80,15 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * deletes corresponding row
+     * Deletes corresponding row
      * @param reportNumber
      */
     public void deleteEntry(int reportNumber) {
-        db.delete(TABLE_SOURCEREPORT, KEY_REPORT_NUMBER + " = " + reportNumber, null);
+        db.delete(TABLE_SOURCEREPORT, Col_REPORT_NUMBER + " = " + reportNumber, null);
     }
 
     /**
-     * this method gets all the locations of reports that are in the database
+     * This method gets all the locations of reports that are in the database
      * @return all locations of reports that are in the database
      */
     public String getAllLocations() {
@@ -110,7 +110,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
     public String getLocation(int rNumber) {
         String coordinates = "";
         SQLiteDatabase db = this.getReadableDatabase();
-        //Cursor cursor = db.query(TABLE_SOURCEREPORT, new String[]{Col_LOCATION}, KEY_REPORT_NUMBER + "= ?", new String[]{rNumber}, null,null,null);
+        //Cursor cursor = db.query(TABLE_SOURCEREPORT, new String[]{Col_LOCATION}, Col_REPORT_NUMBER + "= ?", new String[]{rNumber}, null,null,null);
         Cursor cursor =  db.rawQuery( "select * from sourceReport where reportNumber=" + rNumber + "", null );
 
         if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
@@ -181,8 +181,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * This method gets the number of total reports that are in the database
-     * counts how many rows(reports) there are in the database
+     * This method gets the number of total reports(rows) that are in the database
      * @return number of reports
      */
     public int countReport() {
@@ -202,7 +201,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("select * from sourceReport", null);
         String nums = "";
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-            nums += cursor.getString(cursor.getColumnIndex(KEY_REPORT_NUMBER)) + " ";
+            nums += cursor.getString(cursor.getColumnIndex(Col_REPORT_NUMBER)) + " ";
         }
 
         String[] stringNums = nums.split(" ");

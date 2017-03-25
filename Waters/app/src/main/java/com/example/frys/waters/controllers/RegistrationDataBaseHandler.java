@@ -117,7 +117,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * this method gets corresponding password of username
+     * this method gets password of corresponding username
      * @param username
      * @return password
      */

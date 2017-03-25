@@ -64,16 +64,11 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         waterTypeSpinner.setAdapter(typeAdapter);
 
-
         TextView numReport = (TextView) findViewById(R.id.numberOfReportTextView);
         TextView dateAndtime = (TextView) findViewById(R.id.localDateTimeActual);
 
         numReport.setText("" + (db.countReport() + 1));
         dateAndtime.setText(currentDateandTime);
-
-        // MUST EDIT!!!!!!
-        TextView locationAddress = (TextView) findViewById(R.id.locationAddressTextView);
-        locationAddress.setText(" ");
 
         enterLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,30 +78,27 @@ public class WaterSourceReportActivity extends AppCompatActivity {
             }
         });
 
-
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currentUser.setIsReporting(false);
-                TextView locationText = (TextView) findViewById(R.id.locationAddressTextView);
-                if (locationText.getText().toString().equals("")) {
+
+                double lat = newLocation.getLatitude();
+                double longi = newLocation.getLongitude();
+                Location newLoc = new Location(lat, longi);
+                if (newLoc.toString().equals("0.0,0.0")) {  // when location is not selected
                     Context context = getApplicationContext();
                     CharSequence text = "Location is required.";
                     int duration = Toast.LENGTH_SHORT;
-
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
-                } else {
-                    double lat = newLocation.getLatitude();
-                    double longi = newLocation.getLongitude();
-                    Location newLoc = new Location(lat, longi);
+                } else {    //when everything is selected
                     WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, db.countReport() + 1, currentUser.getName(),
                             newLoc, (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
                     sourceReports.add(newReport);
                     db.addSourceReport(newReport);
+                    startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));
+                    finish();
                 }
-                startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));
-                finish();
             }
         });
 
@@ -116,6 +108,5 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }
