@@ -45,6 +45,7 @@ public class WaterPurityReportActivity extends AppCompatActivity {
         List<String> conditions = Arrays.asList("Safe", "Treatable", "Unsafe");
         Button submitButton = (Button) findViewById(R.id.submitButton);
         Button cancelButton = (Button) findViewById(R.id.cancelButton2);
+        Button enterLocationButton2 = (Button) findViewById(R.id.locationButton2);
 
         overallConditionSpinner = (Spinner) findViewById(R.id._overallConditionSpinner);
 
@@ -66,12 +67,16 @@ public class WaterPurityReportActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView locationText = (TextView) findViewById(R.id._locationEdit);
+                //TextView locationText = (TextView) findViewById(R.id._locationEdit);
                 EditText virusPPM = (EditText) findViewById(R.id._virusPPMEdit);
                 EditText contaminantPPM = (EditText) findViewById(R.id._contaminantPPMEdit);
 
-                if (locationText.getText().toString().equals("") || virusPPM.getText().toString().equals("")
-                        || contaminantPPM.getText().toString().equals("")) {
+                double lat = newPurityLocation.getLatitude();
+                double longi = newPurityLocation.getLongitude();
+                Location newLoc = new Location(lat, longi);
+
+                //locationText.getText().toString().equals("") ||
+                if (virusPPM.getText().toString().equals("") || contaminantPPM.getText().toString().equals("")) {
                     Context context = getApplicationContext();
                     CharSequence text = "One of the field is missing: location, virus (PPM), contaminant (PPM)";
                     int duration = Toast.LENGTH_SHORT;
@@ -81,13 +86,21 @@ public class WaterPurityReportActivity extends AppCompatActivity {
                     startActivity(new Intent(WaterPurityReportActivity.this, WaterPurityReportActivity.class));
                 } else {
                     WaterPurityReport newReport = new WaterPurityReport(currentDateandTime, db.countReport() + 1, currentUser.getName(),
-                            "location", (String) overallConditionSpinner.getSelectedItem(), Double.parseDouble(virusPPM.getText().toString())
+                            newLoc, (String) overallConditionSpinner.getSelectedItem(), Double.parseDouble(virusPPM.getText().toString())
                             , Double.parseDouble(contaminantPPM.getText().toString()));
                     purityReports.add(newReport);
                     db.addPurityReport(newReport);
                     startActivity(new Intent(WaterPurityReportActivity.this, RegUserActivity.class));
                     finish();
                 }
+            }
+        });
+
+        enterLocationButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentUser.setIsReporting(true);
+                startActivity(new Intent(WaterPurityReportActivity.this, PurityReportMap.class));
             }
         });
 

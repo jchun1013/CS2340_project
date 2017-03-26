@@ -68,7 +68,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controllers.ActualPurityReportActivity"></activity>
+        <activity android:name=".controllers.ActualPurityReportActivity" />
+        <activity
+            android:name=".controllers.PurityReportMap"
+            android:label="@string/title_activity_purity_report_map"></activity>
     </application>
 
 </manifest>

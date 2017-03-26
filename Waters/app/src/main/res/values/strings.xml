@@ -34,4 +34,5 @@
     <string name="auth_failed" />
     <string name="title_activity_home__worker_">Home_Worker_Activity</string>
     <string name="title_activity_water_availability">Map</string>
+    <string name="title_activity_purity_report_map">Map</string>
 </resources>
