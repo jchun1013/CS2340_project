@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:background="#e0d8c9"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.frys.waters.controllers.ActualSourceReportActivity">
@@ -16,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:textColor="#7e9ab7"
         android:layout_marginTop="15dp"
         android:text="Water Purity Report:"
         android:textSize="25sp" />

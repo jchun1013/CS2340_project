@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="#e0d8c9"
+    android:background="@drawable/ocean"
+    android:alpha=".8"
     tools:context="com.example.frys.waters.controllers.RegUserActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
+
 
     </android.support.design.widget.AppBarLayout>
 
