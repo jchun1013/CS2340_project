@@ -23,6 +23,7 @@ public class ViewPurityReportActivity extends AppCompatActivity {
 
     public static Spinner viewSpinner2;
     public static int selectedReport2;
+    PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ViewPurityReportActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +31,10 @@ public class ViewPurityReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_purity_report);
 
         List<Integer> reports = new ArrayList<>();
-        Iterator<WaterPurityReport> reportIterator = purityReports.iterator();
-        while (reportIterator.hasNext()) {
-            reports.add(reportIterator.next().getReportNumber());
+
+        int[] reportNums = db.getAllReportNum();
+        for (int i = 0; i < reportNums.length; i++) {
+            reports.add(reportNums[i]);
         }
 
         Button backButton = (Button) findViewById(R.id.BackButton2);

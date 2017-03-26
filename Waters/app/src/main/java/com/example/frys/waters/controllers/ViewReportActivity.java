@@ -33,7 +33,7 @@ public class ViewReportActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(ViewReportActivity.this);;
+        SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(ViewReportActivity.this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_report);

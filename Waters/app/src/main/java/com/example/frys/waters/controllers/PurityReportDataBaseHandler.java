@@ -148,4 +148,25 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         cursor.close();
         return count;
     }
+
+    public int[] getAllReportNum() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from purityReport", null);
+        String nums = "";
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            nums += cursor.getString(cursor.getColumnIndex(Col_REPORT_NUMBER)) + " ";
+        }
+
+        String[] stringNums = nums.split(" ");
+
+        int[] reportNums = new int[stringNums.length];
+        if (countReport() > 0) {
+            if (reportNums.length > 0) {
+                for (int i = 0; i < reportNums.length; i++) {
+                    reportNums[i] = Integer.parseInt(stringNums[i]);
+                }
+            }
+        }
+        return reportNums;
+    }
 }
