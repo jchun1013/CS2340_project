@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterPurityReport;
+import com.example.frys.waters.model.WaterSourceReport;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -33,6 +34,7 @@ public class WaterPurityReportActivity extends AppCompatActivity {
     static Location newPurityLocation = new Location(0.0, 0.0);
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
     public final String currentDateandTime = sdf.format(new Date());
+    PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(WaterPurityReportActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +55,13 @@ public class WaterPurityReportActivity extends AppCompatActivity {
 
         TextView numReport = (TextView) findViewById(R.id._reportNumberText);
         TextView dateAndtime = (TextView) findViewById(R.id._dateAndTimeText);
-        numReport.setText("" + (purityReports.size() + 1));
+        numReport.setText("" + (db.countReport() + 1));
         dateAndtime.setText(currentDateandTime);
         TextView workerName = (TextView) findViewById(R.id._workerNameEdit);
         workerName.setText(currentUser.getName());
+
+        EditText virusPPM = (EditText) findViewById(R.id._virusPPMEdit);
+        EditText conditionPPM = (EditText) findViewById(R.id._contaminantPPMEdit);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,12 +80,11 @@ public class WaterPurityReportActivity extends AppCompatActivity {
                     toast.show();
                     startActivity(new Intent(WaterPurityReportActivity.this, WaterPurityReportActivity.class));
                 } else {
-//                    double lat = newPurityLocation.getLatitude();
-//                    double longi = newPurityLocation.getLongitude();
-//                    Location newLoc = new Location(lat, longi);
-                    WaterPurityReport newReport = new WaterPurityReport(currentDateandTime, purityReports.size() + 1, currentUser.getName(),
-                            "location", (String) overallConditionSpinner.getSelectedItem(), 0.0, 0.0);
+                    WaterPurityReport newReport = new WaterPurityReport(currentDateandTime, db.countReport() + 1, currentUser.getName(),
+                            "location", (String) overallConditionSpinner.getSelectedItem(), Double.parseDouble(virusPPM.getText().toString())
+                            , Double.parseDouble(contaminantPPM.getText().toString()));
                     purityReports.add(newReport);
+                    db.addPurityReport(newReport);
                     startActivity(new Intent(WaterPurityReportActivity.this, RegUserActivity.class));
                     finish();
                 }

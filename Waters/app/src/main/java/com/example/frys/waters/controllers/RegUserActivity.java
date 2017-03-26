@@ -82,7 +82,7 @@ public class RegUserActivity extends AppCompatActivity {
         _waterQualityReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (currentUser.getUsertype() == UserType.MANAGER || currentUser.getUsertype() == UserType.WORKER) {
+                if (currentUser.getUsertype().equals(UserType.MANAGER) || currentUser.getUsertype().equals(UserType.WORKER)) {
                     startActivity(new Intent(RegUserActivity.this, WaterPurityReportActivity.class));
                 } else {
                     Context context = getApplicationContext();

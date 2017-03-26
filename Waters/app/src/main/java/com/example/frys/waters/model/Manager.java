@@ -15,6 +15,7 @@ public class Manager extends Worker {
      */
     public Manager(String username, String name, String email, String password, String address) {
         super(username, name, email, password, address);
+        super.setUsertype(UserType.MANAGER);
     }
 
     /**

@@ -41,7 +41,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * constructor
-     * @param context is name of the class this method is being called from + .class
+     * @param context is name of the class this method is being called from + .this
      */
     public SourceReportDataBaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

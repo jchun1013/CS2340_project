@@ -15,6 +15,7 @@ public class Admin extends Manager {
      */
     public Admin(String username, String name, String email, String password, String address) {
         super(username, name, email, password, address);
+        super.setUsertype(UserType.ADMIN);
     }
 
     /**

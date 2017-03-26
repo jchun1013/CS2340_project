@@ -15,6 +15,7 @@ import static com.example.frys.waters.controllers.ViewPurityReportActivity.selec
 import static com.example.frys.waters.controllers.ViewReportActivity.selectedReport;
 
 public class ActualPurityReportActivity extends AppCompatActivity {
+    PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ActualPurityReportActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +30,13 @@ public class ActualPurityReportActivity extends AppCompatActivity {
         TextView virusPPM = (TextView) findViewById(R.id.virusPPMText);
         TextView contaminantPPM = (TextView) findViewById(R.id.contaminantPPMText);
 
-        dateAndTime.setText(purityReports.get(selectedReport2 - 1).getDateTime());
-        reporterNum.setText("" + purityReports.get(selectedReport2 - 1).getReportNumber());
-        workerName.setText(purityReports.get(selectedReport2 - 1).getNameOfWorker());
-        waterLocation.setText(purityReports.get(selectedReport2 - 1).getLocation().toString());
-        overallConditionWater.setText(purityReports.get(selectedReport2 - 1).getCondition());
-        virusPPM.setText("" + purityReports.get(selectedReport2 - 1).getVirusPPM());
-        contaminantPPM.setText("" + purityReports.get(selectedReport2 - 1).getContaminantPPM());
+        dateAndTime.setText(db.getDateTime(selectedReport2));
+        reporterNum.setText("" + selectedReport2);
+        workerName.setText(db.getNameOfWorker(selectedReport2));
+        waterLocation.setText(db.getLocation(selectedReport2));
+        overallConditionWater.setText(db.getCondition(selectedReport2));
+        virusPPM.setText("" + db.getVirusPPM(selectedReport2));
+        contaminantPPM.setText("" + db.getConditionPPM(selectedReport2));
 
         Button okButton = (Button) findViewById(R.id.OKbutton2);
         okButton.setOnClickListener(new View.OnClickListener() {
