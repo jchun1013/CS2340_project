@@ -72,25 +72,19 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
         db = new SourceReportDataBaseHandler(WaterAvailabilityActivity.this);
         if (db.countReport() > 0) {
-//            String locations = db.getAllLocations();
-//            String[] splitLocations = locations.split(" ");
-            int[] allReports = db.getAllReportNum();
-            for (int i = 0; i < allReports.length;  i++) {
-                Location locationFromDB = db.getLocation(allReports[i]);
-                LatLng loc = new LatLng(locationFromDB.getLatitude(), locationFromDB.getLatitude());
-                mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
-            }
+            String locations = db.getAllLocations();
+            String[] splitLocations = locations.split(" ");
+            if (splitLocations.length > 0) {
+                // Creates string version of lat + long and store
+                for (int i = 0; i < splitLocations.length; i++) {
+                    String[] eachLoc = splitLocations[i].split(",");
+                    //eachLoc[0] : latitude, eachLoc[1] : longitude
+                    LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
 
-//            if (splitLocations.length > 0) {
-//                for (int i = 0; i < splitLocations.length; i++) {
-//                    //String[] eachLoc = splitLocations[i].split(",");
-//                    LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
-//
-//                    mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
-//                    mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
-//                }
-//            }
+                    mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+                }
+            }
         }
 
 
