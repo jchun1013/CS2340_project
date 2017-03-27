@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterSourceReport;
+import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by joon1 on 2017-03-20.
@@ -105,9 +106,9 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
     /**
      * This method gets the location of a report
      * @param rNumber(report number)
-     * @return rNumber's corresponding report's location(latitude,longitude)
+     * @return rNumber's corresponding Location object
      */
-    public String getLocation(int rNumber) {
+    public Location getLocation(int rNumber) {
         String coordinates = "";
         SQLiteDatabase db = this.getReadableDatabase();
         //Cursor cursor = db.query(TABLE_SOURCEREPORT, new String[]{Col_LOCATION}, Col_REPORT_NUMBER + "= ?", new String[]{rNumber}, null,null,null);
@@ -117,7 +118,8 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
             coordinates = cursor.getString(cursor.getColumnIndex(Col_LOCATION));
             cursor.close();
         }
-        return coordinates;
+        String[] eachLoc = coordinates.split(",");
+        return new Location(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
     }
 
     /**
