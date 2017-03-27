@@ -73,7 +73,10 @@ public class ActualSourceReportActivity extends AppCompatActivity {
                 String locality = address.getLocality();
                 String premises = address.getPremises();
                 String country = address.getCountryName();
-                returnAddress += country + " " + locality;
+                returnAddress += country;
+                if (locality != null) {
+                    returnAddress += " " + locality;
+                }
                 if (subLocality != null) {
                     returnAddress += " " + subLocality;
                 }
