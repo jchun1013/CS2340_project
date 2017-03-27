@@ -81,7 +81,7 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
                     //eachLoc[0] : latitude, eachLoc[1] : longitude
                     LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
 
-                    mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
+                    mMap.addMarker(new MarkerOptions().position(loc).title("joon"));
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
                 }
             }

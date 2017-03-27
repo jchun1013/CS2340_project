@@ -5,9 +5,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.location.Address;
+import android.location.Geocoder;
 
 import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterPurityReport;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
+import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReport2;
 
 /**
  * Created by joon1 on 2017-03-24.
@@ -172,4 +180,5 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         }
         return reportNums;
     }
+
 }

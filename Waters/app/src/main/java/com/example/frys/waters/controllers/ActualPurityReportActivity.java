@@ -55,6 +55,7 @@ public class ActualPurityReportActivity extends AppCompatActivity {
         });
     }
 
+    //move inside the database class?
     public String getAddress() {
         Geocoder gc = new Geocoder(ActualPurityReportActivity.this, Locale.getDefault());
         List<Address> addressList;
@@ -65,9 +66,21 @@ public class ActualPurityReportActivity extends AppCompatActivity {
             if (addressList != null && addressList.size() > 0) {
                 Address address = addressList.get(0);
                 String subLocality = address.getSubLocality();
+                String postalCode = address.getPostalCode();
                 String locality = address.getLocality();
+                String premises = address.getPremises();
                 String country = address.getCountryName();
-                returnAddress += country + " " + locality + " " + subLocality;
+                returnAddress += country + " " + locality;
+                if (subLocality != null) {
+                    returnAddress += " " + subLocality;
+                }
+                if (postalCode != null) {
+                    returnAddress += " " + postalCode;
+                }
+                if (premises != null) {
+                    returnAddress += " " + premises;
+                }
+                db.getLocation(selectedReport2).setFullAddress(returnAddress);
             }
         } catch (IOException e) {
             e.printStackTrace();

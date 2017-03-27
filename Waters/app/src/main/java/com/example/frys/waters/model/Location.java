@@ -11,6 +11,7 @@ import java.util.Locale;
 public class Location {
     private double _latitude;
     private double _longitude;
+    private String fullAddress;
 
     /**
      * creates Location with latitude and longitude
@@ -47,6 +48,14 @@ public class Location {
      */
     public void set_longitude(double longi) {
         this._longitude = longi;
+    }
+
+    public String getFullAddress() {
+        return fullAddress;
+    }
+
+    public void setFullAddress(String address) {
+        this.fullAddress = address;
     }
 
     /**
