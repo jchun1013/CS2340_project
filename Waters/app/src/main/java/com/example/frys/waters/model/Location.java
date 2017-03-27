@@ -1,5 +1,9 @@
 package com.example.frys.waters.model;
 
+import android.location.Geocoder;
+
+import java.util.Locale;
+
 /**
  * Created by joon1 on 2017-03-11.
  */
@@ -52,4 +56,5 @@ public class Location {
     public String toString() {
         return "" + getLatitude() + "," + getLongitude();
     }
+
 }
