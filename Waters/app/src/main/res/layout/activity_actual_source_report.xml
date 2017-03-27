@@ -72,26 +72,25 @@
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView4"
-        android:layout_toEndOf="@+id/textView15"
-        android:layout_marginStart="19dp"
-        android:id="@+id/actualDateAndTimeTextView" />
+        android:id="@+id/actualDateAndTimeTextView"
+        android:layout_above="@+id/textView5"
+        android:layout_toEndOf="@+id/OKbutton" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView5"
-        android:layout_alignStart="@+id/actualDateAndTimeTextView"
-        android:id="@+id/reporterNumberTextView" />
+        android:id="@+id/reporterNumberTextView"
+        android:layout_above="@+id/textView7"
+        android:layout_alignStart="@+id/reporterNameTextView" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/reporterNameTextView"
         android:layout_above="@+id/textView9"
-        android:layout_alignEnd="@+id/reporterNumberTextView"
-        android:id="@+id/reporterNameTextView" />
+        android:layout_alignStart="@+id/typeOfWaterTextView" />
 
     <TextView
         android:text="TextView"
@@ -115,9 +114,9 @@
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView13"
-        android:layout_alignStart="@+id/reporterNameTextView"
-        android:id="@+id/typeOfWaterTextView" />
+        android:id="@+id/typeOfWaterTextView"
+        android:layout_above="@+id/textView15"
+        android:layout_alignEnd="@+id/textView3" />
 
     <TextView
         android:text="TextView"
@@ -131,8 +130,8 @@
         android:text="OK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="56dp"
         android:id="@+id/OKbutton"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/conditionOfWaterTextView" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
