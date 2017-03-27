@@ -78,7 +78,7 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
                 // Creates string version of lat + long and store
                 for (int i = 0; i < splitLocations.length; i++) {
                     String[] eachLoc = splitLocations[i].split(",");
-                    //eachLoc[0] -> latitude, eachLoc[1] -> longitude
+                    //eachLoc[0] : latitude, eachLoc[1] : longitude
                     LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
 
                     mMap.addMarker(new MarkerOptions().position(loc).title("Joon"));
