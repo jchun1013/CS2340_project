@@ -22,6 +22,7 @@ import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 public class RegUserActivity extends AppCompatActivity {
     TextView _signOut;
     TextView _edit;
+    TextView _userInfo;
     Button _submitReport;
     Button _viewReport;
     Button _waterAvailabilityMap;
@@ -47,6 +48,9 @@ public class RegUserActivity extends AppCompatActivity {
         _waterAvailabilityMap = (Button) findViewById(R.id.waterAvailabilityMapButton);
         _waterQualityReport = (Button) findViewById(R.id.waterQualityReportButton);
         _viewPurityReport = (Button) findViewById(R.id.viewWaterQualityReportButton);
+
+        _userInfo = (TextView) findViewById(R.id._hello);
+        _userInfo.setText(currentUser.getName() + " (" + currentUser.getUsertype() + ")");
 
         _signOut.setOnClickListener(new View.OnClickListener() {
             @Override
