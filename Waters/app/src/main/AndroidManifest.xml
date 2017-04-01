@@ -71,7 +71,8 @@
         <activity android:name=".controllers.ActualPurityReportActivity" />
         <activity
             android:name=".controllers.PurityReportMap"
-            android:label="@string/title_activity_purity_report_map"></activity>
+            android:label="@string/title_activity_purity_report_map" />
+        <activity android:name=".controllers.HistoryGraphActivity"></activity>
     </application>
 
 </manifest>

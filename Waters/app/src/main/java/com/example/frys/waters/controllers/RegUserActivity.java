@@ -28,6 +28,7 @@ public class RegUserActivity extends AppCompatActivity {
     Button _waterAvailabilityMap;
     Button _waterQualityReport;
     Button _viewPurityReport;
+    Button _historyGraph;
     static List<WaterSourceReport> sourceReports = new ArrayList();
     static List<WaterPurityReport> purityReports = new ArrayList();
 
@@ -48,6 +49,7 @@ public class RegUserActivity extends AppCompatActivity {
         _waterAvailabilityMap = (Button) findViewById(R.id.waterAvailabilityMapButton);
         _waterQualityReport = (Button) findViewById(R.id.waterQualityReportButton);
         _viewPurityReport = (Button) findViewById(R.id.viewWaterQualityReportButton);
+        _historyGraph = (Button) findViewById(R.id.historyGraphButton);
 
         _userInfo = (TextView) findViewById(R.id._hello);
         _userInfo.setText(currentUser.getName() + " (" + currentUser.getUsertype() + ")");
@@ -80,6 +82,13 @@ public class RegUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 launchWaterAvailabilityMap();
+            }
+        });
+
+        _historyGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchHistoryGraph();
             }
         });
 
@@ -146,6 +155,11 @@ public class RegUserActivity extends AppCompatActivity {
 
     private void launchWaterAvailabilityMap() {
         Intent intent = new Intent(getApplicationContext(), WaterAvailabilityActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchHistoryGraph() {
+        Intent intent = new Intent(getApplicationContext(), HistoryGraphActivity.class);
         startActivity(intent);
     }
 }
