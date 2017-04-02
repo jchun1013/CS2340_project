@@ -208,7 +208,7 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from purityReport", null);
         String years = "";
-        for (int i = 0; i < countReport(); i++) {
+        for (int i = 1; i < countReport() + 1; i++) {
             if (loca.equals(getLocation(i).getFullAddress())) {
                 years += getDateTime(i).substring(0, 4) + " ";
             }
