@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static com.example.frys.waters.controllers.ChoosePurityHistoryActivity.chooseLocationviewSpinner;
 import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReport2;
 
 /**
@@ -203,20 +204,27 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         return locArray;
     }
 
-//    public ArrayList<String> getYear(String loc) {
-//        ArrayList<String> list = new ArrayList<>();
-//        String date = "";
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor =  db.rawQuery( "select * from purityReport where location=" + loc + "%" +"", null );
-//        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-//            date += cursor.getString(cursor.getColumnIndex(Col_DATETIME)) + "!";
-//        }
-//
-//        String[] y = date.split("!");
-//        int[] allYears = new int[y.length];
-//        for(int i = 0; i < date.length(); i++) {
-//            list.add(y[i].substring(0,4));
-//        }
-//        return list;
-//    }
+    public String[] getAllYear(String loca) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from purityReport", null);
+        String years = "";
+        for (int i = 0; i < countReport(); i++) {
+            if (loca.equals(getLocation(i).toString())) {
+                years += getDateTime(i).substring(0, 4) + " ";
+            }
+        }
+
+        String[] yearSplit = years.split(" ");
+
+        String[] yearArray = new String[yearSplit.length];
+        if (countReport() > 0) {
+            if (yearArray.length > 0) {
+                for (int i = 0; i < yearArray.length; i++) {
+                    yearArray[i] = yearSplit[i];
+                }
+            }
+        }
+
+        return yearArray;
+    }
 }

@@ -23,7 +23,7 @@ import static com.example.frys.waters.controllers.ViewPurityReportActivity.selec
 
 public class ChoosePurityHistoryActivity extends AppCompatActivity {
 
-    Spinner chooseLocationviewSpinner;
+    static Spinner chooseLocationviewSpinner;
     Spinner choosePPMviewSpinner;
     Spinner chooseyearviewSpinner;
     PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ChoosePurityHistoryActivity.this);
@@ -35,16 +35,17 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choose_purity_history);
 
         List<String> ppmType = Arrays.asList("Virus", "Contaminant");
+        List<String> yearList = new ArrayList<>();
         List<String> locationList = new ArrayList<>();
         for (int i = 1; i < db.countReport() + 1; i++) {
             locationList.add(getAddress(i));
             //locationList.add(db.getLocation(i).toString());
         }
 
-        List<String> yearList = new ArrayList<>();
-        for (int i = 1; i < db.countReport() + 1; i++) {
-            yearList.add(db.getDateTime(i).substring(0,4));
-        }
+//        List<String> yearList = new ArrayList<>();
+//        for (int i = 1; i < db.countReport() + 1; i++) {
+//            yearList.add(db.getDateTime(i).substring(0,4));
+//        }
 
         chooseLocationviewSpinner = (Spinner) findViewById(R.id.chooseLocationSpinner);
         ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(this,
@@ -52,6 +53,11 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         chooseLocationviewSpinner.setAdapter(dataAdapter1);
 
+        String a = (String) chooseLocationviewSpinner.getSelectedItem();
+        String[] years = db.getAllYear(a);
+        for (int i = 0; i < years.length; i++) {
+            yearList.add(years[i]);
+        }
 
         choosePPMviewSpinner = (Spinner) findViewById(R.id.ppmTypeSpinner);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
