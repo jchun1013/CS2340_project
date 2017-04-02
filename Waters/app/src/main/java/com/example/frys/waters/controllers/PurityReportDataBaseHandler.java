@@ -181,4 +181,24 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         return reportNums;
     }
 
+    public String[] getAllLocations() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from purityReport", null);
+        String locs = "";
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            locs += cursor.getString(cursor.getColumnIndex(Col_LOCATION)) + " ";
+        }
+
+        String[] locSplit = locs.split(" ");
+
+        String[] locArray = new String[locSplit.length];
+        if (countReport() > 0) {
+            if (locArray.length > 0) {
+                for (int i = 0; i < locArray.length; i++) {
+                    locArray[i] = locSplit[i];
+                }
+            }
+        }
+        return locArray;
+    }
 }
