@@ -1,6 +1,8 @@
 package com.example.frys.waters.controllers;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +11,15 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.example.frys.waters.R;
+import com.example.frys.waters.model.Location;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+
+import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReport2;
 
 public class ChoosePurityHistoryActivity extends AppCompatActivity {
 
@@ -30,7 +37,8 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         List<String> ppmType = Arrays.asList("Virus", "Contaminant");
         List<String> locationList = new ArrayList<>();
         for (int i = 1; i < db.countReport() + 1; i++) {
-            locationList.add(db.getLocation(i).toString());
+            locationList.add(getAddress(i));
+            //locationList.add(db.getLocation(i).toString());
         }
 
         List<String> yearList = new ArrayList<>();
@@ -73,5 +81,39 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public String getAddress(int report) {
+        Geocoder gc = new Geocoder(ChoosePurityHistoryActivity.this, Locale.getDefault());
+        List<Address> addressList;
+        Location loc = db.getLocation(report);
+        String returnAddress = "";
+        try {
+            addressList = gc.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+            if (addressList != null && addressList.size() > 0) {
+                Address address = addressList.get(0);
+                String subLocality = address.getSubLocality();
+                String postalCode = address.getPostalCode();
+                String locality = address.getLocality();
+                String premises = address.getPremises();
+                String country = address.getCountryName();
+                returnAddress += country;
+                if (locality != null) {
+                    returnAddress += " " + locality;
+                }
+                if (subLocality != null) {
+                    returnAddress += " " + subLocality;
+                }
+                if (postalCode != null) {
+                    returnAddress += " " + postalCode;
+                }
+                if (premises != null) {
+                    returnAddress += " " + premises;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return returnAddress;
     }
 }
