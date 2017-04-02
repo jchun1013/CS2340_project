@@ -29,12 +29,12 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
 
         List<String> ppmType = Arrays.asList("Virus", "Contaminant");
         List<String> locationList = new ArrayList<>();
-        for (int i = 1; i < db.countReport(); i++) {
+        for (int i = 1; i < db.countReport() + 1; i++) {
             locationList.add(db.getLocation(i).toString());
         }
-        
+
         List<String> yearList = new ArrayList<>();
-        for (int i = 1; i < db.countReport(); i++) {
+        for (int i = 1; i < db.countReport() + 1; i++) {
             yearList.add(db.getDateTime(i).substring(0,4));
         }
 
