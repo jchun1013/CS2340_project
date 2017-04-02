@@ -32,7 +32,7 @@ public class WaterPurityReportActivity extends AppCompatActivity {
 
     Spinner overallConditionSpinner;
     static Location newPurityLocation = new Location(0.0, 0.0);
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
     public final String currentDateandTime = sdf.format(new Date());
     PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(WaterPurityReportActivity.this);
 

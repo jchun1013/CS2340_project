@@ -31,7 +31,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
     static Location newLocation = new Location(0.0, 0.0);
     List<WaterSourceReport> lists;
 
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
     public final String currentDateandTime = sdf.format(new Date());
 
     SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this);;

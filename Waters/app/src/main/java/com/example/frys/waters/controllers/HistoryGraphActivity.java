@@ -45,6 +45,5 @@ public class HistoryGraphActivity extends AppCompatActivity {
         graph.setTitle("Historical Purity Report");
         graph.getGridLabelRenderer().setHorizontalAxisTitle("month");
         graph.getGridLabelRenderer().setVerticalAxisTitle("PPM");
-
     }
 }
