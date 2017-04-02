@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import static com.example.frys.waters.controllers.ChoosePurityHistoryActivity.chooseLocationviewSpinner;
 import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReport2;
 
 /**
@@ -200,5 +201,29 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
             }
         }
         return locArray;
+    }
+
+    public String[] getAllYear(String loca) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from purityReport", null);
+        String years = "";
+        for (int i = 0; i < countReport(); i++) {
+            if (loca.equals(getLocation(i).toString())) {
+                years += getDateTime(i).substring(0, 4) + " ";
+            }
+        }
+
+        String[] yearSplit = years.split(" ");
+
+        String[] yearArray = new String[yearSplit.length];
+        if (countReport() > 0) {
+            if (yearArray.length > 0) {
+                for (int i = 0; i < yearArray.length; i++) {
+                    yearArray[i] = yearSplit[i];
+                }
+            }
+        }
+
+        return yearArray;
     }
 }
