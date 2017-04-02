@@ -29,19 +29,20 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
 
         List<String> ppmType = Arrays.asList("Virus", "Contaminant");
         List<String> locationList = new ArrayList<>();
-        for (int i = 0; i < db.countReport(); i++) {
+        for (int i = 1; i < db.countReport(); i++) {
             locationList.add(db.getLocation(i).toString());
         }
-//        List<String> yearList = new ArrayList<>();
-//        for (int i = 0; i < db.countReport(); i++) {
-//            yearList.add(db.getDateTime(i).substring(0,4));
-//        }
+        
+        List<String> yearList = new ArrayList<>();
+        for (int i = 1; i < db.countReport(); i++) {
+            yearList.add(db.getDateTime(i).substring(0,4));
+        }
 
-//        chooseLocationviewSpinner = (Spinner) findViewById(R.id.chooseLocationSpinner);
-//        ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_spinner_item, locationList);
-//        dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        choosePPMviewSpinner.setAdapter(dataAdapter1);
+        chooseLocationviewSpinner = (Spinner) findViewById(R.id.chooseLocationSpinner);
+        ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, locationList);
+        dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        chooseLocationviewSpinner.setAdapter(dataAdapter1);
 
 
         choosePPMviewSpinner = (Spinner) findViewById(R.id.ppmTypeSpinner);
@@ -50,11 +51,11 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         choosePPMviewSpinner.setAdapter(dataAdapter);
 
-//        chooseyearviewSpinner = (Spinner) findViewById(R.id.yearSpinner);
-//        ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_spinner_item, yearList);
-//        dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        choosePPMviewSpinner.setAdapter(dataAdapter3);
+        chooseyearviewSpinner = (Spinner) findViewById(R.id.yearSpinner);
+        ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, yearList);
+        dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        chooseyearviewSpinner.setAdapter(dataAdapter3);
 
         Button submit = (Button) findViewById(R.id.submitButton_choose);
         Button cancel = (Button) findViewById(R.id.cancelButton_choose);
