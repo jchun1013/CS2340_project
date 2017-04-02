@@ -159,7 +159,7 @@ public class RegUserActivity extends AppCompatActivity {
     }
 
     private void launchHistoryGraph() {
-        Intent intent = new Intent(getApplicationContext(), HistoryGraphActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ChoosePurityHistoryActivity.class);
         startActivity(intent);
     }
 }
