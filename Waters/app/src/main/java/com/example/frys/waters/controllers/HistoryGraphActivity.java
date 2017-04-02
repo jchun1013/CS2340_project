@@ -33,7 +33,7 @@ public class HistoryGraphActivity extends AppCompatActivity {
         }
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
-        series = new LineGrap hSeries<DataPoint>();
+        series = new LineGraphSeries<DataPoint>();
         for (int i = 0; i < db.countReport(); i++) {
             String dateAndTime = db.getDateTime(i);
             String month = dateAndTime.substring(4, 6);
