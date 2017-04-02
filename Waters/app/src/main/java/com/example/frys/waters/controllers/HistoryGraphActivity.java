@@ -28,6 +28,7 @@ public class HistoryGraphActivity extends AppCompatActivity {
 
         for (int i = 0; i < db.countReport(); i++) {
             if (list.containsKey(db.getVirusPPM(i))) {
+
             }
         }
 
