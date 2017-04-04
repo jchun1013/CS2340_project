@@ -26,11 +26,11 @@ public class HistoryGraphActivity extends AppCompatActivity {
 
         Map<String, Integer> list = new HashMap();
 
-        for (int i = 0; i < db.countReport(); i++) {
-            if (list.containsKey(db.getVirusPPM(i))) {
-
-            }
-        }
+//        for (int i = 0; i < db.countReport(); i++) {
+//            if (list.containsKey(db.getVirusPPM(i))) {
+//
+//            }
+//        }
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         series = new LineGraphSeries<DataPoint>();
