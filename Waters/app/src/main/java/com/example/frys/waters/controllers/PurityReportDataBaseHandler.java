@@ -226,7 +226,6 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
                 }
             }
         }
-
         return yearArray;
     }
 }
