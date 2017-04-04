@@ -16,8 +16,10 @@ import com.example.frys.waters.model.Location;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReport2;
 
@@ -25,7 +27,7 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
 
     static Spinner chooseLocationviewSpinner;
     Spinner choosePPMviewSpinner;
-    Spinner chooseyearviewSpinner;
+
     PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ChoosePurityHistoryActivity.this);
 
 
@@ -35,30 +37,19 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choose_purity_history);
 
         List<String> ppmType = Arrays.asList("Virus", "Contaminant");
-        List<String> yearList = new ArrayList<>();
-        List<String> locationList = new ArrayList<>();
-        for (int i = 1; i < db.countReport() + 1; i++) {
-            locationList.add(getAddress(i));
-            //locationList.add(db.getLocation(i).toString());
-        }
 
-//        List<String> yearList = new ArrayList<>();
-//        for (int i = 1; i < db.countReport() + 1; i++) {
-//            yearList.add(db.getDateTime(i).substring(0,4));
-//        }
+        Set<String> locationSet = new HashSet<>();
+        for (int i = 1; i < db.countReport() + 1; i++) {
+            locationSet.add(getAddress(i));
+        }
+        List<String> locationlist = new ArrayList<>();
+        locationlist.addAll(locationSet);
 
         chooseLocationviewSpinner = (Spinner) findViewById(R.id.chooseLocationSpinner);
         ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, locationList);
+                android.R.layout.simple_spinner_item, locationlist);
         dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         chooseLocationviewSpinner.setAdapter(dataAdapter1);
-
-        String a = (String) chooseLocationviewSpinner.getSelectedItem();
-        for (int i = 1; i < db.countReport() + 1; i++) {
-            if (a.compareToIgnoreCase(getAddress(db.getLat(i), db.getLog(i))) == 0) {
-                    yearList.add(db.getDateTime(i).substring(0, 4));
-            }
-        }
 
         choosePPMviewSpinner = (Spinner) findViewById(R.id.ppmTypeSpinner);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -66,19 +57,13 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         choosePPMviewSpinner.setAdapter(dataAdapter);
 
-        chooseyearviewSpinner = (Spinner) findViewById(R.id.yearSpinner);
-        ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, yearList);
-        dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        chooseyearviewSpinner.setAdapter(dataAdapter3);
-
-        Button submit = (Button) findViewById(R.id.submitButton_choose);
+        Button next = (Button) findViewById(R.id.nextButton_choose);
         Button cancel = (Button) findViewById(R.id.cancelButton_choose);
 
-        submit.setOnClickListener(new View.OnClickListener() {
+        next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ChoosePurityHistoryActivity.this, HistoryGraphActivity.class));
+                startActivity(new Intent(ChoosePurityHistoryActivity.this, ChoosePurityYearActivity.class));
             }
         });
 
@@ -99,11 +84,12 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
             addressList = gc.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
             if (addressList != null && addressList.size() > 0) {
                 Address address = addressList.get(0);
+                String country = address.getCountryName();
+                String locality = address.getLocality();
                 String subLocality = address.getSubLocality();
                 String postalCode = address.getPostalCode();
-                String locality = address.getLocality();
                 String premises = address.getPremises();
-                String country = address.getCountryName();
+
                 returnAddress += country;
                 if (locality != null) {
                     returnAddress += " " + locality;
@@ -124,37 +110,4 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         return returnAddress;
     }
 
-    public String getAddress(double lat, double log) {
-        Geocoder gc = new Geocoder(ChoosePurityHistoryActivity.this, Locale.getDefault());
-        List<Address> addressList;
-        //Location loc = new Location(lat, log);
-        String returnAddress = "";
-        try {
-            addressList = gc.getFromLocation(lat, log, 1);
-            if (addressList != null && addressList.size() > 0) {
-                Address address = addressList.get(0);
-                String subLocality = address.getSubLocality();
-                String postalCode = address.getPostalCode();
-                String locality = address.getLocality();
-                String premises = address.getPremises();
-                String country = address.getCountryName();
-                returnAddress += country;
-                if (locality != null) {
-                    returnAddress += " " + locality;
-                }
-                if (subLocality != null) {
-                    returnAddress += " " + subLocality;
-                }
-                if (postalCode != null) {
-                    returnAddress += " " + postalCode;
-                }
-                if (premises != null) {
-                    returnAddress += " " + premises;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return returnAddress;
-    }
 }
