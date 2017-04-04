@@ -49,7 +49,7 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
         dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         chooseyearviewSpinner.setAdapter(dataAdapter3);
 
-        Button submit = (Button) findViewById(R.id.submitButton_choose);
+        Button submit = (Button) findViewById(R.id.submitButton_choose1);
         Button cancel = (Button) findViewById(R.id.cancelButton_choose);
 
         submit.setOnClickListener(new View.OnClickListener() {
