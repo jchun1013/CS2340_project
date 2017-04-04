@@ -37,7 +37,7 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
 
         String a = (String) chooseLocationviewSpinner.getSelectedItem();
         for (int i = 1; i < db.countReport() + 1; i++) {
-            if (a.compareToIgnoreCase(getAddress(db.getLat(i), db.getLog(i))) == 0) {
+            if (getAddress(db.getLat(i), db.getLog(i)).indexOf(a) >= 0) {
                 yearSet.add(db.getDateTime(i));
             }
         }
