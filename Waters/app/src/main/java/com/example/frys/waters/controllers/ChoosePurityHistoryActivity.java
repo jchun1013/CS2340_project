@@ -54,9 +54,10 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         chooseLocationviewSpinner.setAdapter(dataAdapter1);
 
         String a = (String) chooseLocationviewSpinner.getSelectedItem();
-        String[] years = db.getAllYear(a);
-        for (int i = 0; i < years.length; i++) {
-            yearList.add(years[i]);
+        for (int i = 1; i < db.countReport() + 1; i++) {
+            if (a.compareToIgnoreCase(getAddress(db.getLat(i), db.getLog(i))) == 0) {
+                    yearList.add(db.getDateTime(i).substring(0, 4));
+            }
         }
 
         choosePPMviewSpinner = (Spinner) findViewById(R.id.ppmTypeSpinner);
@@ -96,6 +97,40 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         String returnAddress = "";
         try {
             addressList = gc.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+            if (addressList != null && addressList.size() > 0) {
+                Address address = addressList.get(0);
+                String subLocality = address.getSubLocality();
+                String postalCode = address.getPostalCode();
+                String locality = address.getLocality();
+                String premises = address.getPremises();
+                String country = address.getCountryName();
+                returnAddress += country;
+                if (locality != null) {
+                    returnAddress += " " + locality;
+                }
+                if (subLocality != null) {
+                    returnAddress += " " + subLocality;
+                }
+                if (postalCode != null) {
+                    returnAddress += " " + postalCode;
+                }
+                if (premises != null) {
+                    returnAddress += " " + premises;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return returnAddress;
+    }
+
+    public String getAddress(double lat, double log) {
+        Geocoder gc = new Geocoder(ChoosePurityHistoryActivity.this, Locale.getDefault());
+        List<Address> addressList;
+        //Location loc = new Location(lat, log);
+        String returnAddress = "";
+        try {
+            addressList = gc.getFromLocation(lat, log, 1);
             if (addressList != null && addressList.size() > 0) {
                 Address address = addressList.get(0);
                 String subLocality = address.getSubLocality();
