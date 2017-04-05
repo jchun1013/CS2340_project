@@ -24,7 +24,7 @@ import static com.example.frys.waters.controllers.ChoosePurityHistoryActivity.ch
 public class ChoosePurityYearActivity extends AppCompatActivity {
 
     Spinner chooseyearviewSpinner;
-    static int
+    static List<Integer> reportsToShow;
 
     PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ChoosePurityYearActivity.this);
 
@@ -33,13 +33,15 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_purity_year);
 
+        reportsToShow = new ArrayList<>();
         List<String> yearList = new ArrayList<>();
         Set<String> yearSet = new HashSet<>();
 
         String a = (String) chooseLocationviewSpinner.getSelectedItem();
         for (int i = 1; i < db.countReport() + 1; i++) {
             if (getAddress(db.getLat(i), db.getLog(i)).indexOf(a) >= 0) {
-                yearSet.add(db.getDateTime(i));
+                yearSet.add(db.getDateTime(i).substring(0,4));
+                reportsToShow.add(i);
             }
         }
         yearList.addAll(yearSet);
