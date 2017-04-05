@@ -1,8 +1,11 @@
 package com.example.frys.waters.controllers;
 
+import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.frys.waters.R;
 import com.jjoe64.graphview.GraphView;
@@ -49,5 +52,15 @@ public class HistoryGraphActivity extends AppCompatActivity {
         graph.setTitle("Historical Purity Report");
         graph.getGridLabelRenderer().setHorizontalAxisTitle("month");
         graph.getGridLabelRenderer().setVerticalAxisTitle("PPM");
+
+        Button OKButton = (Button) findViewById(R.id.OKButton3);
+
+        OKButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(HistoryGraphActivity.this, RegUserActivity.class));
+            }
+        });
     }
 }
