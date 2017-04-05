@@ -24,6 +24,7 @@ import static com.example.frys.waters.controllers.ChoosePurityHistoryActivity.ch
 public class ChoosePurityYearActivity extends AppCompatActivity {
 
     Spinner chooseyearviewSpinner;
+    static int
 
     PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ChoosePurityYearActivity.this);
 

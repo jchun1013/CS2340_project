@@ -26,7 +26,7 @@ import static com.example.frys.waters.controllers.ViewPurityReportActivity.selec
 public class ChoosePurityHistoryActivity extends AppCompatActivity {
 
     static Spinner chooseLocationviewSpinner;
-    Spinner choosePPMviewSpinner;
+    static Spinner choosePPMviewSpinner;
 
     PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ChoosePurityHistoryActivity.this);
 

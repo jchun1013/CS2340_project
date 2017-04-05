@@ -22,8 +22,8 @@ public class HistoryGraphActivity extends AppCompatActivity {
         GraphView graph = (GraphView) findViewById(R.id.graph);
         series = new LineGraphSeries<DataPoint>();
         for (int i = 0; i < 10; i++) {
-            x = x + 1;
-            y = x * x;
+            x = i;
+            y = i + 3;
             series.appendData(new DataPoint(x, y), true, 10);
         }
 
