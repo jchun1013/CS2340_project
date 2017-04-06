@@ -65,6 +65,11 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public WaterPurityReport getPurityReport(int rNumber) {
+        return new WaterPurityReport(getDateTime(rNumber), rNumber, getNameOfWorker(rNumber), getLocation(rNumber),
+                getCondition(rNumber), getVirusPPM(rNumber), getConditionPPM(rNumber));
+    }
+
     public void addPurityReport(WaterPurityReport report) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
