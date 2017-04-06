@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "534063996074",
-    "firebase_url": "https://waters-database.firebaseio.com",
-    "project_id": "waters-database",
-    "storage_bucket": "waters-database.appspot.com"
+    "project_number": "135188862303",
+    "firebase_url": "https://waters-1977e.firebaseio.com",
+    "project_id": "waters-1977e",
+    "storage_bucket": "waters-1977e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:534063996074:android:86324edcdd6c9d69",
+        "mobilesdk_app_id": "1:135188862303:android:86324edcdd6c9d69",
         "android_client_info": {
           "package_name": "com.example.frys.waters"
         }
       },
       "oauth_client": [
         {
-          "client_id": "534063996074-cleujmran35ob4rk4as186eeo1fp0e5n.apps.googleusercontent.com",
+          "client_id": "135188862303-5ol8tf5v49g3d222emeh8qripcl5ldtf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.frys.waters",
+            "certificate_hash": "7076e9edc97003b9657330f74adbfb869ff8cc8f"
+          }
+        },
+        {
+          "client_id": "135188862303-3fjb5q6lh1tubbp3i2p531s97tbq3i61.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAZatUmPGnJJpDimMmr8EnrnuX_qh90Azg"
+          "current_key": "AIzaSyCDg4XNsEW8riELbeKNGCMapYvxmR18vys"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135188862303-3fjb5q6lh1tubbp3i2p531s97tbq3i61.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
