@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 import static com.example.frys.waters.controllers.ViewReportActivity.selectedReport;
+import static com.example.frys.waters.controllers.ViewReportActivity.selectedReportObject;
 import static com.example.frys.waters.controllers.ViewReportActivity.viewSpinner;
 
 /**
@@ -41,13 +42,12 @@ public class ActualSourceReportActivity extends AppCompatActivity {
         TextView typeOfWater = (TextView) findViewById(R.id.typeOfWaterTextView);
         TextView conditionWater = (TextView) findViewById(R.id.conditionOfWaterTextView);
 
-        dateAndTime.setText(db.getDateTime(selectedReport));
+        dateAndTime.setText(selectedReportObject.getDateTime());
         reporterNum.setText("" + selectedReport);
-        reporterName.setText(db.getReporterName(selectedReport));
-        //waterLocation.setText(db.getLocation(selectedReport).toString());
+        reporterName.setText(selectedReportObject.getNameOfReporter());
         waterLocation.setText(getAddress());
-        typeOfWater.setText(db.getWaterType(selectedReport));
-        conditionWater.setText(db.getCondition(selectedReport));
+        typeOfWater.setText(selectedReportObject.getTypeOfWater());
+        conditionWater.setText(selectedReportObject.getCondition());
 
         Button okButton = (Button) findViewById(R.id.OKbutton);
         okButton.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +62,7 @@ public class ActualSourceReportActivity extends AppCompatActivity {
     public String getAddress() {
         Geocoder gc = new Geocoder(ActualSourceReportActivity.this, Locale.getDefault());
         List<Address> addressList;
-        Location loc = db.getLocation(selectedReport);
+        Location loc = selectedReportObject.getLocation();
         String returnAddress = "";
         try {
             addressList = gc.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
@@ -86,7 +86,7 @@ public class ActualSourceReportActivity extends AppCompatActivity {
                 if (premises != null) {
                     returnAddress += " " + premises;
                 }
-                db.getLocation(selectedReport).setFullAddress(returnAddress);
+                //db.getLocation(selectedReport).setFullAddress(returnAddress);
             }
         } catch (IOException e) {
             e.printStackTrace();

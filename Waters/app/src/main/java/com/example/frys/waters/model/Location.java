@@ -13,6 +13,10 @@ public class Location {
     private double _longitude;
     private String fullAddress;
 
+    public Location() {
+
+    }
+
     /**
      * creates Location with latitude and longitude
      * @param lat latitude

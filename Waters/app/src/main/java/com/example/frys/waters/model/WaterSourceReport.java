@@ -13,6 +13,9 @@ public class WaterSourceReport {
     private String condition;
     private String waterType;
 
+    public WaterSourceReport() {
+
+    }
 
     public WaterSourceReport(String dateTime, int reportNumber,
                              String nameOfReporter, Location location, String condition, String waterType) {

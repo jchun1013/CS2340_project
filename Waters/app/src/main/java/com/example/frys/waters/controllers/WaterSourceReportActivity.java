@@ -17,6 +17,8 @@ import com.example.frys.waters.R;
 import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterSourceReport;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -35,6 +37,9 @@ public class WaterSourceReportActivity extends AppCompatActivity {
     public final String currentDateandTime = sdf.format(new Date());
 
     SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this);;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getInstance().getReference("source report");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +101,9 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                             newLoc, (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
                     sourceReports.add(newReport);
                     db.addSourceReport(newReport);
+
+                    String id = databaseReference.push().getKey();
+                    databaseReference.child(id).setValue(newReport);
                     startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));
                     finish();
                 }

@@ -16,6 +16,10 @@ public class WaterPurityReport {
     private double virusPPM;
     private double contaminantPPM;
 
+    public WaterPurityReport() {
+
+    }
+
     public WaterPurityReport(String dateTime, int reportNumber, String nameOfWorker
             , Location location, String condition, double virusPPM, double contaminantPPM) {
         this.dateTime = dateTime;

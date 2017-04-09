@@ -36,6 +36,9 @@ public class User {
         this.homeAddress = address;
     }
 
+    public User() {
+
+    }
     /**
      * getter for name
      * @return name
