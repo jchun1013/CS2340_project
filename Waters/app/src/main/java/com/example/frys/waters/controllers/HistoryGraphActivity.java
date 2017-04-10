@@ -27,8 +27,8 @@ public class HistoryGraphActivity extends AppCompatActivity {
     PointsGraphSeries<DataPoint> series;
     PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(HistoryGraphActivity.this);
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = database.getInstance().getReference("purity report");
+//    FirebaseDatabase database = FirebaseDatabase.getInstance();
+//    DatabaseReference databaseReference = database.getInstance().getReference("purity report");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
