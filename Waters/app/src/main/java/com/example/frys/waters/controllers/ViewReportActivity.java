@@ -41,6 +41,7 @@ public class ViewReportActivity extends AppCompatActivity {
     private List<Integer> reports = new ArrayList<>();
     private Map<Integer, WaterSourceReport> reportMap = new HashMap<>();
     public static WaterSourceReport selectedReportObject;
+    List<DataSnapshot> lists = new ArrayList<>();
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -88,10 +89,9 @@ public class ViewReportActivity extends AppCompatActivity {
 
                 for (DataSnapshot child : children) {
                     WaterSourceReport childValue = child.getValue(WaterSourceReport.class);
-                    System.out.println(child);
-                    System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-                    System.out.println(childValue.getTypeOfWater());
-                    System.out.println(childValue.getCondition());
+                    childValue.setTypeOfWater(child.child("typeOfWater").getValue().toString());
+                    childValue.setLocation(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
+                        , Double.parseDouble(child.child("location").child("longitude").getValue().toString()));
                     reportMap.put(childValue.getReportNumber(), childValue);
                     reports.add(childValue.getReportNumber());
                 }

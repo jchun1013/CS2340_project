@@ -67,6 +67,14 @@ public class WaterSourceReport {
      */
     public String getTypeOfWater() { return waterType; }
 
+    public void setTypeOfWater(String waterType) {
+        this.waterType = waterType;
+    }
+
+    public void setLocation(double lat, double log) {
+        this.location = new Location(lat, log);
+    }
+
     /**
      * returns string representation of the historical report
      */
