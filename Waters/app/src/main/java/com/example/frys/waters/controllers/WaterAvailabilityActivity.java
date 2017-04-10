@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.frys.waters.R;
@@ -19,9 +21,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -40,6 +46,7 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private List<WaterSourceReport> reports;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -53,6 +60,10 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+
+        getAllReports();
+
+        reports = new ArrayList<>();
 
         setContentView(R.layout.activity_water_availability);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -74,20 +85,15 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        db = new SourceReportDataBaseHandler(WaterAvailabilityActivity.this);
-        if (db.countReport() > 0) {
-            String locations = db.getAllLocations();
-            String[] splitLocations = locations.split(" ");
-            if (splitLocations.length > 0) {
-                // Creates string version of lat + long and store
-                for (int i = 0; i < splitLocations.length; i++) {
-                    String[] eachLoc = splitLocations[i].split(",");
-                    //eachLoc[0] : latitude, eachLoc[1] : longitude
-                    LatLng loc = new LatLng(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
+        //db = new SourceReportDataBaseHandler(WaterAvailabilityActivity.this);
 
-                    mMap.addMarker(new MarkerOptions().position(loc).title("joon"));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
-                }
+        if (reports.size() > 0) {
+            for (WaterSourceReport r : reports) {
+                Location location = r.getLocation();
+                LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+
+                mMap.addMarker(new MarkerOptions().position(loc).title(r.getNameOfReporter()));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
             }
         }
 
@@ -114,9 +120,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
                     newLocation.set_latitude((latLng.latitude));
                     newLocation.set_longitude((latLng.longitude));
 
-                    //Geocoder geocoder = new Geocoder(this, Locale.getDafault());
-                    //List<String> address = geocoder.getFromLocation(newLocation.getLatitude(), newLocation.getLongitude(), 1);
-
                     currentUser.setIsReporting(false);
                     finish();
                 }
@@ -142,6 +145,28 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
             });
         }
 
+    }
+
+    private void getAllReports() {
+        databaseReference.child("source report").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+
+                for (DataSnapshot child : children) {
+                    WaterSourceReport childValue = child.getValue(WaterSourceReport.class);
+                    childValue.setTypeOfWater(child.child("typeOfWater").getValue().toString());
+                    childValue.setLocation(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
+                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString()));
+                    reports.add(childValue);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
