@@ -49,6 +49,22 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_source_report);
 
+
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int count = (int) dataSnapshot.getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
         //water type and water conditions array
         List<String> conditions = Arrays.asList("Waste", "Treatable-Clear", "Treatable-Muddy", "Portable");
         List<String> waterType = Arrays.asList("Bottled", "Well", "Stream", "Lake", "Spring", "Other");
