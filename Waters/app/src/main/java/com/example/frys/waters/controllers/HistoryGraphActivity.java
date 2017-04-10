@@ -25,10 +25,7 @@ import static com.example.frys.waters.controllers.ChoosePurityYearActivity.repor
 
 public class HistoryGraphActivity extends AppCompatActivity {
     PointsGraphSeries<DataPoint> series;
-    PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(HistoryGraphActivity.this);
 
-//    FirebaseDatabase database = FirebaseDatabase.getInstance();
-//    DatabaseReference databaseReference = database.getInstance().getReference("purity report");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +39,6 @@ public class HistoryGraphActivity extends AppCompatActivity {
 
         double[] ppms = new double[12];
         int[] count = new int[12];
-        //series = new LineGraphSeries<DataPoint>();
         String ppmType = (String) choosePPMviewSpinner.getSelectedItem();
         for (int i = 0; i < reportsToShow.size(); i++) {
             int month = Integer.parseInt(reportsToShow.get(i).getDateTime().substring(5,7));
@@ -54,17 +50,6 @@ public class HistoryGraphActivity extends AppCompatActivity {
             }
             count[month]++;
             ppms[month] = ppms[month] + ppm;
-//            int reportNumber = reportsToShow.get(i);
-//            int month = Integer.parseInt(db.getDateTime(reportNumber).substring(5,7));
-//
-//            double ppm;
-//            if (ppmType.indexOf("Virus") == 0) {
-//                ppm = (int) db.getVirusPPM(reportNumber);
-//            } else {
-//                ppm = (int) db.getConditionPPM(reportNumber);
-//            }
-//           count[month]++;
-//            ppms[month] = ppms[month] + ppm;
         }
         DataPoint[] list = new DataPoint[1];
         int j = 0;

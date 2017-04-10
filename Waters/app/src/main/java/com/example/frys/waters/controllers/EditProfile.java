@@ -49,14 +49,6 @@ public class EditProfile extends AppCompatActivity {
         _email.setText(currentUser.getEmailAddress());
         _address.setText(currentUser.getHomeAddress());
 
-
-        //user = (User) getIntent().getSerializableExtra("USER");
-
-//        _username.setText(user.getUserName());
-//        _name.setText(user.getName());
-//        _email.setText(user.getEmail());
-//        _address.setText(user.getAddress());
-
         _edit_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

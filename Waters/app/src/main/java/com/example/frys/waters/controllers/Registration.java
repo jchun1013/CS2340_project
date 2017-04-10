@@ -43,7 +43,6 @@ public class Registration extends AppCompatActivity {
 
     private Spinner userTypeSpinner;
     private Spinner typeSpinner;
-    RegistrationDataBaseHandler db = new RegistrationDataBaseHandler(Registration.this);
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getInstance().getReference("user");

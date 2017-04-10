@@ -30,7 +30,6 @@ public class ViewPurityReportActivity extends AppCompatActivity {
 
     public static Spinner viewSpinner2;
     public static int selectedReport2;
-    //PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ViewPurityReportActivity.this);
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private List<Integer> reports = new ArrayList<>();
@@ -58,13 +57,10 @@ public class ViewPurityReportActivity extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         viewSpinner2.setAdapter(dataAdapter);
 
-
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                //startActivity(new Intent(WelcomeScreen.this, LoginActivity.class));
             }
         });
 
@@ -86,7 +82,6 @@ public class ViewPurityReportActivity extends AppCompatActivity {
 
                 for (DataSnapshot child : children) {
                     WaterPurityReport childValue = child.getValue(WaterPurityReport.class);
-//                    childValue.setTypeOfWater(child.child("typeOfWater").getValue().toString());
                     childValue.setLocation(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
                             , Double.parseDouble(child.child("location").child("longitude").getValue().toString()));
                     reportMap.put(childValue.getReportNumber(), childValue);
