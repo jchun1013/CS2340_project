@@ -35,29 +35,28 @@ public class HistoryGraphActivity extends AppCompatActivity {
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
 
-        int[] ppms = new int[12];
+        double[] ppms = new double[12];
         int[] count = new int[12];
         //series = new LineGraphSeries<DataPoint>();
         String ppmType = (String) choosePPMviewSpinner.getSelectedItem();
         for (int i = 0; i < reportsToShow.size(); i++) {
             int reportNumber = reportsToShow.get(i);
             int month = Integer.parseInt(db.getDateTime(reportNumber).substring(5,7));
+
             double ppm;
             if (ppmType.indexOf("Virus") == 0) {
                 ppm = (int) db.getVirusPPM(reportNumber);
             } else {
                 ppm = (int) db.getConditionPPM(reportNumber);
             }
-            count[month]++;
-            ppms[month] += ppm;
-            //list[i] = new DataPoint(month, ppm / count[month]);
+           count[month]++;
+            ppms[month] = ppms[month] + ppm;
         }
         DataPoint[] list = new DataPoint[1];
         int j = 0;
         for (int i = 0; i < count.length; i++) {
             if (count[i] != 0) {
                 list[j] = new DataPoint(i, (double)ppms[i] / count[i]);
-                System.out.println("HIIIIIIIIIIIIIIIIIIIII" +  ppms[i] + "    " + count[i]);
                 j++;
             }
         }
