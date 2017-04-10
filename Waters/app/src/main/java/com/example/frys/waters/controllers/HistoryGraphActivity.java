@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.frys.waters.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -24,6 +26,9 @@ import static com.example.frys.waters.controllers.ChoosePurityYearActivity.repor
 public class HistoryGraphActivity extends AppCompatActivity {
     PointsGraphSeries<DataPoint> series;
     PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(HistoryGraphActivity.this);
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getInstance().getReference("purity report");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

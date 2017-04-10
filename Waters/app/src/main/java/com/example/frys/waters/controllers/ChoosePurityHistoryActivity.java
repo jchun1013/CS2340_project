@@ -12,6 +12,12 @@ import android.widget.Spinner;
 
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.Location;
+import com.example.frys.waters.model.WaterSourceReport;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +36,10 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
 
     PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ChoosePurityHistoryActivity.this);
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getReference();
+
+    Set<String> locationSet = new HashSet<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +48,14 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
 
         List<String> ppmType = Arrays.asList("Virus", "Contaminant");
 
-        Set<String> locationSet = new HashSet<>();
-        for (int i = 1; i < db.countReport() + 1; i++) {
-            locationSet.add(getAddress(i));
-        }
+        getAllLocation();
+
         List<String> locationlist = new ArrayList<>();
         locationlist.addAll(locationSet);
+
+//        for (int i = 1; i < db.countReport() + 1; i++) {
+//            locationSet.add(getAddress(i));
+//        }
 
         chooseLocationviewSpinner = (Spinner) findViewById(R.id.chooseLocationSpinner);
         ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(this,
@@ -75,21 +87,20 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         });
     }
 
-    public String getAddress(int report) {
+    public String getAddress(Location loc) {
         Geocoder gc = new Geocoder(ChoosePurityHistoryActivity.this, Locale.getDefault());
         List<Address> addressList;
-        Location loc = db.getLocation(report);
+        Location loce = loc;
         String returnAddress = "";
         try {
-            addressList = gc.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+            addressList = gc.getFromLocation(loce.getLatitude(), loce.getLongitude(), 1);
             if (addressList != null && addressList.size() > 0) {
                 Address address = addressList.get(0);
-                String country = address.getCountryName();
-                String locality = address.getLocality();
                 String subLocality = address.getSubLocality();
                 String postalCode = address.getPostalCode();
+                String locality = address.getLocality();
                 String premises = address.getPremises();
-
+                String country = address.getCountryName();
                 returnAddress += country;
                 if (locality != null) {
                     returnAddress += " " + locality;
@@ -108,6 +119,36 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return returnAddress;
+    }
+
+    public void getAllLocation() {
+        databaseReference.child("purity report").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+
+                for (DataSnapshot child : children) {
+
+                    Location childValue = child.getValue(Location.class);
+                    System.out.println("_____________________________________________");
+                    //System.out.println("" + childValue.getLatitude() + childValue.getLongitude());
+                    System.out.println(getAddress(new Location(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
+                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString()))));
+                    locationSet.add(getAddress(new Location(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
+                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString());
+//                    locationSet.add(getAddress(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
+//                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString())));
+                    System.out.println(Double.parseDouble(child.child("location").child("latitude").getValue().toString()));
+                    System.out.println(Double.parseDouble(child.child("location").child("longitude").getValue().toString()));
+//                    System.out.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }

@@ -145,6 +145,10 @@ public class Registration extends AppCompatActivity {
             return;
         }
 
+        if (password.length() < 6) {
+            Toast.makeText(this, "Password is too short. Must be longer than 6", Toast.LENGTH_LONG). show();
+        }
+
         //creating a new user
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
