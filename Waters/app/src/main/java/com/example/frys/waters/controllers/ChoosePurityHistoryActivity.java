@@ -40,6 +40,7 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
     DatabaseReference databaseReference = database.getReference();
 
     Set<String> locationSet = new HashSet<>();
+    List<String> locationlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,19 +50,6 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         List<String> ppmType = Arrays.asList("Virus", "Contaminant");
 
         getAllLocation();
-
-        List<String> locationlist = new ArrayList<>();
-        locationlist.addAll(locationSet);
-
-//        for (int i = 1; i < db.countReport() + 1; i++) {
-//            locationSet.add(getAddress(i));
-//        }
-
-        chooseLocationviewSpinner = (Spinner) findViewById(R.id.chooseLocationSpinner);
-        ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, locationlist);
-        dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        chooseLocationviewSpinner.setAdapter(dataAdapter1);
 
         choosePPMviewSpinner = (Spinner) findViewById(R.id.ppmTypeSpinner);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -128,20 +116,17 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
 
                 for (DataSnapshot child : children) {
-
                     Location childValue = child.getValue(Location.class);
-                    System.out.println("_____________________________________________");
-                    //System.out.println("" + childValue.getLatitude() + childValue.getLongitude());
-                    System.out.println(getAddress(new Location(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
-                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString()))));
                     locationSet.add(getAddress(new Location(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
-                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString());
-//                    locationSet.add(getAddress(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
-//                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString())));
-                    System.out.println(Double.parseDouble(child.child("location").child("latitude").getValue().toString()));
-                    System.out.println(Double.parseDouble(child.child("location").child("longitude").getValue().toString()));
-//                    System.out.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString()))));
                 }
+                locationlist = new ArrayList<>(locationSet);
+
+                chooseLocationviewSpinner = (Spinner) findViewById(R.id.chooseLocationSpinner);
+                ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(ChoosePurityHistoryActivity.this,
+                        android.R.layout.simple_spinner_item, locationlist);
+                dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                chooseLocationviewSpinner.setAdapter(dataAdapter1);
             }
 
             @Override
