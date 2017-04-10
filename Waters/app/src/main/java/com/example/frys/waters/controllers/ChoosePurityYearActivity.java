@@ -12,6 +12,8 @@ import android.widget.Spinner;
 
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.Location;
+import com.example.frys.waters.model.WaterPurityReport;
+import com.example.frys.waters.model.WaterSourceReport;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +32,7 @@ import static com.example.frys.waters.controllers.ChoosePurityHistoryActivity.ch
 public class ChoosePurityYearActivity extends AppCompatActivity {
 
     Spinner chooseyearviewSpinner;
-    static List<Integer> reportsToShow;
+    static List<WaterPurityReport> reportsToShow;
     List<String> yearList = new ArrayList<>();
     Set<String> yearSet = new HashSet<>();
 
@@ -112,7 +114,7 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
                     if (getAddress(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
                             , Double.parseDouble(child.child("location").child("longitude").getValue().toString())).indexOf(a) >= 0) {
                         yearSet.add(child.child("dateTime").getValue().toString().substring(0,4));
-                        reportsToShow.add(Integer.parseInt(child.child("reportNumber").getValue().toString()));
+                        reportsToShow.add(child.getValue(WaterPurityReport.class));
                     }
                 }
                 yearList.addAll(yearSet);

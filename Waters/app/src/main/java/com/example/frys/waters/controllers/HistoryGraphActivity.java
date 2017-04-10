@@ -45,17 +45,26 @@ public class HistoryGraphActivity extends AppCompatActivity {
         //series = new LineGraphSeries<DataPoint>();
         String ppmType = (String) choosePPMviewSpinner.getSelectedItem();
         for (int i = 0; i < reportsToShow.size(); i++) {
-            int reportNumber = reportsToShow.get(i);
-            int month = Integer.parseInt(db.getDateTime(reportNumber).substring(5,7));
-
+            int month = Integer.parseInt(reportsToShow.get(i).getDateTime().substring(5,7));
             double ppm;
             if (ppmType.indexOf("Virus") == 0) {
-                ppm = (int) db.getVirusPPM(reportNumber);
+                ppm = reportsToShow.get(i).getVirusPPM();
             } else {
-                ppm = (int) db.getConditionPPM(reportNumber);
+                ppm = reportsToShow.get(i).getContaminantPPM();
             }
-           count[month]++;
+            count[month]++;
             ppms[month] = ppms[month] + ppm;
+//            int reportNumber = reportsToShow.get(i);
+//            int month = Integer.parseInt(db.getDateTime(reportNumber).substring(5,7));
+//
+//            double ppm;
+//            if (ppmType.indexOf("Virus") == 0) {
+//                ppm = (int) db.getVirusPPM(reportNumber);
+//            } else {
+//                ppm = (int) db.getConditionPPM(reportNumber);
+//            }
+//           count[month]++;
+//            ppms[month] = ppms[month] + ppm;
         }
         DataPoint[] list = new DataPoint[1];
         int j = 0;
