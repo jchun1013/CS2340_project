@@ -35,7 +35,6 @@ public class WaterSourceReportActivity extends AppCompatActivity {
     Spinner waterTypeSpinner;
     static Location newLocation = new Location(0.0, 0.0);
     List<WaterSourceReport> lists;
-    static int veryLastReportNum = 1;
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
     public final String currentDateandTime = sdf.format(new Date());
@@ -75,7 +74,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         TextView numReport = (TextView) findViewById(R.id.numberOfReportTextView);
         TextView dateAndtime = (TextView) findViewById(R.id.localDateTimeActual);
 
-        numReport.setText("" + veryLastReportNum);
+        numReport.setText("" + (db.countReport() + 1));
         dateAndtime.setText(currentDateandTime);
 
         enterLocationButton.setOnClickListener(new View.OnClickListener() {
@@ -100,14 +99,13 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {    //when everything is selected
-                    WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, veryLastReportNum, currentUser.getName(),
+                    WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, db.countReport() + 1, currentUser.getName(),
                             newLoc, (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
                     sourceReports.add(newReport);
                     db.addSourceReport(newReport);
 
                     String id = databaseReference.push().getKey();
                     databaseReference.child(id).setValue(newReport);
-                    veryLastReportNum++;
 
                     startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));
                     finish();
