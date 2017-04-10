@@ -44,17 +44,21 @@ public class WaterSourceReportActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getInstance().getReference("source report");
 
+    TextView numReport;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_source_report);
 
-
+        numReport = (TextView) findViewById(R.id.numberOfReportTextView);
+        TextView dateAndtime = (TextView) findViewById(R.id.localDateTimeActual);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int count = (int) dataSnapshot.getChildrenCount();
+                numReport.setText("" + (count + 1));
             }
 
             @Override
@@ -87,10 +91,9 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         waterTypeSpinner.setAdapter(typeAdapter);
 
-        TextView numReport = (TextView) findViewById(R.id.numberOfReportTextView);
-        TextView dateAndtime = (TextView) findViewById(R.id.localDateTimeActual);
 
-        numReport.setText("" + (db.countReport() + 1));
+
+        //numReport.setText("" + (db.countReport() + 1));
         dateAndtime.setText(currentDateandTime);
 
         enterLocationButton.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +118,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {    //when everything is selected
-                    WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, db.countReport() + 1, currentUser.getName(),
+                    WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, Integer.parseInt(numReport.getText().toString()), currentUser.getName(),
                             newLoc, (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
                     sourceReports.add(newReport);
                     db.addSourceReport(newReport);
