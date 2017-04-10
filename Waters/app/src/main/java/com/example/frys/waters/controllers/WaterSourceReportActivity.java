@@ -130,7 +130,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                     databaseReference.child(id).setValue(newReport);
                     addCount = false;
 
-                    startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));
+                    //startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));
                     finish();
                 }
             }
