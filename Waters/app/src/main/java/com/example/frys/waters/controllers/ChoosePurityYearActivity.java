@@ -39,9 +39,6 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference();
 
-
-    PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ChoosePurityYearActivity.this);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

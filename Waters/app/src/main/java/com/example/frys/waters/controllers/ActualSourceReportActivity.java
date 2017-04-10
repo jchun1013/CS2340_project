@@ -29,7 +29,6 @@ public class ActualSourceReportActivity extends AppCompatActivity {
      * Displays water source report information
      * @param savedInstanceState
      */
-    SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(ActualSourceReportActivity.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

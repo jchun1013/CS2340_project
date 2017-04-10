@@ -34,8 +34,6 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
     static Spinner chooseLocationviewSpinner;
     static Spinner choosePPMviewSpinner;
 
-    PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ChoosePurityHistoryActivity.this);
-
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference();
 
