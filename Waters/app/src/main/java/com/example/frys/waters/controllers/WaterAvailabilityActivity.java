@@ -19,6 +19,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 import java.util.Locale;
@@ -35,6 +37,10 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     public static GoogleMap mMap;
     private Marker prevMarker;
     SourceReportDataBaseHandler db;
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
@@ -44,6 +50,10 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+
         setContentView(R.layout.activity_water_availability);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -63,12 +73,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-//        for (WaterSourceReport r : sourceReports) {
-//            LatLng loc = new LatLng(r.getLocation().getLatitude(), r.getLocation().getLongitude());
-//            mMap.addMarker(new MarkerOptions().position(loc).title(r.getNameOfReporter()).snippet(r.getDateTime()));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
-//        }
 
         db = new SourceReportDataBaseHandler(WaterAvailabilityActivity.this);
         if (db.countReport() > 0) {
