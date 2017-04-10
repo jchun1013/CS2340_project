@@ -45,6 +45,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
     DatabaseReference databaseReference = database.getInstance().getReference("source report");
 
     TextView numReport;
+    boolean addCount = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +58,10 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int count = (int) dataSnapshot.getChildrenCount();
-                numReport.setText("" + (count + 1));
+                if (addCount) {
+                    int count = (int) dataSnapshot.getChildrenCount();
+                    numReport.setText("" + (count + 1));
+                }
             }
 
             @Override
@@ -125,6 +128,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
 
                     String id = databaseReference.push().getKey();
                     databaseReference.child(id).setValue(newReport);
+                    addCount = false;
 
                     startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));
                     finish();
