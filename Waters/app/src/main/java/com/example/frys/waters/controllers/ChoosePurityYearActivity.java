@@ -11,6 +11,12 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.example.frys.waters.R;
+import com.example.frys.waters.model.Location;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,6 +31,12 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
 
     Spinner chooseyearviewSpinner;
     static List<Integer> reportsToShow;
+    List<String> yearList = new ArrayList<>();
+    Set<String> yearSet = new HashSet<>();
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getReference();
+
 
     PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ChoosePurityYearActivity.this);
 
@@ -34,23 +46,8 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choose_purity_year);
 
         reportsToShow = new ArrayList<>();
-        List<String> yearList = new ArrayList<>();
-        Set<String> yearSet = new HashSet<>();
 
-        String a = (String) chooseLocationviewSpinner.getSelectedItem();
-        for (int i = 1; i < db.countReport() + 1; i++) {
-            if (getAddress(db.getLat(i), db.getLog(i)).indexOf(a) >= 0) {
-                yearSet.add(db.getDateTime(i).substring(0,4));
-                reportsToShow.add(i);
-            }
-        }
-        yearList.addAll(yearSet);
-
-        chooseyearviewSpinner = (Spinner) findViewById(R.id.yearSpinner);
-        ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, yearList);
-        dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        chooseyearviewSpinner.setAdapter(dataAdapter3);
+        getAllYear();
 
         Button submit = (Button) findViewById(R.id.submitButton_choose1);
         Button cancel = (Button) findViewById(R.id.cancelButton_choose);
@@ -68,8 +65,6 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
     public String getAddress(double lat, double log) {
@@ -105,4 +100,35 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
         }
         return returnAddress;
     }
+
+    public void getAllYear() {
+        databaseReference.child("purity report").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+
+                String a = (String) chooseLocationviewSpinner.getSelectedItem();
+                for (DataSnapshot child : children) {
+                    if (getAddress(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
+                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString())).indexOf(a) >= 0) {
+                        yearSet.add(child.child("dateTime").getValue().toString().substring(0,4));
+                        reportsToShow.add(Integer.parseInt(child.child("reportNumber").getValue().toString()));
+                    }
+                }
+                yearList.addAll(yearSet);
+
+                chooseyearviewSpinner = (Spinner) findViewById(R.id.yearSpinner);
+                ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(ChoosePurityYearActivity.this,
+                        android.R.layout.simple_spinner_item, yearList);
+                dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                chooseyearviewSpinner.setAdapter(dataAdapter3);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 }
