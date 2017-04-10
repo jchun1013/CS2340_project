@@ -11,10 +11,17 @@ import android.widget.Spinner;
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.WaterPurityReport;
 import com.example.frys.waters.model.WaterSourceReport;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import static com.example.frys.waters.controllers.RegUserActivity.purityReports;
 import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
@@ -23,7 +30,12 @@ public class ViewPurityReportActivity extends AppCompatActivity {
 
     public static Spinner viewSpinner2;
     public static int selectedReport2;
-    PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ViewPurityReportActivity.this);
+    //PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ViewPurityReportActivity.this);
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private List<Integer> reports = new ArrayList<>();
+    private Map<Integer, WaterPurityReport> reportMap = new HashMap<>();
+    public static WaterPurityReport selectedReportObject2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +44,10 @@ public class ViewPurityReportActivity extends AppCompatActivity {
 
         List<Integer> reports = new ArrayList<>();
 
-        int[] reportNums = db.getAllReportNum();
-        for (int i = 0; i < reportNums.length; i++) {
-            reports.add(reportNums[i]);
-        }
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+
+        getAllReports();
 
         Button backButton = (Button) findViewById(R.id.BackButton2);
         Button viewButton = (Button) findViewById(R.id.viewButton2);
@@ -60,7 +72,36 @@ public class ViewPurityReportActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedReport2 = (int) viewSpinner2.getSelectedItem();
+                selectedReportObject2 = reportMap.get(selectedReport2);
                 startActivity(new Intent(ViewPurityReportActivity.this, ActualPurityReportActivity.class));
+            }
+        });
+    }
+
+    private void getAllReports() {
+        databaseReference.child("purity report").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+
+                for (DataSnapshot child : children) {
+                    WaterPurityReport childValue = child.getValue(WaterPurityReport.class);
+//                    childValue.setTypeOfWater(child.child("typeOfWater").getValue().toString());
+                    childValue.setLocation(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
+                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString()));
+                    reportMap.put(childValue.getReportNumber(), childValue);
+                    reports.add(childValue.getReportNumber());
+                }
+
+                viewSpinner2 = (Spinner) findViewById(R.id._viewSpinner2);
+                ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(ViewPurityReportActivity.this, android.R.layout.simple_spinner_item, reports);
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                viewSpinner2.setAdapter(dataAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

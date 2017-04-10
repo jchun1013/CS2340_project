@@ -103,6 +103,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
 
                     String id = databaseReference.push().getKey();
                     databaseReference.child(id).setValue(newReport);
+
                     startActivity(new Intent(WaterSourceReportActivity.this, RegUserActivity.class));
                     finish();
                 }

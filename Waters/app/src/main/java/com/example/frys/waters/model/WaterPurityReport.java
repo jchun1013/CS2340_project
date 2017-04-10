@@ -79,4 +79,8 @@ public class WaterPurityReport {
     public double getContaminantPPM() {
         return contaminantPPM;
     }
+
+    public void setLocation(double lat, double log) {
+        this.location = new Location(lat, log);
+    }
 }

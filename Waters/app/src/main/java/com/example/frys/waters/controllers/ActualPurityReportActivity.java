@@ -20,7 +20,9 @@ import java.util.Locale;
 import static com.example.frys.waters.controllers.RegUserActivity.purityReports;
 import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReport2;
+import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReportObject2;
 import static com.example.frys.waters.controllers.ViewReportActivity.selectedReport;
+import static com.example.frys.waters.controllers.ViewReportActivity.selectedReportObject;
 
 public class ActualPurityReportActivity extends AppCompatActivity {
     PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ActualPurityReportActivity.this);
@@ -38,13 +40,13 @@ public class ActualPurityReportActivity extends AppCompatActivity {
         TextView virusPPM = (TextView) findViewById(R.id.virusPPMText);
         TextView contaminantPPM = (TextView) findViewById(R.id.contaminantPPMText);
 
-        dateAndTime.setText(db.getDateTime(selectedReport2));
-        reporterNum.setText("" + selectedReport2);
-        workerName.setText(db.getNameOfWorker(selectedReport2));
+        dateAndTime.setText(selectedReportObject2.getDateTime());
+        reporterNum.setText("" + selectedReportObject2.getReportNumber());
+        workerName.setText(selectedReportObject2.getNameOfWorker());
         waterLocation.setText(getAddress());
-        overallConditionWater.setText(db.getCondition(selectedReport2));
-        virusPPM.setText("" + db.getVirusPPM(selectedReport2));
-        contaminantPPM.setText("" + db.getConditionPPM(selectedReport2));
+        overallConditionWater.setText(selectedReportObject2.getCondition());
+        virusPPM.setText("" + selectedReportObject2.getVirusPPM());
+        contaminantPPM.setText("" + selectedReportObject2.getContaminantPPM());
 
         Button okButton = (Button) findViewById(R.id.OKbutton2);
         okButton.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +61,7 @@ public class ActualPurityReportActivity extends AppCompatActivity {
     public String getAddress() {
         Geocoder gc = new Geocoder(ActualPurityReportActivity.this, Locale.getDefault());
         List<Address> addressList;
-        Location loc = db.getLocation(selectedReport2);
+        Location loc = selectedReportObject2.getLocation();
         String returnAddress = "";
         try {
             addressList = gc.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
