@@ -42,7 +42,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
     public static GoogleMap mMap;
     private Marker prevMarker;
-    SourceReportDataBaseHandler db;
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
