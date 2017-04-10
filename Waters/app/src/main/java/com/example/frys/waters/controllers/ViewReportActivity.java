@@ -92,6 +92,7 @@ public class ViewReportActivity extends AppCompatActivity {
                     childValue.setTypeOfWater(child.child("typeOfWater").getValue().toString());
                     childValue.setLocation(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
                         , Double.parseDouble(child.child("location").child("longitude").getValue().toString()));
+
                     reportMap.put(childValue.getReportNumber(), childValue);
                     reports.add(childValue.getReportNumber());
                 }
