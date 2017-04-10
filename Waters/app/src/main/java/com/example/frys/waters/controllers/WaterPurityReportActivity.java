@@ -40,9 +40,11 @@ public class WaterPurityReportActivity extends AppCompatActivity {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
     public final String currentDateandTime = sdf.format(new Date());
     PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(WaterPurityReportActivity.this);
+    boolean addCount = true;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getInstance().getReference("purity report");
+    TextView numReport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +58,30 @@ public class WaterPurityReportActivity extends AppCompatActivity {
         Button enterLocationButton2 = (Button) findViewById(R.id.locationButton2);
 
         overallConditionSpinner = (Spinner) findViewById(R.id._overallConditionSpinner);
+        numReport = (TextView) findViewById(R.id._reportNumberText);
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, conditions);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         overallConditionSpinner.setAdapter(dataAdapter);
 
-        TextView numReport = (TextView) findViewById(R.id._reportNumberText);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (addCount) {
+                    int count = (int) dataSnapshot.getChildrenCount();
+                    numReport.setText("" + (count + 1));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
         TextView dateAndtime = (TextView) findViewById(R.id._dateAndTimeText);
-        numReport.setText("" + (db.countReport() + 1));
         dateAndtime.setText(currentDateandTime);
         TextView workerName = (TextView) findViewById(R.id._workerNameEdit);
         workerName.setText(currentUser.getName());
@@ -93,14 +110,15 @@ public class WaterPurityReportActivity extends AppCompatActivity {
                     toast.show();
                     startActivity(new Intent(WaterPurityReportActivity.this, WaterPurityReportActivity.class));
                 } else {
-                    WaterPurityReport newReport = new WaterPurityReport(currentDateandTime, db.countReport() + 1, currentUser.getName(),
+                    WaterPurityReport newReport = new WaterPurityReport(currentDateandTime, Integer.parseInt(numReport.getText().toString()), currentUser.getName(),
                             newLoc, (String) overallConditionSpinner.getSelectedItem(), Double.parseDouble(virusPPM.getText().toString())
                             , Double.parseDouble(contaminantPPM.getText().toString()));
-                    purityReports.add(newReport);
-                    db.addPurityReport(newReport);
+//                    purityReports.add(newReport);
+//                    db.addPurityReport(newReport);
 
                     String id = databaseReference.push().getKey();
                     databaseReference.child(id).setValue(newReport);
+                    addCount = false;
 
                     startActivity(new Intent(WaterPurityReportActivity.this, RegUserActivity.class));
                     finish();
