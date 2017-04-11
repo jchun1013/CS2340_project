@@ -113,7 +113,7 @@ public class Registration extends AppCompatActivity {
                     }
                 }
 
-                registerUser();
+                registerUser(emailEdit.getText().toString(), passwordEdit.getText().toString());
 
             }
         });
@@ -127,11 +127,12 @@ public class Registration extends AppCompatActivity {
         });
     }
 
-    private void registerUser(){
+    public void registerUser(String e, String p){
 
         //getting email and password from edit texts
-        String email = emailEdit.getText().toString();
-        String password = passwordEdit.getText().toString();
+        String email = e;
+        String password = p;
+
 
         //checking if email and passwords are empty
         if(TextUtils.isEmpty(email)){

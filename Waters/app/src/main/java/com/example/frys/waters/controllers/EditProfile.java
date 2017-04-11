@@ -12,6 +12,11 @@ import android.widget.Toast;
 
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 import static com.example.frys.waters.controllers.LoginActivity.registeredUser;
@@ -26,6 +31,8 @@ public class EditProfile extends AppCompatActivity {
     private EditText _name, _email, _password, _confPassword, _address;
     private User user;
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getInstance().getReference("user");
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
@@ -55,6 +62,29 @@ public class EditProfile extends AppCompatActivity {
                 if (_confPassword.getText().toString().equals(_password.getText().toString())) {
                     if (!_name.getText().toString().equals(currentUser.getName())) {
                         currentUser.setName(_name.getText().toString());
+//                        databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(DataSnapshot dataSnapshot) {
+//                                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+//                                String parentName = "";
+//                                for (DataSnapshot child : children) {
+//                                    if (child.getKey().equals(currentUser.getName())) {
+//                                        parentName = child.getKey();
+//                                    }
+//                                }
+//                                System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7");
+//                                System.out.println(parentName);
+//
+//                                try {
+//                                    //databaseReference.child("user").child(currentUser.getName()).setValue(_name.getText().toString());
+//                                } catch (Exception e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                            @Override
+//                            public void onCancelled(DatabaseError databaseError) {
+//                            }
+//                        });
                     }
                     if (!_email.getText().toString().equals(currentUser.getEmailAddress())) {
                         currentUser.setEmailAddress(_email.getText().toString());
