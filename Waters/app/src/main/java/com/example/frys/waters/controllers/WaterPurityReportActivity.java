@@ -37,14 +37,14 @@ public class WaterPurityReportActivity extends AppCompatActivity {
 
     Spinner overallConditionSpinner;
     static Location newPurityLocation = new Location(0.0, 0.0);
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
-    public final String currentDateandTime = sdf.format(new Date());
-    PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(WaterPurityReportActivity.this);
+    //SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
+    //public final String currentDateandTime = sdf.format(new Date());
     boolean addCount = true;
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = database.getInstance().getReference("purity report");
+    //FirebaseDatabase database = FirebaseDatabase.getInstance();
+    //DatabaseReference databaseReference = database.getInstance().getReference("purity report");
     TextView numReport;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,24 +65,24 @@ public class WaterPurityReportActivity extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         overallConditionSpinner.setAdapter(dataAdapter);
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (addCount) {
-                    int count = (int) dataSnapshot.getChildrenCount();
-                    numReport.setText("" + (count + 1));
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if (addCount) {
+//                    int count = (int) dataSnapshot.getChildrenCount();
+//                    numReport.setText("" + (count + 1));
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
 
         TextView dateAndtime = (TextView) findViewById(R.id._dateAndTimeText);
-        dateAndtime.setText(currentDateandTime);
+        //dateAndtime.setText(currentDateandTime);
         TextView workerName = (TextView) findViewById(R.id._workerNameEdit);
         workerName.setText(currentUser.getName());
 
@@ -110,15 +110,13 @@ public class WaterPurityReportActivity extends AppCompatActivity {
                     toast.show();
                     startActivity(new Intent(WaterPurityReportActivity.this, WaterPurityReportActivity.class));
                 } else {
-                    WaterPurityReport newReport = new WaterPurityReport(currentDateandTime, Integer.parseInt(numReport.getText().toString()), currentUser.getName(),
-                            newLoc, (String) overallConditionSpinner.getSelectedItem(), Double.parseDouble(virusPPM.getText().toString())
-                            , Double.parseDouble(contaminantPPM.getText().toString()));
+//                    WaterPurityReport newReport = new WaterPurityReport(currentDateandTime, Integer.parseInt(numReport.getText().toString()), currentUser.getName(),
+//                            newLoc, (String) overallConditionSpinner.getSelectedItem(), Double.parseDouble(virusPPM.getText().toString())
+//                            , Double.parseDouble(contaminantPPM.getText().toString()));
 //                    purityReports.add(newReport);
 //                    db.addPurityReport(newReport);
 
-                    String id = databaseReference.push().getKey();
-                    databaseReference.child(id).setValue(newReport);
-                    addCount = false;
+                    //addPurityReport(newReport);
 
                     startActivity(new Intent(WaterPurityReportActivity.this, RegUserActivity.class));
                     finish();
@@ -141,4 +139,19 @@ public class WaterPurityReportActivity extends AppCompatActivity {
             }
         });
     }
+
+    public boolean isValidPPM(String ppm) {
+        try {
+            double i = Double.parseDouble(ppm);
+            return true;
+        } catch(NumberFormatException er) {
+            return false;
+        }
+    }
+
+//    public void addPurityReport(WaterPurityReport newReport) {
+//        String id = databaseReference.push().getKey();
+//        databaseReference.child(id).setValue(newReport);
+//        addCount = false;
+//    }
 }

@@ -44,7 +44,7 @@ public class ActualSourceReportActivity extends AppCompatActivity {
         dateAndTime.setText(selectedReportObject.getDateTime());
         reporterNum.setText("" + selectedReport);
         reporterName.setText(selectedReportObject.getNameOfReporter());
-        waterLocation.setText(getAddress());
+        waterLocation.setText(getAddress(selectedReportObject.getLocation()));
         typeOfWater.setText(selectedReportObject.getTypeOfWater());
         conditionWater.setText(selectedReportObject.getCondition());
 
@@ -58,10 +58,10 @@ public class ActualSourceReportActivity extends AppCompatActivity {
 
     }
 
-    public String getAddress() {
+    public String getAddress(Location location) {
         Geocoder gc = new Geocoder(ActualSourceReportActivity.this, Locale.getDefault());
         List<Address> addressList;
-        Location loc = selectedReportObject.getLocation();
+        Location loc = location;
         String returnAddress = "";
         try {
             addressList = gc.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
