@@ -121,7 +121,8 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:labelFor="@+id/virusPPMEdit"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/_contaminantPPMEdit"
@@ -129,7 +130,8 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:labelFor="@+id/contaminantPPMEdit"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                tools:ignore="LabelFor" />
         </LinearLayout>
     </LinearLayout>
 

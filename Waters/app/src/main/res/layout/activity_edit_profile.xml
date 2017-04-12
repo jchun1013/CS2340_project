@@ -127,7 +127,8 @@
                 android:labelFor="@+id/password"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/_password" />
+                android:id="@+id/_password"
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:layout_width="match_parent"
