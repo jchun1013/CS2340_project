@@ -3,7 +3,7 @@ package com.example.frys.waters.model;
 public class Location {
     private double _latitude;
     private double _longitude;
-    //private String fullAddress;
+    private String fullAddress;
 
     public Location() {
 
