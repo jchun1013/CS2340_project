@@ -1,13 +1,13 @@
 package com.example.frys.waters.controllers;
 
-import android.content.ContentValues;
+//import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.frys.waters.model.Location;
-import com.example.frys.waters.model.WaterPurityReport;
+//import com.example.frys.waters.model.WaterPurityReport;
 
 class PurityReportDataBaseHandler extends SQLiteOpenHelper {
     //private SQLiteDatabase db;
@@ -16,7 +16,7 @@ class PurityReportDataBaseHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     //database name
-    private static String DATABASE_NAME = "PurityReport.db";
+    private static final String DATABASE_NAME = "PurityReport.db";
 
     //table name
     private static final String TABLE_PURITYREPORT = "purityReport";

@@ -5,7 +5,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 public class JoonTest {
-    private WaterPurityReportActivity r = new WaterPurityReportActivity();
+    private final WaterPurityReportActivity r = new WaterPurityReportActivity();
     @Test
     public void isValidPPMTest() throws Exception {
         String ppm = "0.0";

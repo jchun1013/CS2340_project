@@ -33,13 +33,13 @@ import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 public class WaterPurityReportActivity extends AppCompatActivity {
 
     private Spinner overallConditionSpinner;
-    static Location newPurityLocation = new Location(0.0, 0.0);
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
+    static final Location newPurityLocation = new Location(0.0, 0.0);
+    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
     private final String currentDateandTime = sdf.format(new Date());
     private boolean addCount = true;
 
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = database.getReference("purity report");
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final DatabaseReference databaseReference = database.getReference("purity report");
     private TextView numReport;
 
 

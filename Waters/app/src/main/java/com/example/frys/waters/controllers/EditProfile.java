@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.frys.waters.R;
-import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.database.FirebaseDatabase;
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 
 /**

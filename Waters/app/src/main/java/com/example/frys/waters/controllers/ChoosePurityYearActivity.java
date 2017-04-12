@@ -31,11 +31,11 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
 
     private Spinner chooseyearviewSpinner;
     static List<WaterPurityReport> reportsToShow;
-    private List<String> yearList = new ArrayList<>();
-    private Set<String> yearSet = new HashSet<>();
+    private final List<String> yearList = new ArrayList<>();
+    private final Set<String> yearSet = new HashSet<>();
 
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = database.getReference();
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final DatabaseReference databaseReference = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

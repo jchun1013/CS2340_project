@@ -19,7 +19,7 @@ import static com.example.frys.waters.controllers.ViewPurityReportActivity.selec
 import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReportObject2;
 
 public class ActualPurityReportActivity extends AppCompatActivity {
-    private PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ActualPurityReportActivity.this);
+    private final PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ActualPurityReportActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

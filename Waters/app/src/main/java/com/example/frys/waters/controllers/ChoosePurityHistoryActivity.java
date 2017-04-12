@@ -31,10 +31,10 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
     static Spinner chooseLocationviewSpinner;
     static Spinner choosePPMviewSpinner;
 
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = database.getReference();
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final DatabaseReference databaseReference = database.getReference();
 
-    private Set<String> locationSet = new HashSet<>();
+    private final Set<String> locationSet = new HashSet<>();
     private List<String> locationlist;
 
     @Override
