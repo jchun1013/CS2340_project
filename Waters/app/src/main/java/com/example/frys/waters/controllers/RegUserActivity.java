@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.UserType;
-import com.example.frys.waters.model.WaterSourceReport;
 
 import java.util.ArrayList;
 import java.util.List;
