@@ -116,7 +116,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:labelFor="@id/_email"
+                android:labelFor="@id/email"
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/_email" />
@@ -134,14 +134,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:inputType="textPersonName"
-                android:labelFor="@id/_confPassword"
                 android:ems="10"
                 android:id="@+id/_confPassword" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:labelFor="@id/_address"
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/_address" />
