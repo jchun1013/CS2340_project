@@ -15,11 +15,11 @@ import com.example.frys.waters.model.Location;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReport2;
+//import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReport2;
 import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReportObject2;
 
 public class ActualPurityReportActivity extends AppCompatActivity {
-    private final PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ActualPurityReportActivity.this);
+    //private final PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ActualPurityReportActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

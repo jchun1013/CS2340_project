@@ -2,11 +2,11 @@ package com.example.frys.waters.controllers;
 
 //import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
+//import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.frys.waters.model.Location;
+//import com.example.frys.waters.model.Location;
 //import com.example.frys.waters.model.WaterPurityReport;
 
 class PurityReportDataBaseHandler extends SQLiteOpenHelper {
@@ -49,20 +49,6 @@ class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PURITYREPORT);
 
         onCreate(db);
-    }
-
-    public Location getLocation(int rNumber) {
-        String coordinates = "";
-        SQLiteDatabase db = this.getReadableDatabase();
-        //Cursor cursor = db.query(TABLE_SOURCEREPORT, new String[]{Col_LOCATION}, Col_REPORT_NUMBER + "= ?", new String[]{rNumber}, null,null,null);
-        Cursor cursor = db.rawQuery("select * from purityReport where reportNumber=" + rNumber + "", null);
-
-        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
-            coordinates = cursor.getString(cursor.getColumnIndex(Col_LOCATION));
-            cursor.close();
-        }
-        String[] eachLoc = coordinates.split(",");
-        return new Location(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
     }
 
 }
