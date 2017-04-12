@@ -10,7 +10,7 @@ import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterPurityReport;
 
 class PurityReportDataBaseHandler extends SQLiteOpenHelper {
-    private SQLiteDatabase db;
+    //private SQLiteDatabase db;
 
     //databse version
     private static final int DATABASE_VERSION = 1;
@@ -65,70 +65,4 @@ class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         return new Location(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
     }
 
-    private String getNameOfWorker(int rNumber) {
-        String name = "";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from purityReport where reportNumber=" + rNumber + "", null);
-
-        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
-            name = cursor.getString(cursor.getColumnIndex(Col_NAME_OF_WORKER));
-            cursor.close();
-        }
-        return name;
-    }
-
-    private String getCondition(int rNumber) {
-        String condition = "";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from purityReport where reportNumber=" + rNumber + "", null);
-
-        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
-            condition = cursor.getString(cursor.getColumnIndex(Col_CONDITION));
-            cursor.close();
-        }
-        return condition;
-    }
-
-    private double getVirusPPM(int rNumber) {
-        String ppm = "";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from purityReport where reportNumber=" + rNumber + "", null);
-
-        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
-            ppm = cursor.getString(cursor.getColumnIndex(Col_VIRUS_PPM));
-            cursor.close();
-        }
-        return Double.parseDouble(ppm);
-    }
-
-    private double getConditionPPM(int rNumber) {
-        String ppm = "";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from purityReport where reportNumber=" + rNumber + "", null);
-
-        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
-            ppm = cursor.getString(cursor.getColumnIndex(Col_CONTAMINANT_PPM));
-            cursor.close();
-        }
-        return Double.parseDouble(ppm);
-    }
-
-    private String getDateTime(int rNumber) {
-        String dateTime = "";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from purityReport where reportNumber=" + rNumber + "", null);
-        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
-            dateTime = cursor.getString(cursor.getColumnIndex(Col_DATETIME));
-        }
-        cursor.close();
-        return dateTime;
-    }
-
-    private int countReport() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from purityReport", null);
-        int count = cursor.getCount();
-        cursor.close();
-        return count;
-    }
 }

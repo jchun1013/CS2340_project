@@ -46,10 +46,6 @@ public class Location {
         this._longitude = longi;
     }
 
-    public String getFullAddress() {
-        return fullAddress;
-    }
-
     public void setFullAddress(String address) {
         this.fullAddress = address;
     }

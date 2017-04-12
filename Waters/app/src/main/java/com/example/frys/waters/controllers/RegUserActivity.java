@@ -19,15 +19,6 @@ import java.util.List;
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 
 public class RegUserActivity extends AppCompatActivity {
-    private TextView _signOut;
-    private TextView _edit;
-    private TextView _userInfo;
-    private Button _submitReport;
-    private Button _viewReport;
-    private Button _waterAvailabilityMap;
-    private Button _waterQualityReport;
-    private Button _viewPurityReport;
-    private Button _historyGraph;
     static List<WaterSourceReport> sourceReports = new ArrayList();
 
     /**
@@ -40,6 +31,15 @@ public class RegUserActivity extends AppCompatActivity {
         //sourceReports.add(new WaterSourceReport(1, Joon, ))
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_user_screen);
+        TextView _signOut;
+        TextView _edit;
+        TextView _userInfo;
+        Button _submitReport;
+        Button _viewReport;
+        Button _waterAvailabilityMap;
+        Button _waterQualityReport;
+        Button _viewPurityReport;
+        Button _historyGraph;
         _edit = (TextView)findViewById(R.id._edit);
         _signOut = (TextView)findViewById(R.id._signout);
         _submitReport = (Button) findViewById(R.id._submit);
