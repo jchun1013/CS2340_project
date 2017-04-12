@@ -19,7 +19,7 @@ import java.util.List;
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 
 public class RegUserActivity extends AppCompatActivity {
-    static List<WaterSourceReport> sourceReports = new ArrayList();
+    static List<WaterSourceReport> sourceReports = new ArrayList<>();
 
     /**
      * OnCreate method required to load activity and loads everything that
