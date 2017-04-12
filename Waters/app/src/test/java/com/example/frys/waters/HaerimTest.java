@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class HaerimTest {
-    Registration r = new Registration();
+    private Registration r = new Registration();
 
     @Test
     public void isValidEmaailTest() throws Exception {

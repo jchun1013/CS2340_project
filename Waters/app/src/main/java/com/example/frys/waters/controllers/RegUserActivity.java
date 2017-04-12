@@ -20,15 +20,15 @@ import java.util.List;
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 
 public class RegUserActivity extends AppCompatActivity {
-    TextView _signOut;
-    TextView _edit;
-    TextView _userInfo;
-    Button _submitReport;
-    Button _viewReport;
-    Button _waterAvailabilityMap;
-    Button _waterQualityReport;
-    Button _viewPurityReport;
-    Button _historyGraph;
+    private TextView _signOut;
+    private TextView _edit;
+    private TextView _userInfo;
+    private Button _submitReport;
+    private Button _viewReport;
+    private Button _waterAvailabilityMap;
+    private Button _waterQualityReport;
+    private Button _viewPurityReport;
+    private Button _historyGraph;
     static List<WaterSourceReport> sourceReports = new ArrayList();
     static List<WaterPurityReport> purityReports = new ArrayList();
 

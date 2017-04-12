@@ -17,25 +17,4 @@ public class Manager extends Worker {
         super(username, name, email, password, address);
         super.setUsertype(UserType.MANAGER);
     }
-
-    /**
-     * View Historical Report
-     */
-    public void viewHistoricalReport() {
-
-    }
-
-    /**
-     * View Trend of Water Purity
-     */
-    public void viewTrendOfWaterPurity() {
-
-    }
-
-    /**
-     * Delete Report
-     */
-    public void deleteReport() {
-
-    }
 }

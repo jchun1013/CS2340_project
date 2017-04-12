@@ -51,14 +51,14 @@ public class Registration extends AppCompatActivity {
 //    FirebaseAuth firebaseAuth;
     private boolean succ = true;
 
-    EditText nameEdit;
-    EditText emailEdit;
-    EditText passwordEdit;
-    EditText usernameEdit;
-    EditText confirmEdit;
-    EditText addressEdit;
+    private EditText nameEdit;
+    private EditText emailEdit;
+    private EditText passwordEdit;
+    private EditText usernameEdit;
+    private EditText confirmEdit;
+    private EditText addressEdit;
 
-    public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+    private static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
             "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
                     "\\@" +
                     "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
@@ -144,7 +144,7 @@ public class Registration extends AppCompatActivity {
         return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
     }
 
-    public void registerUser(String e, String p){
+    private void registerUser(String e, String p){
 
         //checking if email and passwords are empty
         if (!isValidEmail(e)) {

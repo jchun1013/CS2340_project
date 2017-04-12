@@ -34,11 +34,11 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
     static Spinner chooseLocationviewSpinner;
     static Spinner choosePPMviewSpinner;
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = database.getReference();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = database.getReference();
 
-    Set<String> locationSet = new HashSet<>();
-    List<String> locationlist;
+    private Set<String> locationSet = new HashSet<>();
+    private List<String> locationlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         });
     }
 
-    public String getAddress(Location loc) {
+    private  String getAddress(Location loc) {
         Geocoder gc = new Geocoder(ChoosePurityHistoryActivity.this, Locale.getDefault());
         List<Address> addressList;
         String returnAddress = "";
@@ -106,7 +106,7 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         return returnAddress;
     }
 
-    public void getAllLocation() {
+    private  void getAllLocation() {
         databaseReference.child("purity report").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

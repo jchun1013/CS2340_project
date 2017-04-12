@@ -31,21 +31,21 @@ import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 
 public class WaterSourceReportActivity extends AppCompatActivity {
-    Spinner WaterConditionSpinner;
-    Spinner waterTypeSpinner;
+    private Spinner WaterConditionSpinner;
+    private Spinner waterTypeSpinner;
     static Location newLocation = new Location(0.0, 0.0);
     List<WaterSourceReport> lists;
 
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
-    public final String currentDateandTime = sdf.format(new Date());
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
+    private final String currentDateandTime = sdf.format(new Date());
 
-    SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this);
+    private SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this);
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = database.getInstance().getReference("source report");
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = database.getReference("source report");
 
-    TextView numReport;
-    boolean addCount = true;
+    private TextView numReport;
+    private boolean addCount = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

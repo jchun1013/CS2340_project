@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  * Created by joon1 on 2017-04-10.
  */
 public class JoonTest {
-    WaterPurityReportActivity r = new WaterPurityReportActivity();
+    private WaterPurityReportActivity r = new WaterPurityReportActivity();
     @Test
     public void isValidPPMTest() throws Exception {
         String ppm = "0.0";

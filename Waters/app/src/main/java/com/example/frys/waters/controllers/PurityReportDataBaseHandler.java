@@ -36,15 +36,15 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_PURITYREPORT = "purityReport";
 
     //table column names
-    public static final String Col_REPORT_NUMBER = "reportNumber";
-    public static final String Col_NAME_OF_WORKER = "nameOfWorker";
-    public static final String Col_LOCATION = "location";
-    public static final String Col_CONDITION = "condition";
-    public static final String Col_VIRUS_PPM = "virusPPM";
-    public static final String Col_CONTAMINANT_PPM = "contaminantPPM";
-    public static final String Col_DATETIME = "dateTime";
+    private static final String Col_REPORT_NUMBER = "reportNumber";
+    private static final String Col_NAME_OF_WORKER = "nameOfWorker";
+    private static final String Col_LOCATION = "location";
+    private static final String Col_CONDITION = "condition";
+    private static final String Col_VIRUS_PPM = "virusPPM";
+    private static final String Col_CONTAMINANT_PPM = "contaminantPPM";
+    private static final String Col_DATETIME = "dateTime";
 
-    public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_PURITYREPORT + " ("
+    private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_PURITYREPORT + " ("
             + Col_REPORT_NUMBER + " TEXT, " + Col_NAME_OF_WORKER + " TEXT, " + Col_LOCATION
             + " TEXT, " + Col_CONDITION + " TEXT, " + Col_VIRUS_PPM + " TEXT, " + Col_CONTAMINANT_PPM
             + " TEXT, " + Col_DATETIME + ")";
@@ -130,7 +130,7 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         //return new Location(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
     }
 
-    public String getNameOfWorker(int rNumber) {
+    private String getNameOfWorker(int rNumber) {
         String name = "";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor =  db.rawQuery( "select * from purityReport where reportNumber=" + rNumber + "", null );
@@ -142,7 +142,7 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         return name;
     }
 
-    public String getCondition(int rNumber) {
+    private String getCondition(int rNumber) {
         String condition = "";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor =  db.rawQuery( "select * from purityReport where reportNumber=" + rNumber + "", null );
@@ -154,7 +154,7 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         return condition;
     }
 
-    public double getVirusPPM(int rNumber) {
+    private double getVirusPPM(int rNumber) {
         String ppm = "";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor =  db.rawQuery( "select * from purityReport where reportNumber=" + rNumber + "", null );
@@ -166,7 +166,7 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         return Double.parseDouble(ppm);
     }
 
-    public double getConditionPPM(int rNumber) {
+    private double getConditionPPM(int rNumber) {
         String ppm = "";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor =  db.rawQuery( "select * from purityReport where reportNumber=" + rNumber + "", null );
@@ -178,7 +178,7 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         return Double.parseDouble(ppm);
     }
 
-    public String getDateTime(int rNumber) {
+    private String getDateTime(int rNumber) {
         String dateTime = "";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor =  db.rawQuery( "select * from purityReport where reportNumber=" + rNumber + "", null );
@@ -189,7 +189,7 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         return dateTime;
     }
 
-    public int countReport() {
+    private int countReport() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from purityReport", null);
         int count = cursor.getCount();

@@ -25,7 +25,7 @@ import static com.example.frys.waters.controllers.ViewReportActivity.selectedRep
 import static com.example.frys.waters.controllers.ViewReportActivity.selectedReportObject;
 
 public class ActualPurityReportActivity extends AppCompatActivity {
-    PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ActualPurityReportActivity.this);
+    private PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ActualPurityReportActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ public class ActualPurityReportActivity extends AppCompatActivity {
     }
 
     //move inside the database class?
-    public String getAddress() {
+    private String getAddress() {
         Geocoder gc = new Geocoder(ActualPurityReportActivity.this, Locale.getDefault());
         List<Address> addressList;
         Location loc = selectedReportObject2.getLocation();

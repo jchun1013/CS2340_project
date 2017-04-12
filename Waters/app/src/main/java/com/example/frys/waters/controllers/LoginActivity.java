@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void attemptLogin() {
+    private void attemptLogin() {
         String email = editEmail.getText().toString();
         String password = editPassword.getText().toString();
 

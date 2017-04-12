@@ -31,13 +31,13 @@ import static com.example.frys.waters.controllers.ChoosePurityHistoryActivity.ch
 
 public class ChoosePurityYearActivity extends AppCompatActivity {
 
-    Spinner chooseyearviewSpinner;
+    private Spinner chooseyearviewSpinner;
     static List<WaterPurityReport> reportsToShow;
-    List<String> yearList = new ArrayList<>();
-    Set<String> yearSet = new HashSet<>();
+    private List<String> yearList = new ArrayList<>();
+    private Set<String> yearSet = new HashSet<>();
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = database.getReference();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
         });
     }
 
-    public String getAddress(double lat, double log) {
+    private String getAddress(double lat, double log) {
         Geocoder gc = new Geocoder(ChoosePurityYearActivity.this, Locale.getDefault());
         List<Address> addressList;
         //Location loc = new Location(lat, log);
@@ -100,7 +100,7 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
         return returnAddress;
     }
 
-    public void getAllYear() {
+    private void getAllYear() {
         databaseReference.child("purity report").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

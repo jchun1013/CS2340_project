@@ -58,7 +58,7 @@ public class ActualSourceReportActivity extends AppCompatActivity {
 
     }
 
-    public String getAddress(Location location) {
+    private String getAddress(Location location) {
         Geocoder gc = new Geocoder(ActualSourceReportActivity.this, Locale.getDefault());
         List<Address> addressList;
         String returnAddress = "";

@@ -28,15 +28,15 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_REGISTER = "register";
 
     //table column names
-    public static final String Col_USERNAME = "username";
-    public static final String Col_NAME = "name";
-    public static final String Col_PASSWORD = "password";
-    public static final String Col_EMAIL = "email";
-    public static final String Col_ADDRESS = "address";
-    public static final String Col_USERTYPE = "type";
+    private static final String Col_USERNAME = "username";
+    private static final String Col_NAME = "name";
+    private static final String Col_PASSWORD = "password";
+    private static final String Col_EMAIL = "email";
+    private static final String Col_ADDRESS = "address";
+    private static final String Col_USERTYPE = "type";
 
     //create table sql query
-    public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_REGISTER + " (" + Col_USERNAME
+    private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_REGISTER + " (" + Col_USERNAME
             + " TEXT, " + Col_NAME + " TEXT, " + Col_PASSWORD + " TEXT, " + Col_EMAIL
             + " TEXT, " + Col_ADDRESS + " TEXT, " + Col_USERTYPE + ")";
 
@@ -123,7 +123,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
      * @param username username
      * @return password
      */
-    public String getPassword(String username) {
+    private String getPassword(String username) {
         String password = "";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor =  db.query(TABLE_REGISTER, null, "username = ?", new String[]{username}, null,null,null);
@@ -140,7 +140,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
      * @param username username
      * @return name
      */
-    public String getName(String username) {
+    private String getName(String username) {
         String name = "";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor =  db.query(TABLE_REGISTER, null, "username = ?", new String[]{username}, null,null,null);
@@ -157,7 +157,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
      * @param username username
      * @return email
      */
-    public String getEmail(String username) {
+    private String getEmail(String username) {
         String email = "";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor =  db.query(TABLE_REGISTER, null, "username = ?", new String[]{username}, null,null,null);
@@ -174,7 +174,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
      * @param username username
      * @return home address
      */
-    public String getHomeAddress(String username) {
+    private String getHomeAddress(String username) {
         String address = "";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor =  db.query(TABLE_REGISTER, null, "username = ?", new String[]{username}, null,null,null);
@@ -191,7 +191,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
      * @param username username
      * @return user type
      */
-    public String getUserType(String username) {
+    private String getUserType(String username) {
         String type = "";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor =  db.query(TABLE_REGISTER, null, "username = ?", new String[]{username}, null,null,null);

@@ -35,15 +35,15 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_SOURCEREPORT = "sourceReport";
 
     //table column names
-    public static final String Col_REPORT_NUMBER = "reportNumber";
-    public static final String Col_NAME_OF_REPORTER = "nameOfReporter";
-    public static final String Col_LOCATION = "location";
-    public static final String Col_CONDITION = "condition";
-    public static final String Col_WATERTYPE = "waterType";
-    public static final String Col_DATETIME = "dateTime";
+    private static final String Col_REPORT_NUMBER = "reportNumber";
+    private static final String Col_NAME_OF_REPORTER = "nameOfReporter";
+    private static final String Col_LOCATION = "location";
+    private static final String Col_CONDITION = "condition";
+    private static final String Col_WATERTYPE = "waterType";
+    private static final String Col_DATETIME = "dateTime";
 
     //create table sql query
-    public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_SOURCEREPORT + " ("
+    private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_SOURCEREPORT + " ("
             + Col_REPORT_NUMBER + " TEXT, " + Col_NAME_OF_REPORTER + " TEXT, " + Col_LOCATION
             + " TEXT, " + Col_CONDITION + " TEXT, " + Col_WATERTYPE
             + " TEXT, " + Col_DATETIME + ")";
@@ -199,7 +199,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
      * This method gets the number of total reports(rows) that are in the database
      * @return number of reports
      */
-    public int countReport() {
+    private int countReport() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from sourceReport", null);
         int count = cursor.getCount();

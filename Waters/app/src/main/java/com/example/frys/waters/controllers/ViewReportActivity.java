@@ -33,7 +33,7 @@ import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
  * This class allows user to view reports that have been submitted
  */
 public class ViewReportActivity extends AppCompatActivity {
-    public static Spinner viewSpinner;
+    private static Spinner viewSpinner;
     public static int selectedReport;
 
     private FirebaseDatabase firebaseDatabase;

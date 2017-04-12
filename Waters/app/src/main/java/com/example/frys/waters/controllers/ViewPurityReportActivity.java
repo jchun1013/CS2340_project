@@ -28,7 +28,7 @@ import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 
 public class ViewPurityReportActivity extends AppCompatActivity {
 
-    public static Spinner viewSpinner2;
+    private static Spinner viewSpinner2;
     public static int selectedReport2;
     private DatabaseReference databaseReference;
     private List<Integer> reports = new ArrayList<>();

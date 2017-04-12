@@ -17,10 +17,4 @@ public class Worker extends User {
         super(username, name, email, password, address);
         super.setUsertype(UserType.WORKER);
     }
-    /**
-     * report on water purity level
-     */
-    public void reportOnWaterPurityLevel() {
-
-    }
 }

@@ -35,15 +35,15 @@ import static com.example.frys.waters.controllers.RegUserActivity.purityReports;
  */
 public class WaterPurityReportActivity extends AppCompatActivity {
 
-    Spinner overallConditionSpinner;
+    private Spinner overallConditionSpinner;
     static Location newPurityLocation = new Location(0.0, 0.0);
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
-    public final String currentDateandTime = sdf.format(new Date());
-    boolean addCount = true;
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
+    private final String currentDateandTime = sdf.format(new Date());
+    private boolean addCount = true;
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = database.getInstance().getReference("purity report");
-    TextView numReport;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = database.getReference("purity report");
+    private TextView numReport;
 
 
     @Override
@@ -146,7 +146,7 @@ public class WaterPurityReportActivity extends AppCompatActivity {
         }
     }
 
-    public void addPurityReport(WaterPurityReport newReport) {
+    private void addPurityReport(WaterPurityReport newReport) {
         String id = databaseReference.push().getKey();
         databaseReference.child(id).setValue(newReport);
         addCount = false;

@@ -40,7 +40,7 @@ import static com.example.frys.waters.controllers.WaterSourceReportActivity.newL
  */
 public class WaterAvailabilityActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    public static GoogleMap mMap;
+    private static GoogleMap mMap;
     private Marker prevMarker;
 
     private DatabaseReference databaseReference;

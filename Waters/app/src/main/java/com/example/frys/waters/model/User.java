@@ -167,13 +167,4 @@ public class User {
         this.isReporting = isReporting;
     }
 
-    // MUST EDIT!!!!!!!
-    public void submitWaterAvailability() {
-
-    }
-
-    public WaterSourceReport viewWaterSource() {
-        return null;
-    }
-
 }

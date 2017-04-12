@@ -17,31 +17,5 @@ public class Admin extends Manager {
         super(username, name, email, password, address);
         super.setUsertype(UserType.ADMIN);
     }
-
-    /**
-     * Deletes Account
-     */
-    public void deleteAccount() {
-
-    }
-    /**
-     * Bans User
-     */
-    public void banUser() {
-
-    }
-
-    /**
-     * Unblocks Account
-     */
-    public void unblockAccount() {
-
-    }
-    /**
-     * View Security Log
-     */
-    public void viewSecuriryLog() {
-
-    }
 }
 
