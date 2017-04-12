@@ -6,10 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterSourceReport;
 
-public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
+class SourceReportDataBaseHandler extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 
     //database version

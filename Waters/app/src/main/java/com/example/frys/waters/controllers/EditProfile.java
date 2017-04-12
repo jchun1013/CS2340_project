@@ -6,12 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.frys.waters.R;
-import com.example.frys.waters.model.User;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 
@@ -36,7 +33,6 @@ public class EditProfile extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
         Button _edit_change = (Button) findViewById(R.id._edit_change);
         Button _edit_cancel = (Button) findViewById(R.id._edit_cancel);
-        TextView _username = (TextView) findViewById(R.id._username);
 
         _name = (EditText) findViewById(R.id._name);
         _email = (EditText) findViewById(R.id._email);

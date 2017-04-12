@@ -107,7 +107,7 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
                 String a = (String) chooseLocationviewSpinner.getSelectedItem();
                 for (DataSnapshot child : children) {
                     if (getAddress(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
-                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString())).indexOf(a) >= 0) {
+                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString())).contains(a)) {
                         yearSet.add(child.child("dateTime").getValue().toString().substring(0,4));
                         reportsToShow.add(child.getValue(WaterPurityReport.class));
                     }

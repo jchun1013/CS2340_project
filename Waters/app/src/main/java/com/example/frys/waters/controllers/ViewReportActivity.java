@@ -24,7 +24,7 @@ import java.util.Map;
  * This class allows user to view reports that have been submitted
  */
 public class ViewReportActivity extends AppCompatActivity {
-    private static Spinner viewSpinner;
+    private Spinner viewSpinner;
     public static int selectedReport;
 
     private FirebaseDatabase firebaseDatabase;

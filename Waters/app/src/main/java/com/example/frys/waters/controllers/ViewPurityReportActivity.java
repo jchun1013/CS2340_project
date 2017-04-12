@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class ViewPurityReportActivity extends AppCompatActivity {
 
-    private static Spinner viewSpinner2;
+    private Spinner viewSpinner2;
     public static int selectedReport2;
     private DatabaseReference databaseReference;
     private List<Integer> reports = new ArrayList<>();

@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterPurityReport;
 
-public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
+class PurityReportDataBaseHandler extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 
     //databse version
@@ -218,9 +218,7 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         String[] locArray = new String[locSplit.length];
         if (countReport() > 0) {
             if (locArray.length > 0) {
-                for (int i = 0; i < locArray.length; i++) {
-                    locArray[i] = locSplit[i];
-                }
+                System.arraycopy(locSplit, 0, locArray, 0, locArray.length);
             }
         }
         cursor.close();
@@ -242,9 +240,7 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         String[] yearArray = new String[yearSplit.length];
         if (countReport() > 0) {
             if (yearArray.length > 0) {
-                for (int i = 0; i < yearArray.length; i++) {
-                    yearArray[i] = yearSplit[i];
-                }
+                System.arraycopy(yearSplit, 0, yearArray, 0, yearArray.length);
             }
         }
 

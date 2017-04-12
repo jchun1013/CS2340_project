@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e0d8c9"
@@ -12,7 +11,6 @@
     tools:context="com.example.frys.waters.controllers.WaterPurityReportActivity">
 
     <TextView
-        android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -23,7 +21,6 @@
         android:layout_width="400dp"
         android:layout_height="400dp"
         android:orientation="horizontal"
-        android:id="@+id/linearLayout"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="26dp">
@@ -35,14 +32,12 @@
             android:weightSum="1">
 
             <TextView
-                android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="@string/date_and_time"
                 android:textColor="#7e9ab7" />
 
             <TextView
-                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="@string/report_number"
@@ -63,21 +58,18 @@
                 android:textColor="#7e9ab7" />
 
             <TextView
-                android:id="@+id/confPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="@string/overall_condition"
                 android:textColor="#7e9ab7" />
 
             <TextView
-                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="@string/virus_ppm"
                 android:textColor="#7e9ab7" />
 
             <TextView
-                android:id="@+id/textView26"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.40"

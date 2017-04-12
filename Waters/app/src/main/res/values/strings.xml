@@ -3,36 +3,18 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_registration">Registration</string>
-    <string name="title_activity_splash">SplashActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="welcome_to_kgt">Welcome to kGT!</string>
     <string name="login">Login</string>
     <string name="registration">registration</string>
     <string name="cancel">Cancel</string>
-    <string name="kgt_login_page">kGT Login page</string>
     <string name="kgt">kGT</string>
     <string name="ok">OK</string>
     <string name="password">password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="submit">submit</string>
     <string name="kgt_splash">kGT</string>
-    <string name="title_activity_login_fire_base">LoginFireBase</string>
-    <string name="auth_failed" />
-    <string name="title_activity_home__worker_">Home_Worker_Activity</string>
     <string name="title_activity_water_availability">Map</string>
     <string name="title_activity_purity_report_map">Map</string>
     <string name="water_purity_report">Water Purity Report:</string>
@@ -60,7 +42,7 @@
     <string name="email">email</string>
     <string name="address">address</string>
     <string name="sign_in">SIGN IN</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
     <string name="view_purity_reports">View Purity Reports</string>
     <string name="select_report">Select Report</string>
     <string name="back">Back</string>
