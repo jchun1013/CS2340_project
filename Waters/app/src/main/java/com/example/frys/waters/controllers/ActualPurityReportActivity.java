@@ -79,7 +79,7 @@ public class ActualPurityReportActivity extends AppCompatActivity {
                 if (premises != null) {
                     returnAddress += " " + premises;
                 }
-                db.getLocation(selectedReport2).setFullAddress(returnAddress);
+                //db.getLocation(selectedReport2).setFullAddress(returnAddress);
             }
         } catch (IOException e) {
             e.printStackTrace();
