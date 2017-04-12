@@ -27,7 +27,7 @@ import static com.example.frys.waters.controllers.ViewReportActivity.viewSpinner
 public class ActualSourceReportActivity extends AppCompatActivity {
     /**
      * Displays water source report information
-     * @param savedInstanceState
+     * @param savedInstanceState savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -62,7 +62,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * Adds new user to the database
-     * @param user
+     * @param user user
      */
     public void addRegister(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -80,7 +80,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * Deletes corresponding row
-     * @param username
+     * @param username user
      */
     public void deleteEntry(String username) {
         db.delete(TABLE_REGISTER, Col_USERNAME + " = " + username, null);
@@ -104,7 +104,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * This method checks if username exists in the database
-     * @param username
+     * @param username username
      * @return whether or not username exists in the database
      */
     public boolean usernameExist(String username) {
@@ -120,7 +120,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * this method gets password of corresponding username
-     * @param username
+     * @param username username
      * @return password
      */
     public String getPassword(String username) {
@@ -137,7 +137,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * This method gets the name of corresponding username
-     * @param username
+     * @param username username
      * @return name
      */
     public String getName(String username) {
@@ -154,7 +154,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * This method gets email of corresponding username
-     * @param username
+     * @param username username
      * @return email
      */
     public String getEmail(String username) {
@@ -171,7 +171,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * This method gets home address of corresponding username
-     * @param username
+     * @param username username
      * @return home address
      */
     public String getHomeAddress(String username) {
@@ -188,7 +188,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * This method gets the UserType of corresponding username
-     * @param username
+     * @param username username
      * @return user type
      */
     public String getUserType(String username) {
@@ -206,7 +206,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
     /**
      * This method returns User object of corresponding username.
      * this is to set the currentUser.
-     * @param username
+     * @param username username
      * @return user
      */
     public User getUser(String username) {

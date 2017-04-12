@@ -36,6 +36,7 @@ public class ViewReportActivity extends AppCompatActivity {
     public static Spinner viewSpinner;
     public static int selectedReport;
 
+    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private List<Integer> reports = new ArrayList<>();
     private Map<Integer, WaterSourceReport> reportMap = new HashMap<>();
@@ -45,12 +46,11 @@ public class ViewReportActivity extends AppCompatActivity {
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
-     * @param savedInstanceState
+     * @param savedInstanceState savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(ViewReportActivity.this);
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
 
         super.onCreate(savedInstanceState);
@@ -90,7 +90,7 @@ public class ViewReportActivity extends AppCompatActivity {
                     WaterSourceReport childValue = child.getValue(WaterSourceReport.class);
                     childValue.setTypeOfWater(child.child("typeOfWater").getValue().toString());
                     childValue.setLocation(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
-                        , Double.parseDouble(child.child("location").child("longitude").getValue().toString()));
+                            , Double.parseDouble(child.child("location").child("longitude").getValue().toString()));
 
                     reportMap.put(childValue.getReportNumber(), childValue);
                     reports.add(childValue.getReportNumber());

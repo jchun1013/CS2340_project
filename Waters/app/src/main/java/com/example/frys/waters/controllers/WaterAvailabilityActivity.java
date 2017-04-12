@@ -45,13 +45,13 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
     private DatabaseReference databaseReference;
     private List<WaterSourceReport> reports;
+    private List<LatLng> markerList;
 
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
      * @param savedInstanceState
      */
-    private List<LatLng> markerList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,8 +126,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker) {
-                    double latitude = marker.getPosition().latitude;
-                    double longitude = marker.getPosition().longitude;
                     if (prevMarker != null) {
                         //Set prevMarker back to default color
                         prevMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
