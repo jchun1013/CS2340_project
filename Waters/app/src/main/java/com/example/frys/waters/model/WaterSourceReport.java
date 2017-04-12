@@ -1,10 +1,5 @@
 package com.example.frys.waters.model;
 
-
-/**
- * Created by joon1 on 2017-03-05.
- */
-
 public class WaterSourceReport {
     private String dateTime;
     private int reportNumber;

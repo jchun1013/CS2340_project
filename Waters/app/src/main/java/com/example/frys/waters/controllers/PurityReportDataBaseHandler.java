@@ -9,12 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterPurityReport;
 
-/**
- * Created by joon1 on 2017-03-24.
- */
-
 public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
-    //private SQLiteDatabase db;
+    private SQLiteDatabase db;
 
     //databse version
     private static final int DATABASE_VERSION = 1;
@@ -60,6 +56,22 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
                 getCondition(rNumber), getVirusPPM(rNumber), getConditionPPM(rNumber));
     }
 
+    public void addPurityReport(WaterPurityReport report) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Col_REPORT_NUMBER, report.getReportNumber());
+        values.put(Col_NAME_OF_WORKER, report.getNameOfWorker());
+        values.put(Col_LOCATION, report.getLocation().toString());
+        values.put(Col_CONDITION, report.getCondition());
+        values.put(Col_VIRUS_PPM, Double.toString(report.getVirusPPM()));
+        values.put(Col_CONTAMINANT_PPM, Double.toString(report.getContaminantPPM()));
+        values.put(Col_DATETIME, report.getDateTime());
+
+        //inserting row
+        db.insert(TABLE_PURITYREPORT, null, values);
+        db.close();
+    }
+
     public Location getLocation(int rNumber) {
         String coordinates = "";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -72,6 +84,36 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         }
         String[] eachLoc = coordinates.split(",");
         return new Location(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
+    }
+
+    public double getLat(int rNumber) {
+        String coordinates = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        //Cursor cursor = db.query(TABLE_SOURCEREPORT, new String[]{Col_LOCATION}, Col_REPORT_NUMBER + "= ?", new String[]{rNumber}, null,null,null);
+        Cursor cursor =  db.rawQuery( "select * from purityReport where reportNumber=" + rNumber + "", null );
+
+        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
+            coordinates = cursor.getString(cursor.getColumnIndex(Col_LOCATION));
+            cursor.close();
+        }
+        String[] eachLoc = coordinates.split(",");
+        return Double.parseDouble(eachLoc[0]);
+        //return new Location(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
+    }
+
+    public double getLog(int rNumber) {
+        String coordinates = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        //Cursor cursor = db.query(TABLE_SOURCEREPORT, new String[]{Col_LOCATION}, Col_REPORT_NUMBER + "= ?", new String[]{rNumber}, null,null,null);
+        Cursor cursor =  db.rawQuery( "select * from purityReport where reportNumber=" + rNumber + "", null );
+
+        if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
+            coordinates = cursor.getString(cursor.getColumnIndex(Col_LOCATION));
+            cursor.close();
+        }
+        String[] eachLoc = coordinates.split(",");
+        return Double.parseDouble(eachLoc[1]);
+        //return new Location(Double.parseDouble(eachLoc[0]), Double.parseDouble(eachLoc[1]));
     }
 
     private String getNameOfWorker(int rNumber) {
@@ -139,5 +181,73 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         int count = cursor.getCount();
         cursor.close();
         return count;
+    }
+
+    public int[] getAllReportNum() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from purityReport", null);
+        String nums = "";
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            nums += cursor.getString(cursor.getColumnIndex(Col_REPORT_NUMBER)) + " ";
+        }
+
+        String[] stringNums = nums.split(" ");
+
+        int[] reportNums = new int[stringNums.length];
+        if (countReport() > 0) {
+            if (reportNums.length > 0) {
+                for (int i = 0; i < reportNums.length; i++) {
+                    reportNums[i] = Integer.parseInt(stringNums[i]);
+                }
+            }
+        }
+        cursor.close();
+        return reportNums;
+    }
+
+    public String[] getAllLocations() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from purityReport", null);
+        String locs = "";
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            locs += cursor.getString(cursor.getColumnIndex(Col_LOCATION)) + " ";
+        }
+
+        String[] locSplit = locs.split(" ");
+
+        String[] locArray = new String[locSplit.length];
+        if (countReport() > 0) {
+            if (locArray.length > 0) {
+                for (int i = 0; i < locArray.length; i++) {
+                    locArray[i] = locSplit[i];
+                }
+            }
+        }
+        cursor.close();
+        return locArray;
+    }
+
+    public String[] getAllYear(String loca) {
+        String years = "";
+        for (int i = 1; i < countReport() + 1; i++) {
+            System.out.println("HIIIIIIIIIII");
+            if (loca.equals(getLocation(i).getFullAddress())) {
+                years += getDateTime(i).substring(0, 4) + " ";
+                System.out.println(years);
+            }
+        }
+
+        String[] yearSplit = years.split(" ");
+
+        String[] yearArray = new String[yearSplit.length];
+        if (countReport() > 0) {
+            if (yearArray.length > 0) {
+                for (int i = 0; i < yearArray.length; i++) {
+                    yearArray[i] = yearSplit[i];
+                }
+            }
+        }
+
+        return yearArray;
     }
 }

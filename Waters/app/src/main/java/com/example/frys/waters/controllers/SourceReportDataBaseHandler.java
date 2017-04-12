@@ -9,11 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterSourceReport;
 
-
-/**
- * Created by joon1 on 2017-03-20.
- */
-
 public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 

@@ -4,9 +4,6 @@ import com.example.frys.waters.controllers.WaterPurityReportActivity;
 import junit.framework.Assert;
 import org.junit.Test;
 
-/**
- * Created by joon1 on 2017-04-10.
- */
 public class JoonTest {
     private WaterPurityReportActivity r = new WaterPurityReportActivity();
     @Test
