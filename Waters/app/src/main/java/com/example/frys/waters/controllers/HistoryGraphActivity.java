@@ -15,7 +15,7 @@ import static com.example.frys.waters.controllers.ChoosePurityHistoryActivity.ch
 import static com.example.frys.waters.controllers.ChoosePurityYearActivity.reportsToShow;
 
 public class HistoryGraphActivity extends AppCompatActivity {
-    PointsGraphSeries<DataPoint> series;
+    private PointsGraphSeries<DataPoint> series;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
