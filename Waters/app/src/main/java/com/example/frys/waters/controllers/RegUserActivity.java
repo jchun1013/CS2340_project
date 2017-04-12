@@ -30,7 +30,6 @@ public class RegUserActivity extends AppCompatActivity {
     private Button _viewPurityReport;
     private Button _historyGraph;
     static List<WaterSourceReport> sourceReports = new ArrayList();
-    static List<WaterPurityReport> purityReports = new ArrayList();
 
     /**
      * OnCreate method required to load activity and loads everything that

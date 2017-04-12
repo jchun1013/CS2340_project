@@ -37,7 +37,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
     private DatabaseReference databaseReference;
     private List<WaterSourceReport> reports;
-    private List<LatLng> markerList;
 
     /**
      * OnCreate method required to load activity and loads everything that

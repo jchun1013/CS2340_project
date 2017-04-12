@@ -32,40 +32,4 @@ public class SplashActivity extends AppCompatActivity {
             }
         }, SPLASH_DISPLAY_DURATION);
     }
-
-    /**
-     * Launches RegUserActivity
-     */
-    private void launchUserScreen() {
-        Intent intent = new Intent(getApplicationContext(), RegUserActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    /**
-     * Launches WaterPurityReportActivity
-     */
-    private void launchWorkerScreen() {
-        Intent intent = new Intent(getApplicationContext(), WaterPurityReportActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    /**
-     * Launches WaterPurityReportActivity
-     */
-    private void launchManagerScreen() {
-        Intent intent = new Intent(getApplicationContext(), WaterPurityReportActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    /**
-     * Launches Admin Screen
-     */
-    private void launchAdminScreen() {
-        Intent intent = new Intent(getApplicationContext(), WaterPurityReportActivity.class);
-        startActivity(intent);
-        finish();
-    }
 }

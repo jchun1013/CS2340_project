@@ -24,13 +24,10 @@ import static com.example.frys.waters.controllers.LoginActivity.registeredUser;
  */
 public class Registration extends AppCompatActivity {
 
-    private Spinner typeSpinner;
-
     //Commment out when junit testing
 //    FirebaseDatabase database = FirebaseDatabase.getInstance();
 //    DatabaseReference databaseReference = database.getInstance().getReference("user");
 //    FirebaseAuth firebaseAuth;
-    private boolean succ = true;
 
     private EditText nameEdit;
     private EditText emailEdit;
@@ -49,7 +46,7 @@ public class Registration extends AppCompatActivity {
                     ")+"
     );
 
-    private static final String TAG = "EMAIL/PASSWORD";
+    //private static final String TAG = "EMAIL/PASSWORD";
 
     /**
      * OnCreate method required to load activity and loads everything that

@@ -21,10 +21,9 @@ import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 public class EditProfile extends AppCompatActivity {
 
     private EditText _name, _email, _password, _confPassword, _address;
-    private User user;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = database.getReference();
+    //DatabaseReference databaseReference = database.getReference();
 
     /**
      * OnCreate method required to load activity and loads everything that

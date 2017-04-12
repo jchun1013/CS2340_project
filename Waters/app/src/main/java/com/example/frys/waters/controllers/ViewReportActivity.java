@@ -32,7 +32,6 @@ public class ViewReportActivity extends AppCompatActivity {
     private List<Integer> reports = new ArrayList<>();
     private Map<Integer, WaterSourceReport> reportMap = new HashMap<>();
     public static WaterSourceReport selectedReportObject;
-    List<DataSnapshot> lists = new ArrayList<>();
 
     /**
      * OnCreate method required to load activity and loads everything that

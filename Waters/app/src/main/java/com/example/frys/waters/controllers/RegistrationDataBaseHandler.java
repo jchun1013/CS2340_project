@@ -16,7 +16,7 @@ import com.example.frys.waters.model.Worker;
  */
 
 public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
-    private SQLiteDatabase db;
+    //private SQLiteDatabase db;
 
     //databse version
     private static final int DATABASE_VERSION = 1;
@@ -78,13 +78,6 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    /**
-     * Deletes corresponding row
-     * @param username user
-     */
-    public void deleteEntry(String username) {
-        db.delete(TABLE_REGISTER, Col_USERNAME + " = " + username, null);
-    }
 
     /**
      * This method gets all the usernames that are in the database

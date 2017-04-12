@@ -64,14 +64,6 @@ public class User {
     }
 
     /**
-     * setter for username
-     * @param username username
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    /**
      * getter for password
      * @return password
      */
@@ -80,27 +72,11 @@ public class User {
     }
 
     /**
-     * setter for password
-     * @param password password
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
      * getter for emailAddress
      * @return emailAddress
      */
     public String getEmailAddress() {
         return emailAddress;
-    }
-
-    /**
-     * setter for emailAddress
-     * @param email email
-     */
-    public void setEmailAddress(String email) {
-        this.emailAddress = email;
     }
 
     /**
@@ -117,22 +93,6 @@ public class User {
      */
     public void setHomeAddress(String address) {
         this.homeAddress = address;
-    }
-
-    /**
-     * getter for title
-     * @return title
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * setter for title
-     * @param title title
-     */
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     /**
