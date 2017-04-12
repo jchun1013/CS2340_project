@@ -11,10 +11,6 @@ import com.example.frys.waters.model.Manager;
 import com.example.frys.waters.model.User;
 import com.example.frys.waters.model.Worker;
 
-/**
- * Created by joon1 on 2017-03-20.
- */
-
 public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 

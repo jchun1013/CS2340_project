@@ -9,10 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterPurityReport;
 
-/**
- * Created by joon1 on 2017-03-24.
- */
-
 public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 
@@ -252,7 +248,6 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
             }
         }
 
-        cursor.close();
         return yearArray;
     }
 }

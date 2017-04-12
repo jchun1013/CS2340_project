@@ -1,9 +1,5 @@
 package com.example.frys.waters.model;
 
-/**
- * Created by joon1 on 2017-03-11.
- */
-
 public class Location {
     private double _latitude;
     private double _longitude;

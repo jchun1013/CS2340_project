@@ -1,9 +1,5 @@
 package com.example.frys.waters.model;
 
-/**
- * Created by Frys on 3/5/2017.
- */
-
 public enum UserType {
 
     USER {

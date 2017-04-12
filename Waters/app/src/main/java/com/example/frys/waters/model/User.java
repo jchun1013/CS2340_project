@@ -3,10 +3,6 @@ package com.example.frys.waters.model;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Frys on 3/5/2017.
- */
-
 public class User {
 
     private String name;
