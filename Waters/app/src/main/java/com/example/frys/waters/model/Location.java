@@ -3,7 +3,6 @@ package com.example.frys.waters.model;
 public class Location {
     private double _latitude;
     private double _longitude;
-    private String fullAddress;
 
     public Location() {
 
@@ -44,10 +43,6 @@ public class Location {
      */
     public void set_longitude(double longi) {
         this._longitude = longi;
-    }
-
-    public void setFullAddress(String address) {
-        this.fullAddress = address;
     }
 
     /**
