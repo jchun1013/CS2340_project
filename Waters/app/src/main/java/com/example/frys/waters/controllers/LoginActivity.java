@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editEmail;
     private EditText editPassword;
 
-    private FirebaseDatabase firebaseDatabase;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
@@ -58,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         registeredUser.put("user", new User("test", "test", "test", "pass", "test"));
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = firebaseDatabase.getReference();
 
@@ -109,7 +108,6 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), SplashActivity.class));
                 } else {
                     Toast.makeText(LoginActivity.this, "Login Attempt Failed", Toast.LENGTH_SHORT).show();
-                    return;
                 }
             }
         });

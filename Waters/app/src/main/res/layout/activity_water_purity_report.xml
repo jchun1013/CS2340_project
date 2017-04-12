@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Water Purity Report" />
+        android:text="@string/water_purity_report" />
 
     <LinearLayout
         android:layout_width="400dp"
@@ -39,42 +39,42 @@
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Date and Time"
+                android:text="@string/date_and_time"
                 android:textColor="#7e9ab7" />
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Report number:"
+                android:text="@string/report_number"
                 android:textColor="#7e9ab7" />
 
             <TextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Name of Worker:"
+                android:text="@string/name_of_worker"
                 android:textColor="#7e9ab7" />
 
             <TextView
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Location of Water"
+                android:text="@string/location_of_water"
                 android:textColor="#7e9ab7" />
 
             <TextView
                 android:id="@+id/confPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Overall Condition"
+                android:text="@string/overall_condition"
                 android:textColor="#7e9ab7" />
 
             <TextView
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Virus PPM:"
+                android:text="@string/virus_ppm"
                 android:textColor="#7e9ab7" />
 
             <TextView
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.40"
                 android:textColor="#7e9ab7"
-                android:text="Contaminant PPM:" />
+                android:text="@string/contaminant_ppm" />
 
         </LinearLayout>
 
@@ -102,21 +102,19 @@
                 android:id="@+id/_reportNumberText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:ems="10"/>
 
             <TextView
                 android:id="@+id/_workerNameEdit"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:ems="10"/>
 
             <Button
                 android:id="@+id/locationButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select Location"
+                android:text="@string/select_location"
                 android:layout_weight="0.10" />
 
             <Spinner
@@ -131,6 +129,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
+                android:labelFor="@+id/virusPPMEdit"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -138,6 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
+                android:labelFor="@+id/contaminantPPMEdit"
                 android:inputType="textPersonName" />
         </LinearLayout>
     </LinearLayout>
@@ -146,7 +146,7 @@
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="@string/submit"
         android:layout_marginStart="41dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
@@ -158,5 +158,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="58dp"
-        android:text="Cancel" />
+        android:text="@string/cancel" />
 </RelativeLayout>

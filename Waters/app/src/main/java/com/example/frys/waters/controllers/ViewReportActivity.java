@@ -36,7 +36,6 @@ public class ViewReportActivity extends AppCompatActivity {
     public static Spinner viewSpinner;
     public static int selectedReport;
 
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private List<Integer> reports = new ArrayList<>();
     private Map<Integer, WaterSourceReport> reportMap = new HashMap<>();
@@ -51,7 +50,7 @@ public class ViewReportActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(ViewReportActivity.this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
 
         super.onCreate(savedInstanceState);

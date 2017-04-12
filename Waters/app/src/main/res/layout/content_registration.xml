@@ -14,7 +14,7 @@
     tools:showIn="@layout/activity_registration">
 
     <TextView
-        android:text="name"
+        android:text="@string/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -26,12 +26,13 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
+        android:labelFor="@+id/nameEditText"
         android:layout_below="@+id/nameTextView"
         android:layout_alignStart="@+id/nameTextView"
         android:id="@+id/nameEditText" />
 
     <TextView
-        android:text="Username"
+        android:text="@string/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nameEditText"
@@ -43,12 +44,14 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
+        android:labelFor="@+id/usernameEditText"
         android:id="@+id/usernameEditText"
         android:layout_below="@+id/UsernameTextView"
         android:layout_alignStart="@+id/UsernameTextView" />
 
     <TextView
-        android:text="Password"
+        android:text="@string/password"
+        android:labelFor="@+id/passwordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/usernameEditText"
@@ -65,7 +68,7 @@
         android:layout_alignStart="@+id/passwordTextView" />
 
     <TextView
-        android:text="Confirm Password"
+        android:text="@string/confirm_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/passwordEditText"
@@ -77,12 +80,13 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
+        android:labelFor="@+id/confirmEditText"
         android:id="@+id/confirmEditText"
         android:layout_below="@+id/confirmTextView"
         android:layout_alignStart="@+id/confirmTextView" />
 
     <TextView
-        android:text="Home Address"
+        android:text="@string/home_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addressTextView"
@@ -94,12 +98,13 @@
         android:layout_height="wrap_content"
         android:inputType="textPostalAddress"
         android:ems="10"
+        android:labelFor="@+id/addressEditText"
         android:id="@+id/addressEditText"
         android:layout_below="@+id/addressTextView"
         android:layout_alignStart="@+id/addressTextView" />
 
     <TextView
-        android:text="Email Address"
+        android:text="@string/email_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/emailTextView"
@@ -111,12 +116,13 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
+        android:labelFor="@+id/emailEditText"
         android:id="@+id/emailEditText"
         android:layout_below="@+id/emailTextView"
         android:layout_alignStart="@+id/emailTextView" />
 
     <TextView
-        android:text="UserType"
+        android:text="@string/usertype"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/typeTextView"
@@ -131,7 +137,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
@@ -140,7 +146,7 @@
         android:layout_toEndOf="@+id/registerButton" />
 
     <Button
-        android:text="Register"
+        android:text="@string/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/registerButton"

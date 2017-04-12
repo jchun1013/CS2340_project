@@ -39,7 +39,7 @@ public class WaterSourceReportActivity extends AppCompatActivity {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
     public final String currentDateandTime = sdf.format(new Date());
 
-    SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this);;
+    SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this);
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getInstance().getReference("source report");

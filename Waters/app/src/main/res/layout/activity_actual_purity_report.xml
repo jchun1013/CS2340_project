@@ -19,11 +19,11 @@
         android:layout_centerHorizontal="true"
         android:textColor="#7e9ab7"
         android:layout_marginTop="15dp"
-        android:text="Water Purity Report:"
+        android:text="@string/water_purity_report"
         android:textSize="25sp" />
 
     <TextView
-        android:text="Report Number:"
+        android:text="@string/report_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
@@ -38,10 +38,10 @@
         android:layout_alignStart="@+id/textView5"
         android:layout_below="@+id/textView5"
         android:layout_marginTop="26dp"
-        android:text="Name of Worker:" />
+        android:text="@string/name_of_worker" />
 
     <TextView
-        android:text="Location of Water:"
+        android:text="@string/location_of_water"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView7"
@@ -56,10 +56,10 @@
         android:layout_alignStart="@+id/textView13"
         android:layout_below="@+id/textView13"
         android:layout_marginTop="24dp"
-        android:text="Virus PPM:" />
+        android:text="@string/virus_ppm" />
 
     <TextView
-        android:text="Date and Time:"
+        android:text="@string/date_and_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -69,7 +69,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -78,7 +78,7 @@
         android:layout_toEndOf="@+id/textView9" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/reporterNumberTextView2"
@@ -86,7 +86,7 @@
         android:layout_alignStart="@+id/actualDateAndTimeTextView2" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/workerNameTextView"
@@ -94,7 +94,7 @@
         android:layout_alignStart="@+id/reporterNumberTextView2" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
@@ -106,13 +106,13 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Overall Condition:"
+        android:text="@string/overall_condition"
         android:layout_below="@+id/LocationOfWaterTextView2"
         android:layout_alignStart="@+id/LocationOfWaterTextView2"
         android:layout_marginTop="22dp" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/overallConditionText"
@@ -121,7 +121,7 @@
         android:layout_alignEnd="@+id/OKbutton2" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/virusPPMText"
@@ -130,7 +130,7 @@
         android:layout_alignStart="@+id/overallConditionText" />
 
     <Button
-        android:text="OK"
+        android:text="@string/ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/OKbutton2"
@@ -143,7 +143,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Contaminant PPM:"
+        android:text="@string/contaminant_ppm"
         android:layout_below="@+id/textView15"
         android:layout_alignStart="@+id/textView15" />
 
@@ -151,7 +151,7 @@
         android:id="@+id/contaminantPPMText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_alignBaseline="@+id/textView17"
         android:layout_alignBottom="@+id/textView17"
         android:layout_alignStart="@+id/virusPPMText" />

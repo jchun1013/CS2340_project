@@ -14,7 +14,7 @@
 
 
     <TextView
-        android:text="Edit Profile"
+        android:text="@string/edit_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView11"
@@ -35,7 +35,7 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="Change"
+        android:text="@string/change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/_edit_change"
@@ -58,42 +58,42 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:text="username"
+                android:text="@string/username"
                 android:layout_width="match_parent"
                 android:id="@+id/username"
                 android:layout_height="50dp"
                 android:textColor="#7e9ab7" />
 
             <TextView
-                android:text="name"
+                android:text="@string/name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/name"
                 android:textColor="#7e9ab7" />
 
             <TextView
-                android:text="email"
+                android:text="@string/email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/email"
                 android:textColor="#7e9ab7" />
 
             <TextView
-                android:text="password"
+                android:text="@string/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/password"
                 android:textColor="#7e9ab7" />
 
             <TextView
-                android:text="confirm password"
+                android:text="@string/confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/confPassword"
                 android:textColor="#7e9ab7" />
 
             <TextView
-                android:text="address"
+                android:text="@string/address"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/address"
@@ -115,12 +115,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:inputType="textPersonName"
+                android:labelFor="@+id/_name"
                 android:ems="10"
                 android:id="@+id/_name" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:labelFor="@id/_email"
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/_email" />
@@ -128,6 +130,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:labelFor="@+id/password"
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/_password" />
@@ -136,12 +139,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:inputType="textPersonName"
+                android:labelFor="@id/_confPassword"
                 android:ems="10"
                 android:id="@+id/_confPassword" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:labelFor="@id/_address"
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/_address" />

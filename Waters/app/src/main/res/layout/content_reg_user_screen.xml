@@ -14,7 +14,7 @@
     tools:showIn="@layout/activity_reg_user_screen">
 
     <TextView
-        android:text="kGT"
+        android:text="@string/kgt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView8"
@@ -25,7 +25,7 @@
         android:layout_marginTop="40dp" />
 
     <TextView
-        android:text="Clean Water Crowdsourcing"
+        android:text="@string/clean_water_crowdsourcing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView10"
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/_hello"
-        android:text="Hello, Joon(User)"
+        android:text="@string/hello_joon_user"
         android:contentDescription="@string/bottom_sheet_behavior"
         android:textColor="#fff2e2"
         android:textAllCaps="false"
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/_signout"
-        android:text="Sign out"
+        android:text="@string/sign_out"
         android:contentDescription="@string/bottom_sheet_behavior"
         android:textColor="#fff2e2"
         android:textAllCaps="false"
@@ -59,7 +59,7 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="edit"
+        android:text="@string/edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/_edit"
@@ -73,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Water Availability Map"
+        android:text="@string/water_availability_map"
         android:layout_below="@+id/_submit"
         android:layout_alignParentStart="true" />
 
@@ -83,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="view available water sources"
+        android:text="@string/view_available_water_sources"
         android:layout_below="@+id/textView10"
         android:layout_alignParentStart="true"
         android:layout_marginTop="22dp" />
@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:alpha=".9"
         android:layout_weight="1"
-        android:text="submit a report on water availability"
+        android:text="@string/submit_a_report_on_water_availability"
         android:layout_below="@+id/_view"
         android:layout_alignParentStart="true" />
 
@@ -102,7 +102,7 @@
         android:id="@+id/waterQualityReportButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="submit water quality report"
+        android:text="@string/submit_water_quality_report"
         android:alpha=".9"
         android:layout_below="@+id/waterAvailabilityMapButton"
         android:layout_alignParentStart="true"
@@ -112,7 +112,7 @@
         android:id="@+id/viewWaterQualityReportButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Water Quality Report"
+        android:text="@string/view_water_quality_report"
         android:alpha=".9"
         android:layout_below="@+id/waterQualityReportButton"
         android:layout_alignParentStart="true"
@@ -123,7 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/viewWaterQualityReportButton"
-        android:text="Historical Purity Report"
+        android:text="@string/historical_purity_report"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
 

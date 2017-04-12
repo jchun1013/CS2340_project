@@ -29,9 +29,7 @@ import static com.example.frys.waters.controllers.LoginActivity.registeredUser;
  * This class allows user to edit his/her profile
  */
 public class EditProfile extends AppCompatActivity {
-    private Button _edit_change;
-    private Button _edit_cancel;
-    private TextView _username;
+
     private EditText _name, _email, _password, _confPassword, _address;
     private User user;
 
@@ -47,10 +45,10 @@ public class EditProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        _edit_change = (Button) findViewById(R.id._edit_change);
-        _edit_cancel = (Button) findViewById(R.id._edit_cancel);
+        Button _edit_change = (Button) findViewById(R.id._edit_change);
+        Button _edit_cancel = (Button) findViewById(R.id._edit_cancel);
+        TextView _username = (TextView) findViewById(R.id._username);
 
-        _username = (TextView) findViewById(R.id._username);
         _name = (EditText) findViewById(R.id._name);
         _email = (EditText) findViewById(R.id._email);
         _password = (EditText) findViewById(R.id._password);

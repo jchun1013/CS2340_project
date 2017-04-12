@@ -24,5 +24,5 @@ public enum UserType {
     ADMIN {
         @Override
         public String toString() { return "ADMIN"; }
-    };
+    }
 }

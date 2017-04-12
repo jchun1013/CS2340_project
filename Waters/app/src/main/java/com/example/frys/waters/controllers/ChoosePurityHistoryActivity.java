@@ -76,10 +76,9 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
     public String getAddress(Location loc) {
         Geocoder gc = new Geocoder(ChoosePurityHistoryActivity.this, Locale.getDefault());
         List<Address> addressList;
-        Location loce = loc;
         String returnAddress = "";
         try {
-            addressList = gc.getFromLocation(loce.getLatitude(), loce.getLongitude(), 1);
+            addressList = gc.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
             if (addressList != null && addressList.size() > 0) {
                 Address address = addressList.get(0);
                 String subLocality = address.getSubLocality();

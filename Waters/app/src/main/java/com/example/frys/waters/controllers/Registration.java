@@ -43,7 +43,6 @@ import static com.example.frys.waters.controllers.LoginActivity.registeredUser;
  */
 public class Registration extends AppCompatActivity {
 
-    private Spinner userTypeSpinner;
     private Spinner typeSpinner;
 
     //Commment out when junit testing
@@ -93,7 +92,7 @@ public class Registration extends AppCompatActivity {
         addressEdit = (EditText) findViewById(R.id.addressEditText);
         emailEdit = (EditText) findViewById(R.id.emailEditText);
 
-        userTypeSpinner = (Spinner) findViewById(R.id.spinner);
+        Spinner userTypeSpinner = (Spinner) findViewById(R.id.spinner);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, User.typeList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -147,28 +146,23 @@ public class Registration extends AppCompatActivity {
 
     public void registerUser(String e, String p){
 
-        //getting email and password from edit texts
-        String email = e;
-        String password = p;
-
-
         //checking if email and passwords are empty
-        if (!isValidEmail(email)) {
+        if (!isValidEmail(e)) {
             Toast.makeText(this, "Please enter valid email", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if(TextUtils.isEmpty(email)){
+        if(TextUtils.isEmpty(p)){
             Toast.makeText(this,"Please enter email",Toast.LENGTH_LONG).show();
             return;
         }
 
-        if(TextUtils.isEmpty(password)){
+        if(TextUtils.isEmpty(p)){
             Toast.makeText(this,"Please enter password",Toast.LENGTH_LONG).show();
             return;
         }
 
-        if (password.length() < 6) {
+        if (p.length() < 6) {
             Toast.makeText(this, "Password is too short. Must be longer than 6", Toast.LENGTH_LONG). show();
         }
 

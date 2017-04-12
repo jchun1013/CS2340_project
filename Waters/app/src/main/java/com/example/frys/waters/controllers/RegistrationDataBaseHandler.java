@@ -98,6 +98,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             name += cursor.getString(cursor.getColumnIndex(Col_USERNAME)) + " ";
         }
+        cursor.close();
         return name;
     }
 
@@ -113,6 +114,7 @@ public class RegistrationDataBaseHandler extends SQLiteOpenHelper {
         if (cursor.getCount() > 0) {
             return true;
         }
+        cursor.close();
         return false;
     }
 

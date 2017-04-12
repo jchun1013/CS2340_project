@@ -13,7 +13,7 @@
     tools:context="com.example.frys.waters.controllers.WaterSourceReportActivity">
 
     <TextView
-        android:text="Water Source Report"
+        android:text="@string/water_source_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView11"
@@ -31,7 +31,7 @@
         android:layout_alignStart="@+id/textView14" />
 
     <TextView
-        android:text="Select Water Condition"
+        android:text="@string/select_water_condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView12"
@@ -42,7 +42,7 @@
         android:layout_alignStart="@+id/locationTextView" />
 
     <TextView
-        android:text="Location"
+        android:text="@string/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/locationTextView"
@@ -53,7 +53,7 @@
         android:layout_toStartOf="@+id/textView11" />
 
     <TextView
-        android:text="Report Number"
+        android:text="@string/report_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView14"
@@ -64,7 +64,7 @@
         android:layout_alignStart="@+id/EnterLocationButton" />
 
     <TextView
-        android:text="Date and Time"
+        android:text="@string/date_and_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/dateAndTimeTextView"
@@ -75,7 +75,7 @@
         android:layout_alignStart="@+id/numberOfReportTextView" />
 
     <Button
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -101,7 +101,7 @@
         android:layout_alignStart="@+id/locationTextView" />
 
     <Button
-        android:text="Submit"
+        android:text="@string/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -111,7 +111,7 @@
         android:layout_toEndOf="@+id/numberOfReportTextView" />
 
     <TextView
-        android:text="Type Of Water"
+        android:text="@string/type_of_water"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
@@ -134,7 +134,7 @@
         android:id="@+id/EnterLocationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Location"
+        android:text="@string/enter_location"
         android:layout_below="@+id/locationTextView"
         android:layout_alignStart="@+id/locationTextView" />
 

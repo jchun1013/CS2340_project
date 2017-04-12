@@ -215,6 +215,7 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
                 }
             }
         }
+        cursor.close();
         return reportNums;
     }
 
@@ -236,6 +237,7 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
                 }
             }
         }
+        cursor.close();
         return locArray;
     }
 
@@ -261,6 +263,8 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
                 }
             }
         }
+
+        cursor.close();
         return yearArray;
     }
 }

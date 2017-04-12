@@ -43,7 +43,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     public static GoogleMap mMap;
     private Marker prevMarker;
 
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private List<WaterSourceReport> reports;
 
@@ -57,7 +56,7 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
 
         getAllReports();
@@ -98,7 +97,7 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
 
 
         //adding marker during submitting report
-        if (currentUser.getIsReporting() == true) {
+        if (currentUser.getIsReporting()) {
 
             mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                 @Override

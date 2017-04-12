@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="View Purity Reports"
+        android:text="@string/view_purity_reports"
         android:textColor="#7e9ab7"
         android:textSize="20sp" />
 
@@ -26,40 +26,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
-        android:id="@+id/numberOfReportTextView"
-        android:layout_below="@+id/textView14"
-        android:layout_alignStart="@+id/textView14" />
+        android:id="@+id/numberOfReportTextView" />
 
     <TextView
-        android:text="Select Report"
+        android:text="@string/select_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView12"
         android:textColor="#7e9ab7"
         android:textSize="15sp"
         android:layout_marginTop="32dp"
-        android:layout_below="@+id/textView11"
-        android:layout_alignStart="@+id/locationTextView" />
+        android:layout_below="@+id/textView11"/>
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
         android:id="@+id/_viewSpinner2"
-        android:layout_below="@+id/textView12"
-        android:layout_alignStart="@+id/locationTextView" />
+        android:layout_below="@+id/textView12"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:id="@+id/localDateTimeActual"
-        android:layout_below="@+id/dateAndTimeTextView"
-        android:layout_alignStart="@+id/textView2" />
+        android:id="@+id/localDateTimeActual"/>
 
     <Button
-        android:text="Back"
+        android:text="@string/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/BackButton2"
@@ -68,7 +62,7 @@
         android:layout_toEndOf="@+id/viewButton2" />
 
     <Button
-        android:text="View"
+        android:text="@string/view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/viewButton2"

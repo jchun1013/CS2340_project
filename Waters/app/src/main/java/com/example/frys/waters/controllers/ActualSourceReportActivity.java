@@ -61,10 +61,9 @@ public class ActualSourceReportActivity extends AppCompatActivity {
     public String getAddress(Location location) {
         Geocoder gc = new Geocoder(ActualSourceReportActivity.this, Locale.getDefault());
         List<Address> addressList;
-        Location loc = location;
         String returnAddress = "";
         try {
-            addressList = gc.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+            addressList = gc.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
             if (addressList != null && addressList.size() > 0) {
                 Address address = addressList.get(0);
                 String subLocality = address.getSubLocality();

@@ -108,6 +108,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             coordinates += cursor.getString(cursor.getColumnIndex(Col_LOCATION)) + " ";
         }
+        cursor.close();
         return coordinates;
     }
 
@@ -142,6 +143,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
             name = cursor.getString(cursor.getColumnIndex(Col_NAME_OF_REPORTER));
         }
+        cursor.close();
         return name;
     }
 
@@ -157,6 +159,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
             condition = cursor.getString(cursor.getColumnIndex(Col_CONDITION));
         }
+        cursor.close();
         return condition;
     }
 
@@ -172,6 +175,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
             waterType = cursor.getString(cursor.getColumnIndex(Col_WATERTYPE));
         }
+        cursor.close();
         return waterType;
     }
 
@@ -187,6 +191,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         if (cursor.getCount() >= 1 && cursor.moveToFirst()) {
             dateTime = cursor.getString(cursor.getColumnIndex(Col_DATETIME));
         }
+        cursor.close();
         return dateTime;
     }
 
@@ -224,6 +229,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
                 }
             }
         }
+        cursor.close();
         return reportNums;
     }
 }

@@ -12,7 +12,7 @@
     tools:context="com.example.frys.waters.controllers.ActualSourceReportActivity">
 
     <TextView
-        android:text="Water Source Report:"
+        android:text="@string/water_source_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -23,7 +23,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="Report Number:"
+        android:text="@string/report_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
@@ -32,7 +32,7 @@
         android:layout_alignStart="@+id/textView4" />
 
     <TextView
-        android:text="Name of Reporter:"
+        android:text="@string/name_of_reporter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
@@ -41,7 +41,7 @@
         android:layout_alignStart="@+id/textView5" />
 
     <TextView
-        android:text="Location of Water:"
+        android:text="@string/location_of_water"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView7"
@@ -50,7 +50,7 @@
         android:id="@+id/textView9" />
 
     <TextView
-        android:text="Condition of Water:"
+        android:text="@string/condition_of_water"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView13"
@@ -59,7 +59,7 @@
         android:id="@+id/textView15" />
 
     <TextView
-        android:text="Date and Time:"
+        android:text="@string/date_and_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -69,7 +69,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/actualDateAndTimeTextView"
@@ -78,7 +78,7 @@
         android:layout_marginStart="44dp" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/reporterNumberTextView"
@@ -86,7 +86,7 @@
         android:layout_alignStart="@+id/actualDateAndTimeTextView" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/reporterNameTextView"
@@ -94,7 +94,7 @@
         android:layout_alignStart="@+id/reporterNumberTextView" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
@@ -103,7 +103,7 @@
         android:id="@+id/LocationOfWaterTextView" />
 
     <TextView
-        android:text="Type of Water:"
+        android:text="@string/type_of_water"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
@@ -112,7 +112,7 @@
         android:layout_alignStart="@+id/LocationOfWaterTextView" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/typeOfWaterTextView"
@@ -120,7 +120,7 @@
         android:layout_alignStart="@+id/reporterNameTextView" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/conditionOfWaterTextView"
@@ -129,7 +129,7 @@
         android:layout_alignStart="@+id/typeOfWaterTextView" />
 
     <Button
-        android:text="OK"
+        android:text="@string/ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"

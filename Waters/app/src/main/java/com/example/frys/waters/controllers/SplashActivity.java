@@ -12,7 +12,6 @@ import com.example.frys.waters.R;
  * login page and RegUserScreen.
  */
 public class SplashActivity extends AppCompatActivity {
-    private final int SPLASH_DISPLAY_DURATION = 1000;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -23,6 +22,7 @@ public class SplashActivity extends AppCompatActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_splash);
+        final int SPLASH_DISPLAY_DURATION = 1000;
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {

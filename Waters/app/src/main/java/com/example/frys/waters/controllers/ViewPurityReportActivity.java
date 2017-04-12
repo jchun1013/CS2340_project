@@ -30,7 +30,6 @@ public class ViewPurityReportActivity extends AppCompatActivity {
 
     public static Spinner viewSpinner2;
     public static int selectedReport2;
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private List<Integer> reports = new ArrayList<>();
     private Map<Integer, WaterPurityReport> reportMap = new HashMap<>();
@@ -43,7 +42,7 @@ public class ViewPurityReportActivity extends AppCompatActivity {
 
         List<Integer> reports = new ArrayList<>();
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
 
         getAllReports();
