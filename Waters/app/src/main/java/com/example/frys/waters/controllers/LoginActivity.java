@@ -31,7 +31,8 @@ import java.util.Map;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity {
-    public static final Map<String, User> registeredUser = new HashMap();
+    //public static final Map<String, User> registeredUser = new HashMap();
+    public static final Map<java.lang.String,com.example.frys.waters.model.User> registeredUser = new HashMap<java.lang.String,com.example.frys.waters.model.User>();
     public static User currentUser;
 
     /**

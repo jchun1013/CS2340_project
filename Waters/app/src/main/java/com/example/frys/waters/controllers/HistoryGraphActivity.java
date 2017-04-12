@@ -15,12 +15,14 @@ import static com.example.frys.waters.controllers.ChoosePurityHistoryActivity.ch
 import static com.example.frys.waters.controllers.ChoosePurityYearActivity.reportsToShow;
 
 public class HistoryGraphActivity extends AppCompatActivity {
-    private PointsGraphSeries<DataPoint> series;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_graph);
+
+        PointsGraphSeries<DataPoint> series;
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
 

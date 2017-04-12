@@ -72,7 +72,7 @@ public class Registration extends AppCompatActivity {
 
         Spinner userTypeSpinner = (Spinner) findViewById(R.id.spinner);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, User.typeList);
+        ArrayAdapter<android.widget.ArrayAdapter> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, User.typeList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         userTypeSpinner.setAdapter(adapter);
 
