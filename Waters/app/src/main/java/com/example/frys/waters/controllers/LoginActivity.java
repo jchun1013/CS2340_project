@@ -32,7 +32,7 @@ import java.util.Map;
  */
 public class LoginActivity extends AppCompatActivity {
     //public static final Map<String, User> registeredUser = new HashMap();
-    public static final Map<java.lang.String,com.example.frys.waters.model.User> registeredUser = new HashMap<java.lang.String,com.example.frys.waters.model.User>();
+    public static final Map<java.lang.String,com.example.frys.waters.model.User> registeredUser = new HashMap<>();
     public static User currentUser;
 
     /**

@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.UserType;
-import com.example.frys.waters.model.WaterSourceReport;
+//import com.example.frys.waters.model.WaterSourceReport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 
 public class RegUserActivity extends AppCompatActivity {
-    static final List<com.example.frys.waters.model.WaterSourceReport> sourceReports = new ArrayList<com.example.frys.waters.model.WaterSourceReport>();
+    static final List<com.example.frys.waters.model.WaterSourceReport> sourceReports = new ArrayList<>();
 
     /**
      * OnCreate method required to load activity and loads everything that
