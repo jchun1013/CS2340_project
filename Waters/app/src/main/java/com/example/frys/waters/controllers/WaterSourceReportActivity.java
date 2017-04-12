@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +15,6 @@ import android.widget.Toast;
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterSourceReport;
-import com.google.android.gms.maps.GoogleMap;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -84,12 +82,12 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         WaterConditionSpinner = (Spinner) findViewById(R.id.spinner2);
         waterTypeSpinner = (Spinner) findViewById(R.id.typeOfWaterSpinner);
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, conditions);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         WaterConditionSpinner.setAdapter(dataAdapter);
 
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, waterType);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         waterTypeSpinner.setAdapter(typeAdapter);

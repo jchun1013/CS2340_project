@@ -3,14 +3,9 @@ package com.example.frys.waters.controllers;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,21 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.frys.waters.R;
-import com.example.frys.waters.model.Admin;
-import com.example.frys.waters.model.Manager;
 import com.example.frys.waters.model.User;
-import com.example.frys.waters.model.UserType;
-import com.example.frys.waters.model.Worker;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 import static com.example.frys.waters.controllers.LoginActivity.registeredUser;

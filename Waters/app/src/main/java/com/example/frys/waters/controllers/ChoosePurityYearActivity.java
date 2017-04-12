@@ -11,9 +11,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.example.frys.waters.R;
-import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterPurityReport;
-import com.example.frys.waters.model.WaterSourceReport;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -117,7 +115,7 @@ public class ChoosePurityYearActivity extends AppCompatActivity {
                 yearList.addAll(yearSet);
 
                 chooseyearviewSpinner = (Spinner) findViewById(R.id.yearSpinner);
-                ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(ChoosePurityYearActivity.this,
+                ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<>(ChoosePurityYearActivity.this,
                         android.R.layout.simple_spinner_item, yearList);
                 dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 chooseyearviewSpinner.setAdapter(dataAdapter3);

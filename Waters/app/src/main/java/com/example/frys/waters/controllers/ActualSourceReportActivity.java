@@ -16,10 +16,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 import static com.example.frys.waters.controllers.ViewReportActivity.selectedReport;
 import static com.example.frys.waters.controllers.ViewReportActivity.selectedReportObject;
-import static com.example.frys.waters.controllers.ViewReportActivity.viewSpinner;
 
 /**
  * This class displays each of water source report information

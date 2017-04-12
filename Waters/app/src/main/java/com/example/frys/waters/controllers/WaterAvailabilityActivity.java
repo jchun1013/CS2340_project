@@ -1,17 +1,11 @@
 package com.example.frys.waters.controllers;
 
-import android.content.Intent;
-import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.frys.waters.R;
 
 import com.example.frys.waters.model.Location;
-import com.example.frys.waters.model.UserType;
 import com.example.frys.waters.model.WaterSourceReport;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,10 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
-import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 import static com.example.frys.waters.controllers.WaterSourceReportActivity.newLocation;
 
 /**
@@ -50,7 +42,7 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
-     * @param savedInstanceState
+     * @param savedInstanceState savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

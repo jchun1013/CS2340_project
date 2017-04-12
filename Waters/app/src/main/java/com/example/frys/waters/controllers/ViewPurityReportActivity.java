@@ -10,7 +10,6 @@ import android.widget.Spinner;
 
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.WaterPurityReport;
-import com.example.frys.waters.model.WaterSourceReport;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,12 +18,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import static com.example.frys.waters.controllers.RegUserActivity.purityReports;
-import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 
 public class ViewPurityReportActivity extends AppCompatActivity {
 
@@ -51,7 +46,7 @@ public class ViewPurityReportActivity extends AppCompatActivity {
         Button viewButton = (Button) findViewById(R.id.viewButton2);
 
         viewSpinner2 = (Spinner) findViewById(R.id._viewSpinner2);
-        ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this,
+        ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, reports);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         viewSpinner2.setAdapter(dataAdapter);
@@ -88,7 +83,7 @@ public class ViewPurityReportActivity extends AppCompatActivity {
                 }
 
                 viewSpinner2 = (Spinner) findViewById(R.id._viewSpinner2);
-                ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(ViewPurityReportActivity.this, android.R.layout.simple_spinner_item, reports);
+                ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<>(ViewPurityReportActivity.this, android.R.layout.simple_spinner_item, reports);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 viewSpinner2.setAdapter(dataAdapter);
             }

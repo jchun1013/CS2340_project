@@ -1,14 +1,9 @@
 package com.example.frys.waters;
 
-import com.example.frys.waters.controllers.ActualSourceReportActivity;
 import com.example.frys.waters.controllers.Registration;
-import com.example.frys.waters.model.Location;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

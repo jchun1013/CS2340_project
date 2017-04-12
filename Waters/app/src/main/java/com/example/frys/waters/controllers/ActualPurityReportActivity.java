@@ -5,7 +5,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,13 +15,8 @@ import com.example.frys.waters.model.Location;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-
-import static com.example.frys.waters.controllers.RegUserActivity.purityReports;
-import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReport2;
 import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReportObject2;
-import static com.example.frys.waters.controllers.ViewReportActivity.selectedReport;
-import static com.example.frys.waters.controllers.ViewReportActivity.selectedReportObject;
 
 public class ActualPurityReportActivity extends AppCompatActivity {
     private PurityReportDataBaseHandler db = new PurityReportDataBaseHandler(ActualPurityReportActivity.this);

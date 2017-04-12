@@ -12,7 +12,6 @@ import android.widget.Spinner;
 
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.Location;
-import com.example.frys.waters.model.WaterSourceReport;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,8 +25,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-
-import static com.example.frys.waters.controllers.ViewPurityReportActivity.selectedReport2;
 
 public class ChoosePurityHistoryActivity extends AppCompatActivity {
 
@@ -50,7 +47,7 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
         getAllLocation();
 
         choosePPMviewSpinner = (Spinner) findViewById(R.id.ppmTypeSpinner);
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, ppmType);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         choosePPMviewSpinner.setAdapter(dataAdapter);
@@ -120,7 +117,7 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
                 locationlist = new ArrayList<>(locationSet);
 
                 chooseLocationviewSpinner = (Spinner) findViewById(R.id.chooseLocationSpinner);
-                ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(ChoosePurityHistoryActivity.this,
+                ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<>(ChoosePurityHistoryActivity.this,
                         android.R.layout.simple_spinner_item, locationlist);
                 dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 chooseLocationviewSpinner.setAdapter(dataAdapter1);

@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.Location;
 import com.example.frys.waters.model.WaterPurityReport;
-import com.example.frys.waters.model.WaterSourceReport;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,8 +27,6 @@ import java.util.Date;
 import java.util.List;
 
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
-import static com.example.frys.waters.controllers.RegUserActivity.purityReports;
-
 /**
  * Water Purity Report
  */
@@ -60,7 +57,7 @@ public class WaterPurityReportActivity extends AppCompatActivity {
         overallConditionSpinner = (Spinner) findViewById(R.id._overallConditionSpinner);
         numReport = (TextView) findViewById(R.id._reportNumberText);
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, conditions);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         overallConditionSpinner.setAdapter(dataAdapter);

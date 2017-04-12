@@ -10,10 +10,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 import static com.example.frys.waters.controllers.WaterPurityReportActivity.newPurityLocation;
-import static com.example.frys.waters.controllers.WaterSourceReportActivity.newLocation;
 
 public class PurityReportMap extends FragmentActivity implements OnMapReadyCallback {
 
