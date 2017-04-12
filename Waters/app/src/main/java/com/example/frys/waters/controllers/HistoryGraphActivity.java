@@ -11,6 +11,7 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 
+import static com.example.frys.waters.controllers.ChoosePurityHistoryActivity.choosePPMviewSpinner;
 import static com.example.frys.waters.controllers.ChoosePurityYearActivity.reportsToShow;
 
 public class HistoryGraphActivity extends AppCompatActivity {
