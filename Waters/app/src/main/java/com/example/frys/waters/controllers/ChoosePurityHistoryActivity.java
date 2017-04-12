@@ -28,8 +28,8 @@ import java.util.Set;
 
 public class ChoosePurityHistoryActivity extends AppCompatActivity {
 
-    Spinner chooseLocationviewSpinner;
-    Spinner choosePPMviewSpinner;
+    private Spinner chooseLocationviewSpinner;
+    private Spinner choosePPMviewSpinner;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference();

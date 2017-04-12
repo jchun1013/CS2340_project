@@ -10,7 +10,6 @@ public class User {
     private String password;
     private String emailAddress;
     private String homeAddress;
-    private String title;
     private UserType usertype;
     private boolean isReporting = false;
 

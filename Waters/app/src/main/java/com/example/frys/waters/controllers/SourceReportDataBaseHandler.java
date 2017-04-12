@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.frys.waters.model.WaterSourceReport;
 
 class SourceReportDataBaseHandler extends SQLiteOpenHelper {
-    private SQLiteDatabase db;
+    //private SQLiteDatabase db;
 
     //database version
     private static final int DATABASE_VERSION = 1;
@@ -74,16 +74,5 @@ class SourceReportDataBaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    /**
-     * This method gets the number of total reports(rows) that are in the database
-     * @return number of reports
-     */
-    private int countReport() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from sourceReport", null);
-        int count = cursor.getCount();
-        cursor.close();
-        return count;
-    }
 }
 

@@ -19,7 +19,7 @@ public class EditProfile extends AppCompatActivity {
 
     private EditText _name, _email, _password, _confPassword, _address;
 
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    //private FirebaseDatabase database = FirebaseDatabase.getInstance();
     //DatabaseReference databaseReference = database.getReference();
 
     /**
