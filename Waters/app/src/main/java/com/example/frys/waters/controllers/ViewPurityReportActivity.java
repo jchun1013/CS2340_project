@@ -26,8 +26,8 @@ public class ViewPurityReportActivity extends AppCompatActivity {
     private Spinner viewSpinner2;
     public static int selectedReport2;
     private DatabaseReference databaseReference;
-    private List<Integer> reports = new ArrayList<>();
-    private Map<Integer, WaterPurityReport> reportMap = new HashMap<>();
+    private final List<Integer> reports = new ArrayList<>();
+    private final Map<Integer, WaterPurityReport> reportMap = new HashMap<>();
     public static WaterPurityReport selectedReportObject2;
 
     @Override

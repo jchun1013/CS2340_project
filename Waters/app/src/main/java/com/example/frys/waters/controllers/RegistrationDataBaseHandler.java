@@ -18,7 +18,7 @@ class RegistrationDataBaseHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     //database name
-    private static String DATABASE_NAME = "login.db";
+    private static final String DATABASE_NAME = "login.db";
 
     //table name
     private static final String TABLE_REGISTER = "register";

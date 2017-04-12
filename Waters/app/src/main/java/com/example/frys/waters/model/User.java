@@ -13,7 +13,7 @@ public class User {
     private UserType usertype;
     private boolean isReporting = false;
 
-    public static List<UserType> typeList = Arrays.asList(UserType.values());
+    public static final List<UserType> typeList = Arrays.asList(UserType.values());
 
     /**
      * Creates user

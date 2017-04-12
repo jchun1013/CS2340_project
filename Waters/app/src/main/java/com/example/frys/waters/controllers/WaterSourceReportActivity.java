@@ -31,15 +31,15 @@ import static com.example.frys.waters.controllers.RegUserActivity.sourceReports;
 public class WaterSourceReportActivity extends AppCompatActivity {
     private Spinner WaterConditionSpinner;
     private Spinner waterTypeSpinner;
-    static Location newLocation = new Location(0.0, 0.0);
+    static final Location newLocation = new Location(0.0, 0.0);
 
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
+    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
     private final String currentDateandTime = sdf.format(new Date());
 
-    private SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this);
+    private final SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this);
 
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = database.getReference("source report");
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final DatabaseReference databaseReference = database.getReference("source report");
 
     private TextView numReport;
     private boolean addCount = true;

@@ -28,8 +28,8 @@ public class ViewReportActivity extends AppCompatActivity {
     public static int selectedReport;
 
     private DatabaseReference databaseReference;
-    private List<Integer> reports = new ArrayList<>();
-    private Map<Integer, WaterSourceReport> reportMap = new HashMap<>();
+    private final List<Integer> reports = new ArrayList<>();
+    private final Map<Integer, WaterSourceReport> reportMap = new HashMap<>();
     public static WaterSourceReport selectedReportObject;
 
     /**
