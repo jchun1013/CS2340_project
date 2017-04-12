@@ -31,10 +31,6 @@ public class HistoryGraphActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_graph);
 
-        double x,y;
-        x = 0;
-        y = 0;
-
         GraphView graph = (GraphView) findViewById(R.id.graph);
 
         double[] ppms = new double[12];
@@ -55,7 +51,7 @@ public class HistoryGraphActivity extends AppCompatActivity {
         int j = 0;
         for (int i = 0; i < count.length; i++) {
             if (count[i] != 0) {
-                list[j] = new DataPoint(i, (double)ppms[i] / count[i]);
+                list[j] = new DataPoint(i, ppms[i] / count[i]);
                 j++;
             }
         }

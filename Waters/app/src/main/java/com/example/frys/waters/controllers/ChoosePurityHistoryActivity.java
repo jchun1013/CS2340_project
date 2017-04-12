@@ -114,7 +114,7 @@ public class ChoosePurityHistoryActivity extends AppCompatActivity {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
 
                 for (DataSnapshot child : children) {
-                    Location childValue = child.getValue(Location.class);
+                    //Location childValue = child.getValue(Location.class);
                     locationSet.add(getAddress(new Location(Double.parseDouble(child.child("location").child("latitude").getValue().toString())
                             , Double.parseDouble(child.child("location").child("longitude").getValue().toString()))));
                 }

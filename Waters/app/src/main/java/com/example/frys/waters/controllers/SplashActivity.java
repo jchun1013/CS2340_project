@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
-     * @param bundle
+     * @param bundle bundle
      */
     @Override
     public void onCreate(Bundle bundle) {

@@ -14,7 +14,7 @@ import com.example.frys.waters.R;
 public class Application extends AppCompatActivity {
     /**
      * launches welcome screen
-     * @param savedInstanceState
+     * @param savedInstanceState savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

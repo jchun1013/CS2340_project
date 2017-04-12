@@ -16,7 +16,7 @@ public class WelcomeScreen extends AppCompatActivity {
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
-     * @param savedInstanceState
+     * @param savedInstanceState savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -71,7 +71,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * Adds new report to the database
-     * @param report
+     * @param report report
      */
     public void addSourceReport(WaterSourceReport report) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -90,7 +90,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * Deletes corresponding row
-     * @param reportNumber
+     * @param reportNumber reportNumber
      */
     public void deleteEntry(int reportNumber) {
         db.delete(TABLE_SOURCEREPORT, Col_REPORT_NUMBER + " = " + reportNumber, null);
@@ -113,7 +113,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * This method gets the location of a report
-     * @param rNumber(report number)
+     * @param rNumber(report number) report number
      * @return rNumber's corresponding Location object
      */
     public Location getLocation(int rNumber) {
@@ -132,7 +132,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * This method gets the reporter's name of a report
-     * @param rNumber(report number)
+     * @param rNumber(report number) report number
      * @return returns rNumber's corresponding report's reporter name
      */
     public String getReporterName(int rNumber) {
@@ -147,7 +147,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * This method gets the condition of a report
-     * @param rNumber(report number)
+     * @param rNumber(report number) report number
      * @return returns rNumber's corresponding report's condition
      */
     public String getCondition(int rNumber) {
@@ -162,7 +162,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * This method gets the water type of a report
-     * @param rNumber(report number)
+     * @param rNumber(report number) report number
      * @return rNumber's corresponding report's water type
      */
     public String getWaterType(int rNumber) {
@@ -177,7 +177,7 @@ public class SourceReportDataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * This method gets the date and time of a report
-     * @param rNumber(report number)
+     * @param rNumber(report number) report number
      * @return rNumer's corresponding report's date and time
      */
     public String getDateTime(int rNumber) {

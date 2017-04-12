@@ -231,7 +231,7 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
         String[] locArray = new String[locSplit.length];
         if (countReport() > 0) {
             if (locArray.length > 0) {
-                for (int i = 0; i < locArray.length; i++) {
+                    for (int i = 0; i < locArray.length; i++) {
                     locArray[i] = locSplit[i];
                 }
             }
@@ -240,8 +240,6 @@ public class PurityReportDataBaseHandler extends SQLiteOpenHelper {
     }
 
     public String[] getAllYear(String loca) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from purityReport", null);
         String years = "";
         for (int i = 1; i < countReport() + 1; i++) {
             System.out.println("HIIIIIIIIIII");

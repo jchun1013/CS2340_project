@@ -22,11 +22,11 @@ public class User {
 
     /**
      * Creates user
-     * @param username
-     * @param name
-     * @param email
-     * @param password
-     * @param address
+     * @param username username
+     * @param name name
+     * @param email email
+     * @param password password
+     * @param address address
      */
     public User(String username, String name, String email, String password, String address) {
         this.name = name;
@@ -49,7 +49,7 @@ public class User {
 
     /**
      * setter for name
-     * @param name
+     * @param name name
      */
     public void setName(String name) {
         this.name = name;
@@ -65,7 +65,7 @@ public class User {
 
     /**
      * setter for username
-     * @param username
+     * @param username username
      */
     public void setUsername(String username) {
         this.username = username;
@@ -81,7 +81,7 @@ public class User {
 
     /**
      * setter for password
-     * @param password
+     * @param password password
      */
     public void setPassword(String password) {
         this.password = password;
@@ -97,7 +97,7 @@ public class User {
 
     /**
      * setter for emailAddress
-     * @param email
+     * @param email email
      */
     public void setEmailAddress(String email) {
         this.emailAddress = email;
@@ -113,7 +113,7 @@ public class User {
 
     /**
      * setter for homeAddress
-     * @param address
+     * @param address address
      */
     public void setHomeAddress(String address) {
         this.homeAddress = address;
@@ -129,7 +129,7 @@ public class User {
 
     /**
      * setter for title
-     * @param title
+     * @param title title
      */
     public void setTitle(String title) {
         this.title = title;
@@ -145,7 +145,7 @@ public class User {
 
     /**
      * setter for userType
-     * @param type
+     * @param type type
      */
     public void setUsertype(UserType type) {
         this.usertype = type;
@@ -161,7 +161,7 @@ public class User {
 
     /**
      * setter for isReporting
-     * @param isReporting
+     * @param isReporting isReporting
      */
     public void setIsReporting(boolean isReporting) {
         this.isReporting = isReporting;
