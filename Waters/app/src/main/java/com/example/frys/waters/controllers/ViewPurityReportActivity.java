@@ -24,7 +24,7 @@ import java.util.Map;
 public class ViewPurityReportActivity extends AppCompatActivity {
 
     private Spinner viewSpinner2;
-    public static int selectedReport2;
+    private static int selectedReport2;
     private DatabaseReference databaseReference;
     private final List<Integer> reports = new ArrayList<>();
     private final Map<Integer, WaterPurityReport> reportMap = new HashMap<>();
