@@ -102,13 +102,19 @@ public class WaterPurityReportActivity extends AppCompatActivity {
 
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
-                    startActivity(new Intent(WaterPurityReportActivity.this, WaterPurityReportActivity.class));
+                    return;
+                } else if (!isValidPPM(virusPPM.getText().toString()) && !isValidPPM(contaminantPPM.getText().toString())) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Please enter valid PPM";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    return;
                 } else {
                     WaterPurityReport newReport = new WaterPurityReport(currentDateandTime, Integer.parseInt(numReport.getText().toString()), currentUser.getName(),
                             newLoc, (String) overallConditionSpinner.getSelectedItem(), Double.parseDouble(virusPPM.getText().toString())
                             , Double.parseDouble(contaminantPPM.getText().toString()));
-//                    purityReports.add(newReport);
-//                    db.addPurityReport(newReport);
 
                     addPurityReport(newReport);
 

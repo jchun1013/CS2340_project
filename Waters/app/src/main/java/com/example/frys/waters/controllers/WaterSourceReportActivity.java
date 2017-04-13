@@ -36,8 +36,6 @@ public class WaterSourceReportActivity extends AppCompatActivity {
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/ HH:mm:ss");
     private final String currentDateandTime = sdf.format(new Date());
 
-    private final SourceReportDataBaseHandler db = new SourceReportDataBaseHandler(WaterSourceReportActivity.this);
-
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference databaseReference = database.getReference("source report");
 
@@ -91,9 +89,6 @@ public class WaterSourceReportActivity extends AppCompatActivity {
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         waterTypeSpinner.setAdapter(typeAdapter);
 
-
-
-        //numReport.setText("" + (db.countReport() + 1));
         dateAndtime.setText(currentDateandTime);
 
         enterLocationButton.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +116,6 @@ public class WaterSourceReportActivity extends AppCompatActivity {
                     WaterSourceReport newReport = new WaterSourceReport(currentDateandTime, Integer.parseInt(numReport.getText().toString()), currentUser.getName(),
                             newLoc, (String) WaterConditionSpinner.getSelectedItem(), (String) waterTypeSpinner.getSelectedItem());
                     sourceReports.add(newReport);
-                    db.addSourceReport(newReport);
 
                     String id = databaseReference.push().getKey();
                     databaseReference.child(id).setValue(newReport);
