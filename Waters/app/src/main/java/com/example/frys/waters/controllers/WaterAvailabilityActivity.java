@@ -74,8 +74,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //db = new SourceReportDataBaseHandler(WaterAvailabilityActivity.this);
-
         if (reports.size() > 0) {
             for (WaterSourceReport r : reports) {
                 Location location = r.getLocation();
@@ -85,7 +83,6 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
             }
         }
-
 
         //adding marker during submitting report
         if (currentUser.getIsReporting()) {
@@ -155,6 +152,4 @@ public class WaterAvailabilityActivity extends FragmentActivity implements OnMap
             }
         });
     }
-
-
 }

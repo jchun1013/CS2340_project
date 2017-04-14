@@ -102,7 +102,7 @@ public class User {
      * setter for userType
      * @param type type
      */
-    void setUsertype(UserType type) {
+    public void setUsertype(UserType type) {
         this.usertype = type;
     }
 

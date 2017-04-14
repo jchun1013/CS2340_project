@@ -3,9 +3,11 @@ package com.example.frys.waters.controllers;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,7 +16,18 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.frys.waters.R;
+import com.example.frys.waters.model.Admin;
+import com.example.frys.waters.model.Manager;
 import com.example.frys.waters.model.User;
+import com.example.frys.waters.model.UserType;
+import com.example.frys.waters.model.Worker;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.regex.Pattern;
 
 import static com.example.frys.waters.controllers.LoginActivity.registeredUser;
@@ -25,9 +38,11 @@ import static com.example.frys.waters.controllers.LoginActivity.registeredUser;
 public class Registration extends AppCompatActivity {
 
     //Commment out when junit testing
-//    FirebaseDatabase database = FirebaseDatabase.getInstance();
-//    DatabaseReference databaseReference = database.getInstance().getReference("user");
-//    FirebaseAuth firebaseAuth;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getInstance().getReference("user");
+    FirebaseAuth firebaseAuth;
+
+    Spinner userTypeSpinner;
 
     private EditText nameEdit;
     private EditText emailEdit;
@@ -46,7 +61,7 @@ public class Registration extends AppCompatActivity {
                     ")+"
     );
 
-    //private static final String TAG = "EMAIL/PASSWORD";
+    private static final String TAG = "EMAIL/PASSWORD";
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -60,8 +75,11 @@ public class Registration extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        userTypeSpinner = (Spinner) findViewById(R.id.spinner);
+
         //Comment out when junit testing
-        //firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         nameEdit = (EditText) findViewById(R.id.nameEditText);
         usernameEdit = (EditText) findViewById(R.id.usernameEditText);
@@ -70,7 +88,7 @@ public class Registration extends AppCompatActivity {
         addressEdit = (EditText) findViewById(R.id.addressEditText);
         emailEdit = (EditText) findViewById(R.id.emailEditText);
 
-        Spinner userTypeSpinner = (Spinner) findViewById(R.id.spinner);
+
 
         ArrayAdapter<android.widget.ArrayAdapter> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, User.typeList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -147,49 +165,49 @@ public class Registration extends AppCompatActivity {
 
         //comment out when junit testing
         //creating a new user
-//        firebaseAuth.createUserWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-//
-//                        //checking if success
-//                        if(task.isSuccessful()){
-//                            UserType type = (UserType) userTypeSpinner.getSelectedItem();
-//                                User newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-//                                        passwordEdit.getText().toString(), addressEdit.getText().toString());
-//                                switch (type) {
-//                                    case USER:
-//                                        newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-//                                                passwordEdit.getText().toString(), addressEdit.getText().toString());
-//                                        break;
-//                                    case WORKER:
-//                                        newUser = new Worker(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-//                                                passwordEdit.getText().toString(), addressEdit.getText().toString());
-//                                        break;
-//                                    case ADMIN:
-//                                        newUser = new Admin(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-//                                                passwordEdit.getText().toString(), addressEdit.getText().toString());
-//                                        break;
-//                                    case MANAGER:
-//                                        newUser = new Manager(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-//                                                passwordEdit.getText().toString(), addressEdit.getText().toString());
-//                                        break;
-//                                }
-//                            newUser.setUsertype((UserType) userTypeSpinner.getSelectedItem());
-//
-//                            //Commment out when junit testing
-//                            //String id = databaseReference.push().getKey();
-//                            //databaseReference.child(id).setValue(newUser);
-//
-//                            startActivity(new Intent(Registration.this, WelcomeScreen.class));
-//
-//                            Toast.makeText(Registration.this,"Successfully registered",Toast.LENGTH_LONG).show();
-//                        }else{
-//                            //display some message here
-//                            Toast.makeText(Registration.this,"Email already exists",Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//                });
+        firebaseAuth.createUserWithEmailAndPassword(e, p)
+                .addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+
+                        //checking if success
+                        if(task.isSuccessful()){
+                            UserType type = (UserType) userTypeSpinner.getSelectedItem();
+                                User newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                        passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                switch (type) {
+                                    case USER:
+                                        newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                                passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                        break;
+                                    case WORKER:
+                                        newUser = new Worker(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                                passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                        break;
+                                    case ADMIN:
+                                        newUser = new Admin(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                                passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                        break;
+                                    case MANAGER:
+                                        newUser = new Manager(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                                passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                        break;
+                                }
+                            newUser.setUsertype((UserType) userTypeSpinner.getSelectedItem());
+
+                            //Commment out when junit testing
+                            String id = databaseReference.push().getKey();
+                            databaseReference.child(id).setValue(newUser);
+
+                            startActivity(new Intent(Registration.this, WelcomeScreen.class));
+
+                            Toast.makeText(Registration.this,"Successfully registered",Toast.LENGTH_LONG).show();
+                        }else{
+                            //display some message here
+                            Toast.makeText(Registration.this,"Email already exists",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 }
