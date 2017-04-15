@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.frys.waters.R;
@@ -65,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         // Set up the login form.
         editEmail = (EditText) findViewById(R.id.email);
         editPassword = (EditText) findViewById(R.id.password);
+        TextView textForgotPassword = (TextView) findViewById(R.id.forgotPassword);
 
 
         Button SignInButton = (Button) findViewById(R.id.email_sign_in_button);
@@ -81,6 +83,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, WelcomeScreen.class));
+            }
+        });
+        textForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
             }
         });
     }
