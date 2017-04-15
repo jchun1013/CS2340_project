@@ -86,6 +86,7 @@ public class EditProfile extends AppCompatActivity {
                     if (!_address.getText().toString().equals(currentUser.getHomeAddress())) {
                         databaseReference.child("user").child(databaseKey).child("homeAddress").setValue(_address.getText().toString());
                     }
+                    finish();
                 } else {
                     Context context = getApplicationContext();
                     CharSequence text = "Your password is incorrect.";
@@ -93,8 +94,8 @@ public class EditProfile extends AppCompatActivity {
 
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+                    return;
                 }
-                finish();
             }
 
             @Override
