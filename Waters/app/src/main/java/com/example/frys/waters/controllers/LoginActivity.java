@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        registeredUser.put("user", new User("test", "test", "test", "pass", "test"));
+        //registeredUser.put("user", new User("test", "test", "test", "pass", "test"));
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();

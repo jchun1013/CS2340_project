@@ -174,26 +174,26 @@ public class Registration extends AppCompatActivity {
                         //checking if success
                         if(task.isSuccessful()){
                             UserType type = (UserType) userTypeSpinner.getSelectedItem();
-                                User newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-                                        passwordEdit.getText().toString(), addressEdit.getText().toString());
-                                switch (type) {
-                                    case USER:
-                                        newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-                                                passwordEdit.getText().toString(), addressEdit.getText().toString());
-                                        break;
-                                    case WORKER:
-                                        newUser = new Worker(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-                                                passwordEdit.getText().toString(), addressEdit.getText().toString());
-                                        break;
-                                    case ADMIN:
-                                        newUser = new Admin(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-                                                passwordEdit.getText().toString(), addressEdit.getText().toString());
-                                        break;
-                                    case MANAGER:
-                                        newUser = new Manager(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-                                                passwordEdit.getText().toString(), addressEdit.getText().toString());
-                                        break;
-                                }
+                            User newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                    passwordEdit.getText().toString(), addressEdit.getText().toString());
+                            switch (type) {
+                                case USER:
+                                    newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                            passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                    break;
+                                case WORKER:
+                                    newUser = new Worker(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                            passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                    break;
+                                case ADMIN:
+                                    newUser = new Admin(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                            passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                    break;
+                                case MANAGER:
+                                    newUser = new Manager(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
+                                            passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                    break;
+                            }
                             newUser.setUsertype((UserType) userTypeSpinner.getSelectedItem());
 
                             //Commment out when junit testing

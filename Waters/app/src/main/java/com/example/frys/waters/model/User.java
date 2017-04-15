@@ -12,6 +12,7 @@ public class User {
     private String homeAddress;
     private UserType usertype;
     private boolean isReporting = false;
+    private String key;
 
     public static final List<UserType> typeList = Arrays.asList(UserType.values());
 
@@ -121,5 +122,4 @@ public class User {
     public void setIsReporting(boolean isReporting) {
         this.isReporting = isReporting;
     }
-
 }

@@ -198,22 +198,22 @@ class RegistrationDataBaseHandler extends SQLiteOpenHelper {
      * @param username username
      * @return user
      */
-    public User getUser(String username) {
-        User currentUser = new User(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
-        String type = getUserType(username);
-        switch (type) {
-            case "USER" :
-                currentUser = new User(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
-                break;
-            case "WORKER" :
-                currentUser = new Worker(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
-                break;
-            case "MANAGER" :
-                currentUser = new Manager(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
-                break;
-            case "ADMIN" :
-                currentUser = new Admin(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
-        }
-        return currentUser;
-    }
+//    public User getUser(String username) {
+//        User currentUser = new User(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
+//        String type = getUserType(username);
+//        switch (type) {
+//            case "USER" :
+//                currentUser = new User(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
+//                break;
+//            case "WORKER" :
+//                currentUser = new Worker(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
+//                break;
+//            case "MANAGER" :
+//                currentUser = new Manager(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
+//                break;
+//            case "ADMIN" :
+//                currentUser = new Admin(username, getName(username), getEmail(username), getPassword(username), getHomeAddress(username));
+//        }
+//        return currentUser;
+//    }
 }
