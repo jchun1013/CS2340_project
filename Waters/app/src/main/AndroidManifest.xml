@@ -17,11 +17,11 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:fullBackupContent="@xml/backup_descriptor">
+        android:theme="@style/AppTheme">
         <activity android:name=".controllers.WelcomeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -77,6 +77,10 @@
         <activity android:name=".controllers.HistoryGraphActivity" />
         <activity android:name=".controllers.ChoosePurityHistoryActivity" />
         <activity android:name=".controllers.ChoosePurityYearActivity" />
+        <activity android:name=".controllers.RegWorkerActivity" />
+        <activity android:name=".controllers.RegManagerActivity" />
+        <activity android:name=".controllers.RegAdminActivity" />
+        <activity android:name=".controllers.ForgotPasswordActivity"></activity>
     </application>
 
 </manifest>

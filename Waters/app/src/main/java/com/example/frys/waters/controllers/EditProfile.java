@@ -9,6 +9,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.frys.waters.R;
+import com.example.frys.waters.model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 //import com.google.firebase.database.FirebaseDatabase;
 import static com.example.frys.waters.controllers.LoginActivity.currentUser;
 
@@ -19,8 +25,8 @@ public class EditProfile extends AppCompatActivity {
 
     private EditText _name, _email, _password, _confPassword, _address;
 
-    //private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //DatabaseReference databaseReference = database.getReference();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getReference();
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -47,54 +53,13 @@ public class EditProfile extends AppCompatActivity {
         _edit_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //changeProfile();
-                if (_confPassword.getText().toString().equals(_password.getText().toString())) {
-                    if (!_name.getText().toString().equals(currentUser.getName())) {
-                        //databaseReference.child("user").child("name").setValue(_name.getText().toString());
-                        currentUser.setName(_name.getText().toString());
-                    }
-                    if (!_email.getText().toString().equals(currentUser.getEmailAddress())) {
-                        Toast.makeText(EditProfile.this,"Email cannot be changed",Toast.LENGTH_LONG).show();
-                        //currentUser.setEmailAddress(_email.getText().toString());
-                    }
-                    if (!_address.getText().toString().equals(currentUser.getHomeAddress())) {
-                        currentUser.setHomeAddress(_address.getText().toString());
-                    }
-                } else {
-                    Context context = getApplicationContext();
-                    CharSequence text = "Your password and confirmation does not match.";
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }
-                finish();
-            }
-        });
-
-        _edit_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
-
-//    public void changeProfile() {
-//        databaseReference.child("purity report").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-//                User childValue;
-//
-//                for (DataSnapshot child : children) {
-//                    if (child.child("emailAddress").getValue().toString().equals(currentUser.getName())) {
-//                        childValue = child.getValue(User.class);
-//                    }
-//                }
+                changeProfile();
+//                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+//                DatabaseReference child = ref.child("Users");
 //
 //                if (_confPassword.getText().toString().equals(_password.getText().toString())) {
 //                    if (!_name.getText().toString().equals(currentUser.getName())) {
+//
 //                        //databaseReference.child("user").child("name").setValue(_name.getText().toString());
 //                        currentUser.setName(_name.getText().toString());
 //                    }
@@ -114,12 +79,59 @@ public class EditProfile extends AppCompatActivity {
 //                    toast.show();
 //                }
 //                finish();
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
+            }
+        });
+
+        _edit_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    public void changeProfile() {
+        databaseReference.child("user").orderByChild("emailAddress").equalTo(currentUser.getEmailAddress()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                //User childValue;
+                String databaseKey = null;
+
+                for (DataSnapshot child : children) {
+                    databaseKey = child.getKey();
+                }
+
+                if (_confPassword.getText().toString().equals(_password.getText().toString())) {
+                    if (!_name.getText().toString().equals(currentUser.getName())) {
+                        databaseReference.child("user").child(databaseKey).child("name").setValue(_name.getText().toString());
+                        //databaseReference.child("user").child("name").setValue(_name.getText().toString());
+                        //currentUser.setName(_name.getText().toString());
+                    }
+                    if (!_email.getText().toString().equals(currentUser.getEmailAddress())) {
+                        Toast.makeText(EditProfile.this,"Email cannot be changed",Toast.LENGTH_LONG).show();
+                        //currentUser.setEmailAddress(_email.getText().toString());
+                    }
+                    if (!_address.getText().toString().equals(currentUser.getHomeAddress())) {
+                        databaseReference.child("user").child(databaseKey).child("homeAddress").setValue(_address.getText().toString());
+                        //databaseReference.child("user").child(databaseKey).child("")
+                        //currentUser.setHomeAddress(_address.getText().toString());
+                    }
+                } else {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Your password and confirmation does not match.";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+                finish();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
