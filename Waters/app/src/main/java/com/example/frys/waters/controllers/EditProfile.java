@@ -95,7 +95,6 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-                //User childValue;
                 String databaseKey = null;
 
                 for (DataSnapshot child : children) {
@@ -105,17 +104,12 @@ public class EditProfile extends AppCompatActivity {
                 if (_confPassword.getText().toString().equals(_password.getText().toString())) {
                     if (!_name.getText().toString().equals(currentUser.getName())) {
                         databaseReference.child("user").child(databaseKey).child("name").setValue(_name.getText().toString());
-                        //databaseReference.child("user").child("name").setValue(_name.getText().toString());
-                        //currentUser.setName(_name.getText().toString());
                     }
                     if (!_email.getText().toString().equals(currentUser.getEmailAddress())) {
                         Toast.makeText(EditProfile.this,"Email cannot be changed",Toast.LENGTH_LONG).show();
-                        //currentUser.setEmailAddress(_email.getText().toString());
                     }
                     if (!_address.getText().toString().equals(currentUser.getHomeAddress())) {
                         databaseReference.child("user").child(databaseKey).child("homeAddress").setValue(_address.getText().toString());
-                        //databaseReference.child("user").child(databaseKey).child("")
-                        //currentUser.setHomeAddress(_address.getText().toString());
                     }
                 } else {
                     Context context = getApplicationContext();
