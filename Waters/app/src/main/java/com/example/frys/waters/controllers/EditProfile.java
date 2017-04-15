@@ -54,31 +54,6 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 changeProfile();
-//                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-//                DatabaseReference child = ref.child("Users");
-//
-//                if (_confPassword.getText().toString().equals(_password.getText().toString())) {
-//                    if (!_name.getText().toString().equals(currentUser.getName())) {
-//
-//                        //databaseReference.child("user").child("name").setValue(_name.getText().toString());
-//                        currentUser.setName(_name.getText().toString());
-//                    }
-//                    if (!_email.getText().toString().equals(currentUser.getEmailAddress())) {
-//                        Toast.makeText(EditProfile.this,"Email cannot be changed",Toast.LENGTH_LONG).show();
-//                        //currentUser.setEmailAddress(_email.getText().toString());
-//                    }
-//                    if (!_address.getText().toString().equals(currentUser.getHomeAddress())) {
-//                        currentUser.setHomeAddress(_address.getText().toString());
-//                    }
-//                } else {
-//                    Context context = getApplicationContext();
-//                    CharSequence text = "Your password and confirmation does not match.";
-//                    int duration = Toast.LENGTH_SHORT;
-//
-//                    Toast toast = Toast.makeText(context, text, duration);
-//                    toast.show();
-//                }
-//                finish();
             }
         });
 
