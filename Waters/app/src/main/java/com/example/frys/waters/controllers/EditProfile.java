@@ -76,7 +76,7 @@ public class EditProfile extends AppCompatActivity {
                     databaseKey = child.getKey();
                 }
 
-                if (_confPassword.getText().toString().equals(_password.getText().toString())) {
+                if (currentUser.getPassword().equals(_password.getText().toString())) {
                     if (!_name.getText().toString().equals(currentUser.getName())) {
                         databaseReference.child("user").child(databaseKey).child("name").setValue(_name.getText().toString());
                     }
@@ -88,7 +88,7 @@ public class EditProfile extends AppCompatActivity {
                     }
                 } else {
                     Context context = getApplicationContext();
-                    CharSequence text = "Your password and confirmation does not match.";
+                    CharSequence text = "Your password is incorrect.";
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text, duration);
