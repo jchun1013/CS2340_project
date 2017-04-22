@@ -24,21 +24,26 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     DatabaseReference databaseReference = database.getReference();
 
     static String userKey;
+    boolean boo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
-        AutoCompleteTextView enterEmail = (AutoCompleteTextView) findViewById(R.id.emailEnter);
-        String getEmail = enterEmail.getText().toString();
-        System.out.println(getEmail);
-
         Button submitButton = (Button) findViewById(R.id.forgotPassword_enterEmail);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                changePassword();
+                if (boo) {
+                    startActivity(new Intent(ForgotPasswordActivity.this, NewPasswordActivity.class));
+                    boo = false;
+                    System.out.println("TRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                } else {
+                    Toast.makeText(ForgotPasswordActivity.this, "The username you entered does not exist.", Toast.LENGTH_LONG).show();
+                    System.out.println("FALSEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                }
 
             }
         });
@@ -52,13 +57,18 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-                setKey(null);
-                //String databaseKey = null;
+                String databaseKey = null;
+                setKey(databaseKey);
+                boo(false);
+
 
                 for (DataSnapshot child : children) {
-                    setKey(child.getKey());
+                    databaseKey = child.getKey();
                 }
-                finish();
+                if (databaseKey != null) {
+                    setKey(databaseKey);
+                    boo(true);
+                }
             }
 
             @Override
@@ -70,5 +80,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     public void setKey(String key) {
         this.userKey = key;
+    }
+
+    public void boo(boolean boo) {
+        this.boo = boo;
     }
 }
