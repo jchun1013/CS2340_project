@@ -26,26 +26,27 @@ public class NewPasswordActivity extends AppCompatActivity {
 
 
 
-        Button submitButton = (Button) findViewById(R.id.resetPasswordButton);
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText newPassword = (EditText) findViewById(R.id.newPasswordEditText);
-                EditText confirmPassword = (EditText) findViewById(R.id.confirmPasswordEditText);
-                String newPasswords = newPassword.getText().toString();
-                String confirmPasswords = confirmPassword.getText().toString();
-                if (newPasswords.compareTo(confirmPasswords) == 0) {
-                    if (newPasswords.length() < 6) {
-                        Toast.makeText(NewPasswordActivity.this, "Password is too short. Must be longer than 6", Toast.LENGTH_LONG).show();
-                    } else if (newPasswords.compareTo(databaseReference.child("user").child(userKey).child("password").toString()) == 0) {
-                        Toast.makeText(NewPasswordActivity.this, "The previous password matches the new password.", Toast.LENGTH_LONG).show();
-                    } else {
-                        databaseReference.child("user").child(userKey).child("password").setValue(newPassword.getText().toString());
-                    }
-                } else {
-                    Toast.makeText(NewPasswordActivity.this, "new password and confirmation does not match", Toast.LENGTH_LONG).show();
-                }
-            }
-         });
+//        Button submitButton = (Button) findViewById(R.id.resetPasswordButton);
+//        submitButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                EditText newPassword = (EditText) findViewById(R.id.newPasswordEditText);
+//                EditText confirmPassword = (EditText) findViewById(R.id.confirmPasswordEditText);
+//                String newPasswords = newPassword.getText().toString();
+//                String confirmPasswords = confirmPassword.getText().toString();
+//                if (newPasswords.compareTo(confirmPasswords) == 0) {
+//                    if (newPasswords.length() < 6) {
+//                        Toast.makeText(NewPasswordActivity.this, "Password is too short. Must be longer than 6", Toast.LENGTH_LONG).show();
+//                    } else if (newPasswords.compareTo(databaseReference.child("user").child(userKey).child("password").toString()) == 0) {
+//                        Toast.makeText(NewPasswordActivity.this, "The previous password matches the new password.", Toast.LENGTH_LONG).show();
+//                    } else {
+//                        databaseReference.child("user").child(userKey).child("password").setValue(newPassword.getText().toString());
+//                    }
+//                } else {
+//                    Toast.makeText(NewPasswordActivity.this, "new password and confirmation does not match", Toast.LENGTH_LONG).show();
+//                }
+//                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//            }
+//         });
     }
 }
