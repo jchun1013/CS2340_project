@@ -13,6 +13,7 @@ public class User {
     private UserType usertype;
     private boolean isReporting = false;
     private String key;
+    private boolean banned;
 
     public static final List<UserType> typeList = Arrays.asList(UserType.values());
 
@@ -24,12 +25,13 @@ public class User {
      * @param password password
      * @param address address
      */
-    public User(String username, String name, String email, String password, String address) {
+    public User(String username, String name, String email, String password, String address, boolean banned) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.emailAddress = email;
         this.homeAddress = address;
+        this.banned = banned;
     }
 
     public User() {
@@ -121,5 +123,21 @@ public class User {
      */
     public void setIsReporting(boolean isReporting) {
         this.isReporting = isReporting;
+    }
+
+    /**
+     * getter for banned
+     * @return whether or not the user is banned from database
+     */
+    public boolean getBanned() {
+        return banned;
+    }
+
+    /**
+     * setter for banned
+     * @param banned banned
+     */
+    public void setBanned(boolean banned) {
+        this.banned = banned;
     }
 }

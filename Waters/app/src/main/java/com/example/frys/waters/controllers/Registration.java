@@ -175,23 +175,23 @@ public class Registration extends AppCompatActivity {
                         if(task.isSuccessful()){
                             UserType type = (UserType) userTypeSpinner.getSelectedItem();
                             User newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-                                    passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                    passwordEdit.getText().toString(), addressEdit.getText().toString(), false);
                             switch (type) {
                                 case USER:
                                     newUser = new User(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-                                            passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                            passwordEdit.getText().toString(), addressEdit.getText().toString(), false);
                                     break;
                                 case WORKER:
                                     newUser = new Worker(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-                                            passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                            passwordEdit.getText().toString(), addressEdit.getText().toString(), false);
                                     break;
                                 case ADMIN:
                                     newUser = new Admin(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-                                            passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                            passwordEdit.getText().toString(), addressEdit.getText().toString(), false);
                                     break;
                                 case MANAGER:
                                     newUser = new Manager(usernameEdit.getText().toString(), nameEdit.getText().toString(), emailEdit.getText().toString(),
-                                            passwordEdit.getText().toString(), addressEdit.getText().toString());
+                                            passwordEdit.getText().toString(), addressEdit.getText().toString(), false);
                                     break;
                             }
                             newUser.setUsertype((UserType) userTypeSpinner.getSelectedItem());

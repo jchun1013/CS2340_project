@@ -47,8 +47,8 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
-    Map<String, Integer> emailList = new HashMap<>();
-
+    static Map<String, Integer> emailList = new HashMap<>();
+    static boolean banned;
 
 
     /**
@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void attemptLogin() {
-        String email = editEmail.getText().toString();
+        final String email = editEmail.getText().toString();
         String password = editPassword.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
@@ -119,8 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                     setCurrentUser();
                     startActivity(new Intent(getApplicationContext(), SplashActivity.class));
                 } else {
-                    emailList();
-                    Toast.makeText(LoginActivity.this, "Login Attempt Failed", Toast.LENGTH_SHORT).show();
+                    emailList(email);
                 }
             }
         });
@@ -148,32 +147,32 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void emailList() {
-        databaseReference.child("user").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+    public void emailList(String email) {
+            databaseReference.child("user").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Iterable<DataSnapshot> children = dataSnapshot.getChildren();
 
-                for (DataSnapshot child : children) {
-                    if (emailList.containsKey(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString())) {
-                        emailList.put(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString(), 0);
-                    } else {
-                        int count = emailList.get(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString()) + 1;
-                        if (count == 5) {
-                            count = 0;
-                            Toast.makeText(LoginActivity.this, "5 login attempts Failed. Banned", Toast.LENGTH_SHORT).show();
-                            finish();
+                    for (DataSnapshot child : children) {
+                        if (!emailList.containsKey(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString())) {
+                            emailList.put(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString(), 0);
                         } else {
-                            emailList.put(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString(), count);
+                            int count = emailList.get(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString()) + 1;
+                            if (count == 4) {
+                                databaseReference.child("user").child(child.getKey()).child("banned").setValue(true);
+                                Toast.makeText(LoginActivity.this, "5 login attempts Failed. Banned", Toast.LENGTH_SHORT).show();
+                            } else {
+                                emailList.put(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString(), count);
+                                Toast.makeText(LoginActivity.this, "Login Attempt Failed", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
     }
 }
