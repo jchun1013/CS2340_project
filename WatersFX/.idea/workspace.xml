@@ -207,8 +207,8 @@
       <file leaf-file-name="WaterSourceReport.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/WaterSourceReport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1827">
-              <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+            <state relative-caret-position="567">
+              <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
               <folding>
                 <element signature="e#839#840#0" expanded="true" />
                 <element signature="e#870#871#0" expanded="true" />
@@ -863,12 +863,12 @@
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1493049262033" duration="152000" />
       <workItem from="1493049444124" duration="3106000" />
-      <workItem from="1493052582161" duration="9020000" />
+      <workItem from="1493052582161" duration="9099000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13580000" />
+    <option name="totallyTimeSpent" value="13659000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -880,7 +880,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1098" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1122,8 +1122,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/WaterSourceReport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1827">
-          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+        <state relative-caret-position="567">
+          <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
           <folding>
             <element signature="e#839#840#0" expanded="true" />
             <element signature="e#870#871#0" expanded="true" />
