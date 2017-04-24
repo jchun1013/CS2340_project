@@ -8,8 +8,8 @@
 
 <AnchorPane fx:id="RegistrationLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WelcomeScreen">
    <children>
-      <TextField layoutX="101.0" layoutY="130.0" />
-      <PasswordField layoutX="331.0" layoutY="130.0" />
+      <TextField fx:id="email" layoutX="101.0" layoutY="130.0" promptText="Email" />
+      <PasswordField fx:id="password" layoutX="331.0" layoutY="130.0" promptText="Password" />
       <Label layoutX="101.0" layoutY="100.0" text="Email" />
       <Label layoutX="331.0" layoutY="100.0" text="Password" />
       <Button layoutX="556.0" layoutY="130.0" mnemonicParsing="false" onAction="#loginButtonAction" text="Login" />
