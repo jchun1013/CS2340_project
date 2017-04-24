@@ -149,11 +149,6 @@ public class LoginActivity extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     childValue = child.getValue(User.class);
                     currentUserKey = child.getKey();
-
-//                    if (childValue.getEmailAddress().equals(editEmail.getText().toString())) {
-//                        currentUser = childValue;
-//                        currentUserKey = child.toString();
-//                    }
                 }
             }
 
@@ -178,12 +173,8 @@ public class LoginActivity extends AppCompatActivity {
                         int count = emailList.get(childValue2.getEmailAddress()) + 1;
                         if (count == 4) {
                             databaseReference.child("user").child(child.getKey()).child("banned").setValue(true);
-                            //Toast.makeText(LoginActivity.this, "5 login attempts Failed. Banned", Toast.LENGTH_SHORT).show();
-                            //return;
                         } else {
                             emailList.put(childValue2.getEmailAddress(), count);
-                            //Toast.makeText(LoginActivity.this, "Login Attempt Failed", Toast.LENGTH_SHORT).show();
-                            //return;
                         }
                     }
                 }
