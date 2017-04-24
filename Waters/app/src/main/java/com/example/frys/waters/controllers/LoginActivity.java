@@ -1,5 +1,6 @@
 package com.example.frys.waters.controllers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,9 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
+    Map<String, Integer> emailList = new HashMap<>();
+
+
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -67,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         editEmail = (EditText) findViewById(R.id.email);
         editPassword = (EditText) findViewById(R.id.password);
         TextView textForgotPassword = (TextView) findViewById(R.id.forgotPassword);
+
 
 
         Button SignInButton = (Button) findViewById(R.id.email_sign_in_button);
@@ -114,6 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                     setCurrentUser();
                     startActivity(new Intent(getApplicationContext(), SplashActivity.class));
                 } else {
+                    emailList();
                     Toast.makeText(LoginActivity.this, "Login Attempt Failed", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -131,6 +137,35 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (childValue.getEmailAddress().equals(editEmail.getText().toString())) {
                         currentUser = childValue;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void emailList() {
+        databaseReference.child("user").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+
+                for (DataSnapshot child : children) {
+                    if (emailList.containsKey(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString())) {
+                        emailList.put(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString(), 0);
+                    } else {
+                        int count = emailList.get(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString()) + 1;
+                        if (count == 5) {
+                            count = 0;
+                            Toast.makeText(LoginActivity.this, "5 login attempts Failed. Banned", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            emailList.put(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString(), count);
+                        }
                     }
                 }
             }
