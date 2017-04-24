@@ -37,6 +37,10 @@ public class LoginActivity extends AppCompatActivity {
     //public static final Map<String, User> registeredUser = new HashMap();
     public static final Map<java.lang.String,com.example.frys.waters.model.User> registeredUser = new HashMap<>();
     public static User currentUser;
+    public static String currentUserKey;
+    public static String c;
+    User childValue;
+    User childValue2;
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -50,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
 
     static Map<String, Integer> emailList = new HashMap<>();
     static boolean banned;
-
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -111,14 +114,26 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        setCurrentUser();
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    setCurrentUser();
-                    startActivity(new Intent(getApplicationContext(), SplashActivity.class));
+                if (childValue.getBanned() == false) {
+                    if (task.isSuccessful()) {
+                        if (childValue.getEmailAddress().equals(editEmail.getText().toString())) {
+                            currentUser = childValue;
+                        }
+                        startActivity(new Intent(LoginActivity.this, RegUserActivity.class));
+                    } else {
+                        if (childValue.getEmailAddress().equals(editEmail.getText().toString())) {
+                            emailList(childValue.getEmailAddress());
+                        }
+                        Toast.makeText(LoginActivity.this, "Login Attempt Failed", Toast.LENGTH_LONG).show();
+                        return;
+                    }
                 } else {
-                    emailList(email);
+                    Toast.makeText(LoginActivity.this, "You have been banned!", Toast.LENGTH_LONG).show();
+                    return;
                 }
             }
         });
@@ -132,11 +147,13 @@ public class LoginActivity extends AppCompatActivity {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
 
                 for (DataSnapshot child : children) {
-                    User childValue = child.getValue(User.class);
+                    childValue = child.getValue(User.class);
+                    currentUserKey = child.getKey();
 
-                    if (childValue.getEmailAddress().equals(editEmail.getText().toString())) {
-                        currentUser = childValue;
-                    }
+//                    if (childValue.getEmailAddress().equals(editEmail.getText().toString())) {
+//                        currentUser = childValue;
+//                        currentUserKey = child.toString();
+//                    }
                 }
             }
 
@@ -154,16 +171,19 @@ public class LoginActivity extends AppCompatActivity {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
 
                 for (DataSnapshot child : children) {
-                    if (!emailList.containsKey(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString())) {
-                        emailList.put(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString(), 0);
+                    childValue2 = child.getValue(User.class);
+                    if (!emailList.containsKey(childValue2.getEmailAddress())) {
+                        emailList.put(childValue2.getEmailAddress(), 0);
                     } else {
-                        int count = emailList.get(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString()) + 1;
+                        int count = emailList.get(childValue2.getEmailAddress()) + 1;
                         if (count == 4) {
                             databaseReference.child("user").child(child.getKey()).child("banned").setValue(true);
-                            Toast.makeText(LoginActivity.this, "5 login attempts Failed. Banned", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(LoginActivity.this, "5 login attempts Failed. Banned", Toast.LENGTH_SHORT).show();
+                            //return;
                         } else {
-                            emailList.put(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString(), count);
-                            Toast.makeText(LoginActivity.this, "Login Attempt Failed", Toast.LENGTH_SHORT).show();
+                            emailList.put(childValue2.getEmailAddress(), count);
+                            //Toast.makeText(LoginActivity.this, "Login Attempt Failed", Toast.LENGTH_SHORT).show();
+                            //return;
                         }
                     }
                 }
