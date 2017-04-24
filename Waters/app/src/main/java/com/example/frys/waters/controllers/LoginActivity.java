@@ -29,6 +29,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.frys.waters.controllers.ForgotPasswordActivity.userKey;
+
 
 /**
  * A login screen that offers login via email/password.
@@ -115,8 +117,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    setCurrentUser();
-                    startActivity(new Intent(getApplicationContext(), SplashActivity.class));
+                    if (emailList.get(email) == 4) {
+                        Toast.makeText(LoginActivity.this, "You have been banned.", Toast.LENGTH_LONG).show();
+                    } else {
+                        setCurrentUser();
+                        startActivity(new Intent(getApplicationContext(), SplashActivity.class));
+                    }
                 } else {
                     emailList(email);
                 }
