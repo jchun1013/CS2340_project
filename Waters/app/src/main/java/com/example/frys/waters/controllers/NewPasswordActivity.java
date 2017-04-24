@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.frys.waters.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -29,6 +32,9 @@ public class NewPasswordActivity extends AppCompatActivity {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    FirebaseAuth.AuthStateListener mAuthListener;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private String userEmail = userKey;
 
 
     @Override
@@ -47,6 +53,18 @@ public class NewPasswordActivity extends AppCompatActivity {
                 String currentUserEmail = databaseReference.child("user").child(userKey).child("email").toString();
                 String currentUserPass = databaseReference.child("user").child(userKey).child("password").toString();
                 if (newPasswords.compareTo(confirmPasswords) == 0) {
+                    mAuth.sendPasswordResetEmail(userEmail)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(NewPasswordActivity.this, "reset password email sent", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+
+
+
 //                    AuthCredential credential = EmailAuthProvider.getCredential(currentUserEmail, currentUserPass);
 //                    user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
 //                        @Override

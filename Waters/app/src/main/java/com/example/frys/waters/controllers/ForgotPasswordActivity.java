@@ -2,6 +2,7 @@ package com.example.frys.waters.controllers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.frys.waters.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +26,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     static String userKey;
 
@@ -55,7 +60,16 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             Toast toast = Toast.makeText(context, text, duration);
                             toast.show();
                         } else {
-                            startActivity(new Intent(getApplicationContext(), NewPasswordActivity.class));
+                            mAuth.sendPasswordResetEmail(userKey)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(ForgotPasswordActivity.this, "reset password email sent", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    });
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         }
 
                     }
