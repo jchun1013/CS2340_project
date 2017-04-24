@@ -29,8 +29,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.frys.waters.controllers.ForgotPasswordActivity.userKey;
-
 
 /**
  * A login screen that offers login via email/password.
@@ -117,12 +115,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    if (emailList.get(email) == 4) {
-                        Toast.makeText(LoginActivity.this, "You have been banned.", Toast.LENGTH_LONG).show();
-                    } else {
-                        setCurrentUser();
-                        startActivity(new Intent(getApplicationContext(), SplashActivity.class));
-                    }
+                    setCurrentUser();
+                    startActivity(new Intent(getApplicationContext(), SplashActivity.class));
                 } else {
                     emailList(email);
                 }
@@ -154,31 +148,31 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void emailList(String email) {
-            databaseReference.child("user").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+        databaseReference.child("user").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
 
-                    for (DataSnapshot child : children) {
-                        if (!emailList.containsKey(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString())) {
-                            emailList.put(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString(), 0);
+                for (DataSnapshot child : children) {
+                    if (!emailList.containsKey(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString())) {
+                        emailList.put(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString(), 0);
+                    } else {
+                        int count = emailList.get(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString()) + 1;
+                        if (count == 4) {
+                            databaseReference.child("user").child(child.getKey()).child("banned").setValue(true);
+                            Toast.makeText(LoginActivity.this, "5 login attempts Failed. Banned", Toast.LENGTH_SHORT).show();
                         } else {
-                            int count = emailList.get(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString()) + 1;
-                            if (count == 4) {
-                                databaseReference.child("user").child(child.getKey()).child("banned").setValue(true);
-                                Toast.makeText(LoginActivity.this, "5 login attempts Failed. Banned", Toast.LENGTH_SHORT).show();
-                            } else {
-                                emailList.put(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString(), count);
-                                Toast.makeText(LoginActivity.this, "Login Attempt Failed", Toast.LENGTH_SHORT).show();
-                            }
+                            emailList.put(databaseReference.child("user").child(child.getKey()).child("emailAddress").toString(), count);
+                            Toast.makeText(LoginActivity.this, "Login Attempt Failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
+            }
+        });
     }
 }
