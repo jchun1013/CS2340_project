@@ -73,8 +73,6 @@ public class LoginActivity extends AppCompatActivity {
         editPassword = (EditText) findViewById(R.id.password);
         TextView textForgotPassword = (TextView) findViewById(R.id.forgotPassword);
 
-
-
         Button SignInButton = (Button) findViewById(R.id.email_sign_in_button);
         SignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -117,7 +115,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-
                     setCurrentUser();
                     startActivity(new Intent(getApplicationContext(), SplashActivity.class));
                 } else {
@@ -133,13 +130,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-                String childKey = null;
 
                 for (DataSnapshot child : children) {
                     User childValue = child.getValue(User.class);
-                    childKey = child.getKey();
 
-                    if (childValue.getEmailAddress().equals(editEmail.getText().toString()) && databaseReference.child("user").child(childKey).child("banned").toString().equals(false)) {
+                    if (childValue.getEmailAddress().equals(editEmail.getText().toString())) {
                         currentUser = childValue;
                     }
                 }
