@@ -41,7 +41,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AutoCompleteTextView enterEmail = (AutoCompleteTextView) findViewById(R.id.emailEnter);
-                String getEmail = enterEmail.getText().toString();
+                final String getEmail = enterEmail.getText().toString();
 
                 databaseReference.child("user").orderByChild("emailAddress").equalTo(getEmail).addValueEventListener(new ValueEventListener() {
                     @Override
@@ -60,18 +60,19 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             Toast toast = Toast.makeText(context, text, duration);
                             toast.show();
                         } else {
-                            mAuth.sendPasswordResetEmail(userKey)
+                            mAuth.sendPasswordResetEmail(getEmail)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
-                                                Toast.makeText(ForgotPasswordActivity.this, "reset password email sent", Toast.LENGTH_LONG).show();
+                                                Toast.makeText(ForgotPasswordActivity.this, "Reset email instructions sent to " + getEmail, Toast.LENGTH_LONG).show();
+                                            } else {
+                                                Toast.makeText(ForgotPasswordActivity.this, getEmail + " does not exist", Toast.LENGTH_LONG).show();
                                             }
                                         }
                                     });
                             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         }
-
                     }
 
                     @Override
