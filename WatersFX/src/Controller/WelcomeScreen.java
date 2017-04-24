@@ -13,6 +13,10 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
@@ -27,12 +31,60 @@ public class WelcomeScreen implements Initializable {
 
     @FXML
     private void loginButtonAction(ActionEvent event) throws Exception {
-        Parent parent = FXMLLoader.load(getClass().getResource("/Layout/UserPage.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene(parent);
-        stage.setScene(scene);
-        stage.setTitle("User Page");
-        stage.show();
+        String databaseEmail = "";
+        String databasePassword = "";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Connection conn;
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e1) {
+            System.err.print("ClassNotFoundException: ");
+        }
+
+        try {
+            String sql = "SELECT * From user WHERE emailAddress = '" + email.getText() + "'";
+            ConnectDB db = new ConnectDB();
+            conn = db.getConnection();
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                databaseEmail = rs.getString("emailAddress");
+                databasePassword = rs.getString("password");
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+
+            if (email.getText().isEmpty() || password.getText().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Alert");
+                alert.setHeaderText("Information Alert");
+                String s ="email or password cannot be empty";
+                alert.setContentText(s);
+                alert.show();
+            } else {
+                if (email.getText().equals(databaseEmail) && password.getText().equals(databasePassword)) {
+                    Parent parent = FXMLLoader.load(getClass().getResource("/Layout/UserPage.fxml"));
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(parent);
+                    stage.setScene(scene);
+                    stage.setTitle("User Page");
+                    stage.show();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Alert");
+                    alert.setHeaderText("Information Alert");
+                    String s ="email or password doesn't match";
+                    alert.setContentText(s);
+                    alert.show();
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLException:" + ex.getMessage());
+        }
     }
 
 //    private boolean attemptLogin(String email, String pass) {
