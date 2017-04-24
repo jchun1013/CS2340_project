@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.scene.Node;
 
 import java.awt.*;
 import java.net.URL;
@@ -29,10 +31,18 @@ public class WelcomeScreen implements Initializable {
     @FXML
     private TextField password;
 
+    public static User currentUser;
+
     @FXML
     private void loginButtonAction(ActionEvent event) throws Exception {
         String databaseEmail = "";
         String databasePassword = "";
+        String databaseName = "";
+        String databaseUsername = "";
+        String databaseUserType = "";
+        String databaseAddress = "";
+        boolean databaseIsReporting = false;
+
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Connection conn;
@@ -53,6 +63,11 @@ public class WelcomeScreen implements Initializable {
             while (rs.next()) {
                 databaseEmail = rs.getString("emailAddress");
                 databasePassword = rs.getString("password");
+                databaseName = rs.getString("name");
+                databaseUsername = rs.getString("username");
+                databaseUserType = rs.getString("userType");
+                databaseAddress = rs.getString("address");
+                databaseIsReporting = rs.getBoolean("isReporting");
             }
             rs.close();
             stmt.close();
@@ -67,6 +82,8 @@ public class WelcomeScreen implements Initializable {
                 alert.show();
             } else {
                 if (email.getText().equals(databaseEmail) && password.getText().equals(databasePassword)) {
+                    currentUser = new User(databaseUsername, databaseName, databaseEmail, databasePassword, databaseAddress, databaseUserType);
+                    ((Node) (event.getSource())).getScene().getWindow().hide();
                     Parent parent = FXMLLoader.load(getClass().getResource("/Layout/UserPage.fxml"));
                     Stage stage = new Stage();
                     Scene scene = new Scene(parent);
@@ -87,12 +104,9 @@ public class WelcomeScreen implements Initializable {
         }
     }
 
-//    private boolean attemptLogin(String email, String pass) {
-//
-//    }
-
     @FXML
     private void RegisterClicked(MouseEvent event) throws Exception {
+        ((Node)(event.getSource())).getScene().getWindow().hide();
         Parent parent = FXMLLoader.load(getClass().getResource("/Layout/RegistrationPage.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(parent);

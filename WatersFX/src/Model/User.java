@@ -13,7 +13,7 @@ public class User {
     private String password;
     private String emailAddress;
     private String homeAddress;
-    private UserType usertype;
+    private String usertype;
     private boolean isReporting = false;
 
     public static final List<UserType> typeList = Arrays.asList(UserType.values());
@@ -26,12 +26,13 @@ public class User {
      * @param password password
      * @param address address
      */
-    public User(String username, String name, String email, String password, String address) {
+    public User(String username, String name, String email, String password, String address, String type) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.emailAddress = email;
         this.homeAddress = address;
+        this.usertype = type;
     }
 
     public User() {
@@ -97,7 +98,7 @@ public class User {
      * getter for userType
      * @return userType
      */
-    public UserType getUsertype() {
+    public String getUsertype() {
         return usertype;
     }
 
@@ -105,7 +106,7 @@ public class User {
      * setter for userType
      * @param type type
      */
-    public void setUsertype(UserType type) {
+    public void setUsertype(String type) {
         this.usertype = type;
     }
 

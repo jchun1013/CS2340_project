@@ -19,7 +19,7 @@ public class ConnectDB {
         }
     }
     public Connection getConnection() throws SQLException {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/2340_fx";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/2340_fx?verifyServerCertificate=false&useSSL=true";
         String userid = "root";
         String userPass = "J1013h//";
         conn = DriverManager.getConnection(jdbcUrl, userid, userPass);
