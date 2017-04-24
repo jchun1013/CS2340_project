@@ -27,21 +27,17 @@ public class WelcomeScreen implements Initializable {
 
     @FXML
     private void loginButtonAction(ActionEvent event) throws Exception {
-        if (attemptLogin(email.getText(), password.getText())) {
-            Parent parent = FXMLLoader.load(getClass().getResource("/Layout/UserPage.fxml"));
-            Stage stage = new Stage();
-            Scene scene = new Scene(parent);
-            stage.setScene(scene);
-            stage.setTitle("User Page");
-            stage.show();
-        } else {
-            
-        }
+        Parent parent = FXMLLoader.load(getClass().getResource("/Layout/UserPage.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.setTitle("User Page");
+        stage.show();
     }
 
-    private boolean attemptLogin(String email, String pass) {
-
-    }
+//    private boolean attemptLogin(String email, String pass) {
+//
+//    }
 
     @FXML
     private void RegisterClicked(MouseEvent event) throws Exception {

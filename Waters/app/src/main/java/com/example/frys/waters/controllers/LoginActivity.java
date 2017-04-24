@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * A login screen that offers login via email/password.
  */
@@ -125,6 +126,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void setCurrentUser() {
         databaseReference.child("user").addValueEventListener(new ValueEventListener() {
