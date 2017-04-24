@@ -30,45 +30,44 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
-        AutoCompleteTextView enterEmail = (AutoCompleteTextView) findViewById(R.id.emailEnter);
-        String getEmail = enterEmail.getText().toString();
-        System.out.println(getEmail);
-
         Button submitButton = (Button) findViewById(R.id.forgotPassword_enterEmail);
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AutoCompleteTextView enterEmail = (AutoCompleteTextView) findViewById(R.id.emailEnter);
+                String getEmail = enterEmail.getText().toString();
 
+                databaseReference.child("user").orderByChild("emailAddress").equalTo(getEmail).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                        userKey = null;
 
+                        for (DataSnapshot child : children) {
+                            userKey = child.getKey();
+                        }
+                        if (userKey == null) {
+                            Context context = getApplicationContext();
+                            CharSequence text = "The username you entered does not exist.";
+                            int duration = Toast.LENGTH_SHORT;
+
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                        } else {
+                            startActivity(new Intent(getApplicationContext(), NewPasswordActivity.class));
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
     }
 
-    public void changePassword() {
-        AutoCompleteTextView enterEmail = (AutoCompleteTextView) findViewById(R.id.emailEnter);
-        String getEmail = enterEmail.getText().toString();
-        databaseReference.child("user").orderByChild("emailAddress").equalTo(getEmail).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-                setKey(null);
-                //String databaseKey = null;
-
-                for (DataSnapshot child : children) {
-                    setKey(child.getKey());
-                }
-                finish();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    public void setKey(String key) {
-        this.userKey = key;
-    }
 }
