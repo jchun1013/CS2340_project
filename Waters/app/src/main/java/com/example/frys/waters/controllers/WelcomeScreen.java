@@ -1,6 +1,7 @@
 package com.example.frys.waters.controllers;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,10 +28,16 @@ public class WelcomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
 
-        image = (ImageView) findViewById(R.id.logo);
-        //Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.myanimation);
-
-        //slide();
+        final ImageView animImageView = (ImageView) findViewById(R.id.iv_animation);
+        animImageView.setBackgroundResource(R.drawable.anim);
+        animImageView.post(new Runnable() {
+            @Override
+            public void run() {
+                AnimationDrawable frameAnimation =
+                        (AnimationDrawable) animImageView.getBackground();
+                frameAnimation.start();
+            }
+        });
 
         Button loginButton = (Button) findViewById(R.id.bt_login);
         Button registerButton = (Button) findViewById(R.id.bt_reg);

@@ -1,11 +1,13 @@
 package com.example.frys.waters.controllers;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import com.example.frys.waters.R;
 import com.example.frys.waters.model.WaterSourceReport;
@@ -14,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jjoe64.graphview.GraphView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,6 +68,15 @@ public class ViewReportActivity extends AppCompatActivity {
                 selectedReport = (int) viewSpinner.getSelectedItem();
                 selectedReportObject = reportMap.get(selectedReport);
                 startActivity(new Intent(ViewReportActivity.this, ActualSourceReportActivity.class));
+            }
+        });
+
+        ImageView toSourceGraph = (ImageView) findViewById(R.id.starfishLogoImage);
+
+        toSourceGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ViewReportActivity.this, WaterSourceBarGraphActivity.class));
             }
         });
     }

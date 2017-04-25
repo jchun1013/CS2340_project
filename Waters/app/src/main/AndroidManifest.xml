@@ -78,7 +78,8 @@
         <activity android:name=".controllers.ChoosePurityYearActivity" />
         <activity android:name=".controllers.ForgotPasswordActivity" />
         <activity android:name=".controllers.NewPasswordActivity" />
-        <activity android:name=".controllers.ManageUserActivity"></activity>
+        <activity android:name=".controllers.ManageUserActivity" />
+        <activity android:name=".controllers.WaterSourceBarGraphActivity"></activity>
     </application>
 
 </manifest>
