@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.frys.waters.R;
 
@@ -13,6 +16,7 @@ import com.example.frys.waters.R;
  */
 public class WelcomeScreen extends AppCompatActivity {
 
+    ImageView image;
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
@@ -22,6 +26,11 @@ public class WelcomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
+
+        image = (ImageView) findViewById(R.id.logo);
+        //Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.myanimation);
+
+        //slide();
 
         Button loginButton = (Button) findViewById(R.id.bt_login);
         Button registerButton = (Button) findViewById(R.id.bt_reg);
@@ -40,5 +49,10 @@ public class WelcomeScreen extends AppCompatActivity {
                 startActivity(new Intent(WelcomeScreen.this, Registration.class));
             }
         });
+    }
+
+    public void slide(View view) {
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide);
+        image.startAnimation(animation);
     }
 }

@@ -76,9 +76,6 @@
         <activity android:name=".controllers.HistoryGraphActivity" />
         <activity android:name=".controllers.ChoosePurityHistoryActivity" />
         <activity android:name=".controllers.ChoosePurityYearActivity" />
-        <activity android:name=".controllers.RegWorkerActivity" />
-        <activity android:name=".controllers.RegManagerActivity" />
-        <activity android:name=".controllers.RegAdminActivity" />
         <activity android:name=".controllers.ForgotPasswordActivity" />
         <activity android:name=".controllers.NewPasswordActivity" />
         <activity android:name=".controllers.ManageUserActivity"></activity>
