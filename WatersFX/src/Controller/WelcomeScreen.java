@@ -9,7 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
+import javafx.scene.image.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
@@ -25,6 +28,9 @@ import java.util.ResourceBundle;
  * Created by joon1 on 2017-04-21.
  */
 public class WelcomeScreen implements Initializable {
+    @FXML
+    private AnchorPane RegistrationPane;
+
     @FXML
     private TextField email;
 
@@ -118,5 +124,6 @@ public class WelcomeScreen implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //RegistrationPane.getChildren().add(iv);
     }
 }

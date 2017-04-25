@@ -4,10 +4,15 @@ package Controller;
  */
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -62,6 +67,17 @@ public class UserPageController implements Initializable {
             alert.setContentText("Only manager or worker can access this function");
             alert.showAndWait();
         }
+    }
+
+    @FXML
+    private void logOutClicked(ActionEvent event) throws Exception{
+        ((Node)(event.getSource())).getScene().getWindow().hide();
+        Parent parent = FXMLLoader.load(getClass().getResource("/Layout/WelcomePage.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.setTitle("Welcome Page");
+        stage.show();
     }
 
     @FXML

@@ -43,6 +43,7 @@
                   <Button mnemonicParsing="false" onAction="#editProfileClicked" prefHeight="54.0" prefWidth="196.0" text="Edit Profile" />
                </children>
             </VBox>
+            <Button mnemonicParsing="false" onAction="#logOutClicked" prefHeight="70.0" prefWidth="197.0" text="Log Out" />
          </children>
       </VBox>
    </left>
