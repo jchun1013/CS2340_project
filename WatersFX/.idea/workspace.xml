@@ -893,12 +893,12 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1493086002752" duration="21000" />
-      <workItem from="1493086117174" duration="29420000" />
+      <workItem from="1493086117174" duration="29502000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30743000" />
+    <option name="totallyTimeSpent" value="30825000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -953,7 +953,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -970,7 +970,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1493130632251" expanded="true" signature="68558:68573" ph="..." />
+            <marker date="1493130711600" expanded="true" signature="68558:68573" ph="..." />
           </folding>
         </state>
       </provider>
