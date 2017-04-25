@@ -15,7 +15,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 
@@ -25,7 +27,7 @@ public class WaterSourceBarGraphActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
 
     WaterSourceReport childvalue;
-    int[] count;
+    static int[] count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,36 +39,48 @@ public class WaterSourceBarGraphActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
 
         BarGraphSeries<DataPoint> series;
+        final String[] xLabels = new String[] {
+                "Bottles", "Well", "Stream", "Lake", "Spring", "other"
+        };
 
         GraphView graph = (GraphView) findViewById(R.id.graph1);
         count = new int[6];
-        //count[4] = 3;
+        count[0] = 3;
+        count[4] = 2;
+        count[2] = 1;
+
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+        staticLabelsFormatter.setHorizontalLabels(xLabels);
+        graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
 
         databaseReference.child("source report").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                String key;
 
                 for (DataSnapshot child : children) {
                     childvalue = child.getValue(WaterSourceReport.class);
+                    key = child.getKey();
 
-                    if (childvalue.getTypeOfWater().toString().compareToIgnoreCase("Bottled") == 0) {
+                    String waterType = childvalue.getTypeOfWater().toString();
+                    System.out.println("################################" + waterType);
+
+                    if (waterType.compareToIgnoreCase("Bottled") == 0) {
                         count[0] = count[0] + 1;
-                    } else if (childvalue.getTypeOfWater().toString().compareToIgnoreCase("Well") == 0) {
+                    } else if (waterType.compareToIgnoreCase("Well") == 0) {
                         count[1] = count[1] + 1;
-                    } else if (childvalue.getTypeOfWater().toString().compareToIgnoreCase("stream") == 0) {
+                    } else if (waterType.compareToIgnoreCase("stream") == 0) {
                         count[2] = count[2] + 1;
-                    } else if (childvalue.getTypeOfWater().toString().compareToIgnoreCase("lake") == 0) {
+                    } else if (waterType.compareToIgnoreCase("lake") == 0) {
                         count[3] = count[3] + 1;
-                    } else if (childvalue.getTypeOfWater().toString().compareToIgnoreCase("spring") == 0) {
+                    } else if (waterType.compareToIgnoreCase("spring") == 0) {
                         count[4] = count[4] + 1;
                     } else {
                         count[5] = count[5] + 1;
                     }
 
                 }
-//                System.out.println(childvalue.getTypeOfWater().toString())
-
             }
 
             @Override
@@ -79,9 +93,10 @@ public class WaterSourceBarGraphActivity extends AppCompatActivity {
             list[i] = new DataPoint(i, count[i]);
         }
         series = new BarGraphSeries<>(list);
+        series.setSpacing(25);
         graph.addSeries(series);
 
-        graph.setTitle("Historical Source Report");
+        graph.setTitle("Water Source Report");
         graph.getGridLabelRenderer().setHorizontalAxisTitle("Type of Water");
         graph.getGridLabelRenderer().setVerticalAxisTitle("count");
 
