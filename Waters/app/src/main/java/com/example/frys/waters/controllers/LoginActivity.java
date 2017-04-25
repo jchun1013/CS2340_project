@@ -151,6 +151,7 @@ public class LoginActivity extends AppCompatActivity {
                     childValue = child.getValue(User.class);
                     currentUserKey = child.getKey();
 
+
 //                    if (childValue.getEmailAddress().equals(editEmail.getText().toString())) {
 //                        currentUser = childValue;
 //                        currentUserKey = child.toString();

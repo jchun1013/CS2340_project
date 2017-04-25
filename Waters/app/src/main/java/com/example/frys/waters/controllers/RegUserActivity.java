@@ -33,6 +33,7 @@ public class RegUserActivity extends AppCompatActivity {
         TextView _signOut;
         TextView _edit;
         TextView _userInfo;
+        TextView _manageUser;
         Button _submitReport;
         Button _viewReport;
         Button _waterAvailabilityMap;
@@ -47,6 +48,7 @@ public class RegUserActivity extends AppCompatActivity {
         _waterQualityReport = (Button) findViewById(R.id.waterQualityReportButton);
         _viewPurityReport = (Button) findViewById(R.id.viewWaterQualityReportButton);
         _historyGraph = (Button) findViewById(R.id.historyGraphButton);
+        _manageUser = (TextView) findViewById(R.id.manageUserTextView);
 
         _userInfo = (TextView) findViewById(R.id._hello);
         _userInfo.setText(currentUser.getName() + " (" + currentUser.getUsertype() + ")");
@@ -61,6 +63,16 @@ public class RegUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 launchEdit();
+            }
+        });
+        _manageUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentUser.getUsertype() == UserType.ADMIN) {
+                    startActivity(new Intent(RegUserActivity.this, WaterPurityReportActivity.class));
+                } else {
+                    Toast.makeText(RegUserActivity.this, "Only Admin has access to manage user.", Toast.LENGTH_LONG).show();
+                }
             }
         });
         _submitReport.setOnClickListener(new View.OnClickListener() {
