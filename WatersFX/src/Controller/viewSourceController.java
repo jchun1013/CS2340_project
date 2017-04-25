@@ -60,9 +60,9 @@ public class viewSourceController implements Initializable {
         col_reportNumber.setCellValueFactory(new PropertyValueFactory<>("reportNumber"));
         col_dateTime.setCellValueFactory(new PropertyValueFactory<>("dateTime"));
         col_name.setCellValueFactory(new PropertyValueFactory<>("nameOfReporter"));
-        col_type.setCellValueFactory(new PropertyValueFactory<>("waterType"));
         col_condition.setCellValueFactory(new PropertyValueFactory<>("condition"));
         col_longi.setCellValueFactory(new PropertyValueFactory<>("location"));
+        col_type.setCellValueFactory(new PropertyValueFactory<>("waterType"));
 
         sourceTable.setItems(null);
         sourceTable.setItems(data);

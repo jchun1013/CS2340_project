@@ -101,7 +101,7 @@ public class Registration implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("Error");
-                alert.setContentText(e1.toString());
+                alert.setContentText("Email already exists");
                 alert.showAndWait();
             }
         } catch (SQLException e) {

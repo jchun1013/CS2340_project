@@ -63,7 +63,7 @@ public class WaterSourceReport {
     /**
      * returns the type of water recorded in the historical report
      */
-    public String getTypeOfWater() { return waterType; }
+    public String getWaterType() { return waterType; }
 
     public void setTypeOfWater(String waterType) {
         this.waterType = waterType;
@@ -82,6 +82,6 @@ public class WaterSourceReport {
                 + "Name of Reporter: " + getNameOfReporter() + "\n"
                 + "Location: " + getLocation() + "\n"
                 + "Condition: " + getCondition() + "\n"
-                + "Type: " + getTypeOfWater();
+                + "Type: " + getWaterType();
     }
 }
