@@ -127,9 +127,19 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.65003157">
+    <splitter split-orientation="horizontal" split-proportion="0.6516129">
       <split-first>
         <leaf>
+          <file leaf-file-name="WaterSourceReport.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Model/WaterSourceReport.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="436">
+                  <caret line="84" column="43" lean-forward="false" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="UserPageController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Controller/UserPageController.java">
               <provider selected="true" editor-type-id="text-editor">
@@ -154,12 +164,12 @@
           </file>
           <file leaf-file-name="RegistrationPage.fxml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Layout/RegistrationPage.fxml">
-              <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+              <provider editor-type-id="JavaFX-Scene-Builder">
                 <state />
               </provider>
-              <provider editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="252">
+                  <caret line="12" column="150" lean-forward="false" selection-start-line="12" selection-start-column="150" selection-end-line="12" selection-end-column="150" />
                   <folding />
                 </state>
               </provider>
@@ -182,8 +192,8 @@
           <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Controller/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="252">
-                  <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+                <state relative-caret-position="84">
+                  <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -198,37 +208,21 @@
                 <state relative-caret-position="0">
                   <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding>
-                    <marker date="1493133080486" expanded="true" signature="2549:2669" ph="..." />
+                    <marker date="1493133350840" expanded="true" signature="2549:2669" ph="..." />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Map.fxml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Layout/Map.fxml">
-              <provider editor-type-id="JavaFX-Scene-Builder">
-                <state />
-              </provider>
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="189">
-                  <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
           <file leaf-file-name="WelcomePage.fxml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Layout/WelcomePage.fxml">
-              <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+              <provider editor-type-id="JavaFX-Scene-Builder">
                 <state />
               </provider>
-              <provider editor-type-id="text-editor">
+              <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="168">
-                  <caret line="8" column="264" lean-forward="false" selection-start-line="8" selection-start-column="264" selection-end-line="8" selection-end-column="264" />
-                  <folding>
-                    <marker date="1493132682674" expanded="true" signature="589:1222" ph="..." />
-                    <marker date="1493132682674" expanded="true" signature="603:1208" ph="..." />
-                  </folding>
+                  <caret line="8" column="220" lean-forward="false" selection-start-line="8" selection-start-column="220" selection-end-line="8" selection-end-column="220" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -239,7 +233,7 @@
                 <state relative-caret-position="378">
                   <caret line="114" column="49" lean-forward="false" selection-start-line="114" selection-start-column="33" selection-end-line="114" selection-end-column="49" />
                   <folding>
-                    <marker date="1493133192021" expanded="true" signature="1639:1704" ph="SELECT * Fro... user" />
+                    <marker date="1493133350833" expanded="true" signature="1639:1704" ph="SELECT * Fro... user" />
                   </folding>
                 </state>
               </provider>
@@ -315,10 +309,11 @@
         <option value="$PROJECT_DIR$/src/Controller/Registration.java" />
         <option value="$PROJECT_DIR$/src/Model/WaterSourceReport.java" />
         <option value="$PROJECT_DIR$/src/Layout/Map.fxml" />
-        <option value="$PROJECT_DIR$/src/Layout/WelcomePage.fxml" />
         <option value="$PROJECT_DIR$/src/Layout/UserPage.fxml" />
         <option value="$PROJECT_DIR$/src/Controller/WelcomeScreen.java" />
         <option value="$PROJECT_DIR$/src/Controller/UserPageController.java" />
+        <option value="$PROJECT_DIR$/src/Layout/WelcomePage.fxml" />
+        <option value="$PROJECT_DIR$/src/Layout/RegistrationPage.fxml" />
       </list>
     </option>
   </component>
@@ -923,12 +918,12 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1493086002752" duration="21000" />
-      <workItem from="1493086117174" duration="32099000" />
+      <workItem from="1493086117174" duration="33293000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33422000" />
+    <option name="totallyTimeSpent" value="34616000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -1000,7 +995,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1493133323970" expanded="true" signature="71064:71079" ph="..." />
+            <marker date="1493134497024" expanded="true" signature="70653:70668" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1178,14 +1173,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/WaterSourceReport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="84" column="43" lean-forward="false" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Layout/Map.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -1205,18 +1192,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1493133080486" expanded="true" signature="2549:2669" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/viewSourceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="64" column="8" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1493128908137" expanded="true" signature="1532:1559" ph="SELECT * FRO... source_report" />
+            <marker date="1493133350840" expanded="true" signature="2549:2669" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1229,41 +1205,6 @@
             <marker date="1493126558839" expanded="true" signature="1804:1964" ph="INSERT INTO source_report... " />
             <marker date="1493126558839" expanded="true" signature="1997:2031" ph="SELECT COUNT... source_report" />
             <marker date="1493126558839" expanded="true" signature="3464:3498" ph="SELECT COUNT... source_report" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Layout/WelcomePage.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="264" lean-forward="false" selection-start-line="8" selection-start-column="264" selection-end-line="8" selection-end-column="264" />
-          <folding>
-            <marker date="1493132682674" expanded="true" signature="589:1222" ph="..." />
-            <marker date="1493132682674" expanded="true" signature="603:1208" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Layout/RegistrationPage.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/WelcomeScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="114" column="49" lean-forward="false" selection-start-line="114" selection-start-column="33" selection-end-line="114" selection-end-column="49" />
-          <folding>
-            <marker date="1493133192021" expanded="true" signature="1639:1704" ph="SELECT * Fro... user" />
           </folding>
         </state>
       </provider>
@@ -1286,10 +1227,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/Controller/viewSourceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="64" column="8" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1493128908137" expanded="true" signature="1532:1559" ph="SELECT * FRO... source_report" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/WelcomeScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="114" column="49" lean-forward="false" selection-start-line="114" selection-start-column="33" selection-end-line="114" selection-end-column="49" />
+          <folding>
+            <marker date="1493133350833" expanded="true" signature="1639:1704" ph="SELECT * Fro... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/WaterSourceReport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="84" column="43" lean-forward="false" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Layout/WelcomePage.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="220" lean-forward="false" selection-start-line="8" selection-start-column="220" selection-end-line="8" selection-end-column="220" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Layout/RegistrationPage.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <caret line="12" column="150" lean-forward="false" selection-start-line="12" selection-start-column="150" selection-end-line="12" selection-end-column="150" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
         </state>
       </provider>

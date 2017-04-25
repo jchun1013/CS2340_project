@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="RegistrationPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="662.0" style="-fx-background-image: url(File:./src/Layout/ocean.png);" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WelcomeScreen">
+<AnchorPane fx:id="RegistrationPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="662.0" style="-fx-background-image: url(File:./src/Layout/waterDrop.png);" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WelcomeScreen">
    <children>
       <TextField fx:id="email" layoutX="101.0" layoutY="130.0" promptText="Email" />
       <PasswordField fx:id="password" layoutX="331.0" layoutY="130.0" promptText="Password" />
