@@ -10,6 +10,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
@@ -28,24 +31,45 @@ public class googleMap implements Initializable, MapComponentInitializedListener
     @Override
     public void mapInitialized() {
         MapOptions options = new MapOptions();
-
         options.center(new LatLong(47.606189, -122.335842))
                 .zoomControl(true)
                 .zoom(12)
                 .overviewMapControl(false)
                 .mapType(MapTypeIdEnum.ROADMAP);
+
         GoogleMap map = mapView.createMap(options);
 
-        MarkerOptions markerOptions = new MarkerOptions();
+        Double latitude = 0.0;
+        Double longitude = 0.0;
+        String name = "";
 
-        markerOptions.position( new LatLong(47.6, -122.3) )
-                .visible(Boolean.TRUE)
-                .title("My Marker");
 
-        Marker marker = new Marker( markerOptions );
 
-        map.addMarker(marker);
+        try {
+            ConnectDB db = new ConnectDB();
+            Connection conn = db.getConnection();
 
+            ResultSet rs = conn.createStatement().executeQuery("SELECT `latitude`, `longitude`, `name` FROM source_report");
+
+            while (rs.next()) {
+                latitude = rs.getDouble("latitude");
+                longitude = rs.getDouble("longitude");
+                name = rs.getString("name");
+
+                MarkerOptions markerOptions = new MarkerOptions();
+
+                markerOptions.position( new LatLong(latitude, longitude) )
+                        .visible(Boolean.TRUE)
+                        .title(name);
+
+                Marker marker = new Marker( markerOptions );
+
+                map.addMarker(marker);
+            }
+
+        } catch (SQLException e) {
+
+        }
 
     }
 
