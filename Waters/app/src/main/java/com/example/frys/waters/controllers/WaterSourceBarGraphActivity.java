@@ -64,7 +64,6 @@ public class WaterSourceBarGraphActivity extends AppCompatActivity {
                     key = child.getKey();
 
                     String waterType = childvalue.getTypeOfWater().toString();
-                    System.out.println("################################" + waterType);
 
                     if (waterType.compareToIgnoreCase("Bottled") == 0) {
                         count[0] = count[0] + 1;
