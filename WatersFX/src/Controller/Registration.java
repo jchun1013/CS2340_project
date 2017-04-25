@@ -95,6 +95,8 @@ public class Registration implements Initializable {
                 stmt.setBoolean(7, false);
                 stmt.executeUpdate();
 
+                stmt.close();
+                conn.close();
             } catch (SQLException e1){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");

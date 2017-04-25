@@ -2,10 +2,7 @@ package Controller;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.object.GoogleMap;
-import com.lynden.gmapsfx.javascript.object.LatLong;
-import com.lynden.gmapsfx.javascript.object.MapOptions;
-import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
+import com.lynden.gmapsfx.javascript.object.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
@@ -38,6 +35,18 @@ public class googleMap implements Initializable, MapComponentInitializedListener
                 .overviewMapControl(false)
                 .mapType(MapTypeIdEnum.ROADMAP);
         GoogleMap map = mapView.createMap(options);
+
+        MarkerOptions markerOptions = new MarkerOptions();
+
+        markerOptions.position( new LatLong(47.6, -122.3) )
+                .visible(Boolean.TRUE)
+                .title("My Marker");
+
+        Marker marker = new Marker( markerOptions );
+
+        map.addMarker(marker);
+
+
     }
 
     @Override
