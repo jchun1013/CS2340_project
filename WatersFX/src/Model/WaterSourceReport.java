@@ -77,11 +77,11 @@ public class WaterSourceReport {
      * returns string representation of the historical report
      */
     public String toString() {
-//        return "Date and Time: " + getDateTime() + "\n"
-//                + "Report Number: " + getReportNumber() + "\n"
-//                + "Name of Reporter: " + getNameOfReporter() + "\n"
-//                + "Location: " + getLocation() + "\n"
-//                + "Condition: " + getCondition();
-        return "one";
+        return "Date and Time: " + getDateTime() + "\n"
+                + "Report Number: " + getReportNumber() + "\n"
+                + "Name of Reporter: " + getNameOfReporter() + "\n"
+                + "Location: " + getLocation() + "\n"
+                + "Condition: " + getCondition() + "\n"
+                + "Type: " + getTypeOfWater();
     }
 }

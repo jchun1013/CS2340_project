@@ -64,17 +64,17 @@ public class SourceReportController implements Initializable{
             String sql = "INSERT INTO source_report(`reportNumber`, `dateTime`, `name`, `type`, `condition`, `longitude`, `latitude`)"
                     + " VALUES(?, ?, ?, ?, ?, ?, ?)";
 
-            String sql2 = "SELECT COUNT(*) FROM source_report";
+           // String sql2 = "SELECT COUNT(*) FROM source_report";
 
             try {
-                stmt2 = conn.prepareStatement(sql2);
-                ResultSet rs = stmt2.executeQuery();
-
-                if (rs.next()) {
-                    System.out.println(rs.getInt(1));
-                    count = 1 + rs.getInt(1);
-                }
-                stmt2.close();
+//                stmt2 = conn.prepareStatement(sql2);
+//                ResultSet rs = stmt2.executeQuery();
+//
+//                if (rs.next()) {
+//                    System.out.println(rs.getInt(1));
+//                    count = 1 + rs.getInt(1);
+//                }
+//                stmt2.close();
 
                 stmt = conn.prepareStatement(sql);
                 stmt.setInt(1, count);
@@ -109,6 +109,23 @@ public class SourceReportController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            String sql2 = "SELECT COUNT(*) FROM source_report";
+            PreparedStatement stmt2 = null;
+            ConnectDB db = new ConnectDB();
+            Connection conn = db.getConnection();
+
+            stmt2 = conn.prepareStatement(sql2);
+            ResultSet rs = stmt2.executeQuery();
+
+            if (rs.next()) {
+                System.out.println(rs.getInt(1));
+                count = 1 + rs.getInt(1);
+            }
+            stmt2.close();
+        } catch (SQLException e1) {
+            System.out.println(e1.toString());
+        }
         waterCondition.getItems().setAll("Waste", "Treatable-Clear", "Treatable-Muddy", "Portable");
         waterType.getItems().setAll("Bottle", "Well", "Stream", "Lake", "Spring", "Other");
         dateAndTime.setText(currentDateandTime);

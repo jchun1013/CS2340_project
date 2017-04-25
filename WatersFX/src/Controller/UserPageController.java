@@ -34,13 +34,15 @@ public class UserPageController implements Initializable {
     }
 
     @FXML
-    private void ViewQRClicked() {
-
+    private void ViewQRClicked() throws Exception{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/Layout/viewQuality.fxml"));
+        anchorPane.getChildren().setAll(pane);
     }
 
     @FXML
-    private void submitQRClicked() {
-
+    private void submitQRClicked() throws Exception {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/Layout/QualityReport.fxml"));
+        anchorPane.getChildren().setAll(pane);
     }
 
     @FXML
