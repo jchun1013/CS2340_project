@@ -32,6 +32,7 @@ public class WelcomeScreen implements Initializable {
     private TextField password;
 
     public static User currentUser;
+    public static Stage stage;
 
     @FXML
     private void loginButtonAction(ActionEvent event) throws Exception {
@@ -85,7 +86,7 @@ public class WelcomeScreen implements Initializable {
                     currentUser = new User(databaseUsername, databaseName, databaseEmail, databasePassword, databaseAddress, databaseUserType);
                     ((Node) (event.getSource())).getScene().getWindow().hide();
                     Parent parent = FXMLLoader.load(getClass().getResource("/Layout/UserPage.fxml"));
-                    Stage stage = new Stage();
+                    stage = new Stage();
                     Scene scene = new Scene(parent);
                     stage.setScene(scene);
                     stage.setTitle("User Page");

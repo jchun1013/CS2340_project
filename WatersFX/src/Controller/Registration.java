@@ -21,6 +21,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import static Controller.WelcomeScreen.stage;
+
 /**
  * Created by joon1 on 2017-04-21.
  */
@@ -43,7 +45,7 @@ public class Registration implements Initializable {
         ((Node) (event.getSource())).getScene().getWindow().hide();
         registerToDatabase();
         Parent parent = FXMLLoader.load(getClass().getResource("/Layout/WelcomePage.fxml"));
-        Stage stage = new Stage();
+        stage = new Stage();
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.setTitle("Welcome Page");
@@ -113,7 +115,7 @@ public class Registration implements Initializable {
     private void cancelClicked(ActionEvent event) throws Exception {
         ((Node) (event.getSource())).getScene().getWindow().hide();
         Parent parent = FXMLLoader.load(getClass().getResource("/Layout/WelcomePage.fxml"));
-        Stage stage = new Stage();
+        stage = new Stage();
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.setTitle("Welcome Page");
