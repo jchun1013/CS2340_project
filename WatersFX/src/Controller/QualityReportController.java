@@ -77,6 +77,12 @@ public class QualityReportController implements Initializable{
             stmt.close();
             conn.close();
 
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Submit Successful");
+            alert.setHeaderText("Quality Report");
+            alert.setContentText("Successfully submitted!");
+            alert.showAndWait();
+
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");

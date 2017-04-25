@@ -121,5 +121,18 @@
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
     </column>
+    <index id="39" parent="14" name="user_emailAddress_uindex">
+      <ColNames>emailAddress</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="40" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>emailAddress</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="41" parent="14" name="user_emailAddress_uindex">
+      <ColNames>emailAddress</ColNames>
+      <UnderlyingIndexName>user_emailAddress_uindex</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>

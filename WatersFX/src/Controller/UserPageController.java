@@ -51,6 +51,12 @@ public class UserPageController implements Initializable {
         anchorPane.getChildren().setAll(pane);
     }
 
+    @FXML
+    private void editProfileClicked() throws Exception{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/Layout/EditProfile.fxml"));
+        anchorPane.getChildren().setAll(pane);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

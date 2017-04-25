@@ -67,14 +67,6 @@ public class SourceReportController implements Initializable{
            // String sql2 = "SELECT COUNT(*) FROM source_report";
 
             try {
-//                stmt2 = conn.prepareStatement(sql2);
-//                ResultSet rs = stmt2.executeQuery();
-//
-//                if (rs.next()) {
-//                    System.out.println(rs.getInt(1));
-//                    count = 1 + rs.getInt(1);
-//                }
-//                stmt2.close();
 
                 stmt = conn.prepareStatement(sql);
                 stmt.setInt(1, count);
@@ -88,6 +80,12 @@ public class SourceReportController implements Initializable{
 
                 stmt.close();
                 conn.close();
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Submit Successful");
+                alert.setHeaderText("Source Report");
+                alert.setContentText("Successfully submitted!");
+                alert.showAndWait();
 
             } catch (SQLException e1) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
