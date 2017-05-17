@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (childValue.getBanned() == false) {
+                //if (childValue.getBanned() == false) {
                     if (task.isSuccessful()) {
                         if (childValue.getEmailAddress().equals(editEmail.getText().toString())) {
                             currentUser = childValue;
@@ -126,16 +126,16 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(new Intent(LoginActivity.this, RegUserActivity.class));
                         finish();
                     } else {
-                        if (childValue.getEmailAddress().equals(editEmail.getText().toString())) {
-                            emailList(childValue.getEmailAddress());
-                        }
+//                        if (childValue.getEmailAddress().equals(editEmail.getText().toString())) {
+//                            emailList(childValue.getEmailAddress());
+//                        }
                         Toast.makeText(LoginActivity.this, "Login Attempt Failed", Toast.LENGTH_LONG).show();
                         return;
                     }
-                } else {
-                    Toast.makeText(LoginActivity.this, "You have been banned!", Toast.LENGTH_LONG).show();
-                    return;
-                }
+//                } else {
+//                    Toast.makeText(LoginActivity.this, "You have been banned!", Toast.LENGTH_LONG).show();
+//                    return;
+//                }
             }
         });
     }
